@@ -1,6 +1,8 @@
 import styled from 'styled-components';
-import listIcon from '@assets/images/icons/icon-list-default.png';
-import recommendIcon from '@assets/images/icons/icon-menuFinder-default.png';
+import defaultListIcon from '@assets/images/icons/icon-list-default.png';
+import defaultRecommendIcon from '@assets/images/icons/icon-recommend-default.png';
+import activeListIcon from '@assets/images/icons/icon-list-active.png';
+import activeRecommendIcon from '@assets/images/icons/icon-recommend-active.png';
 import { Link } from 'react-router-dom';
 
 const StyledBottomNav = styled.nav`
@@ -44,11 +46,11 @@ export default function BottomNav() {
   return (
     <StyledBottomNav>
       <Link to="/recommend">
-        <img src={recommendIcon} alt="아이콘" />
+        <img src={defaultRecommendIcon} alt="아이콘" />
         <span>메뉴 추천</span>
       </Link>
       <Link to="/recipeList">
-        <img src={listIcon} alt="아이콘" />
+        <img src={defaultListIcon} alt="아이콘" />
         <span>레시피 목록</span>
       </Link>
     </StyledBottomNav>

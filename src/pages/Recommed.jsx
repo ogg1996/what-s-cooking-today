@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import logo from '@assets/images/logo.png';
+import logoIcon from '@assets/images/icons/icon-logo.png';
 import { useState } from 'react';
 import { useAxiosData } from '../hooks/useAxiosData';
 import RecipeItem from '../components/common/RecipeItem';
@@ -89,7 +89,7 @@ export default function Recommend() {
   return (
     <StyledRecommend>
       <LogoAndTitle>
-        <img src={logo} alt="로고" />
+        <img src={logoIcon} alt="로고" />
         <span>오늘 뭐 해먹지?</span>
         <span>메뉴 추천해 드릴게요!</span>
       </LogoAndTitle>

@@ -1,6 +1,8 @@
-import logo from '@assets/images/logo.png';
-import listIcon from '@assets/images/icons/icon-list-default.png';
-import recommendIcon from '@assets/images/icons/icon-menuFinder-default.png';
+import logoIcon from '@assets/images/icons/icon-logo.png';
+import defaultListIcon from '@assets/images/icons/icon-list-default.png';
+import defaultRecommendIcon from '@assets/images/icons/icon-recommend-default.png';
+import activeListIcon from '@assets/images/icons/icon-list-active.png';
+import activeRecommendIcon from '@assets/images/icons/icon-recommend-active.png';
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -111,7 +113,6 @@ const HeaderNav = styled.nav`
       color: #8e8073;
     }
   }
-
   @media (max-width: 1000px) {
     display: none;
   }
@@ -129,7 +130,7 @@ export default function Header() {
   return (
     <StyledHeader>
       <HeaderLogo to="/">
-        <img src={logo} alt="로고" />
+        <img src={logoIcon} alt="로고" />
         <span>오늘 뭐 해먹지?</span>
       </HeaderLogo>
       <HeaderSearchBar>
@@ -149,11 +150,11 @@ export default function Header() {
       </HeaderSearchBar>
       <HeaderNav>
         <Link to="/recommend">
-          <img src={recommendIcon} alt="아이콘" />
+          <img src={defaultRecommendIcon} alt="아이콘" />
           <span>메뉴 추천</span>
         </Link>
         <Link to="/recipeList">
-          <img src={listIcon} alt="아이콘" />
+          <img src={defaultListIcon} alt="아이콘" />
           <span>레시피 목록</span>
         </Link>
       </HeaderNav>
