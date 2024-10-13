@@ -1,8 +1,10 @@
 import { createRoot } from 'react-dom/client';
 import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
+import { Provider } from 'react-redux';
 import App from './App';
 import './styles/reset.css';
+import { store } from './redux';
 
 const GlobalStyle = createGlobalStyle`
   @font-face {
@@ -39,6 +41,8 @@ const GlobalStyle = createGlobalStyle`
 createRoot(document.getElementById('root')).render(
   <BrowserRouter>
     <GlobalStyle />
-    <App />
+    <Provider store={store}>
+      <App />
+    </Provider>
   </BrowserRouter>
 );
