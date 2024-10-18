@@ -11,7 +11,7 @@ const ItemBtn = styled.button`
   text-align: center;
   line-height: 32px;
   border-radius: 30px;
-  border: 1px solid ${props => (props.selected ? '#e74c3c' : '#c4c4c4;')};
+  border: 1px solid ${props => (props.selected ? '#e74c3c' : '#c4c4c4')};
   background-color: ${props => (props.selected ? '#e74c3c' : '#fefbf8')};
   color: ${props => (props.selected ? '#fefbf8' : '#3c3733')};
   cursor: pointer;

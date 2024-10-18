@@ -1,7 +1,9 @@
 import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useAxiosData } from '../hooks/useAxiosData';
+import { setPageState } from '../redux';
 
 const StyledDetail = styled.div`
   display: flex;
@@ -107,6 +109,8 @@ const CookingList = styled.div`
 
 // TODO : 스켈레톤 컴포넌트
 export default function Detail() {
+  const dispatch = useDispatch();
+
   const param = useParams();
   const [basicData, setBasicData] = useState(null);
   const [ingredientsData, setIngredientsData] = useState(null);
@@ -136,11 +140,15 @@ export default function Detail() {
   ];
 
   useEffect(() => {
+    dispatch(setPageState('detail'));
+
     const { VITE_DB_URL, VITE_INGREDIENTS_API_URL } = import.meta.env;
+
     useAxiosData(`${VITE_DB_URL}/basic?RECIPE_ID=${param.id}`).then(res => {
       const resData = res.data[0];
       setBasicData(resData);
     });
+
     useAxiosData(`${VITE_DB_URL}/cooking?RECIPE_ID=${param.id}`).then(res => {
       const resData = res.data;
       setCookingData(resData);

@@ -1,8 +1,10 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import Category from '../components/common/Category';
 import { useAxiosData } from '../hooks/useAxiosData';
 import RecipeItems from '../components/common/RecipeItems';
+import { setPageState } from '../redux';
 
 const StyledRecipeList = styled.div`
   flex-direction: column;
@@ -13,6 +15,8 @@ const StyledRecipeList = styled.div`
 
 // TODO : 무한 스크롤 구현...
 export default function RecipeList() {
+  const dispatch = useDispatch();
+
   const [selected, setSelected] = useState('전체');
   const [recipeItems, setRecipeItems] = useState(null);
 
@@ -21,6 +25,11 @@ export default function RecipeList() {
     selected === '전체'
       ? `${VITE_DB_URL}/basic?_page=1&_limit=20`
       : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=1&_limit=20`;
+
+  useEffect(() => {
+    dispatch(setPageState('recipeList'));
+  }, []);
+
   useEffect(() => {
     useAxiosData(endurl).then(res => {
       const resData = res.data;

@@ -17,15 +17,10 @@ const StyledRecipeItems = styled.div`
 export default function RecipeItems({ recipeItems }) {
   return (
     <StyledRecipeItems>
-      {recipeItems ? (
-        <>
-          {recipeItems.map(item => (
-            <RecipeItem key={item.RECIPE_ID} id={item.RECIPE_ID} />
-          ))}
-        </>
-      ) : (
-        <div>로딩중...</div>
-      )}
+      {recipeItems &&
+        recipeItems.map(item => (
+          <RecipeItem key={item.RECIPE_ID} id={item.RECIPE_ID} />
+        ))}
     </StyledRecipeItems>
   );
 }

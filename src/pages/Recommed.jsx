@@ -1,9 +1,11 @@
 import styled from 'styled-components';
 import logoIcon from '@assets/images/icons/icon-logo.png';
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
+import { useDispatch } from 'react-redux';
 import { useAxiosData } from '../hooks/useAxiosData';
 import RecipeItem from '../components/common/RecipeItem';
 import Category from '../components/common/Category';
+import { setPageState } from '../redux';
 
 const StyledRecommend = styled.div`
   width: 450px;
@@ -69,6 +71,8 @@ const ResultBox = styled.div`
 
 // TODO : 추천할 때 애니메이션 출력
 export default function Recommend() {
+  const dispatch = useDispatch();
+
   const [selected, setSelected] = useState('전체');
   const [itemData, setItemData] = useState(null);
 
@@ -85,6 +89,10 @@ export default function Recommend() {
       setItemData(resData[randomIndex]);
     });
   };
+
+  useEffect(() => {
+    dispatch(setPageState('recommend'));
+  }, []);
 
   return (
     <StyledRecommend>
