@@ -19,7 +19,7 @@ export default function RecipeItems({ recipeItems }) {
     <StyledRecipeItems>
       {recipeItems &&
         recipeItems.map(item => (
-          <RecipeItem key={item.RECIPE_ID} id={item.RECIPE_ID} />
+          <RecipeItem key={item.RECIPE_ID} itemData={item} />
         ))}
     </StyledRecipeItems>
   );

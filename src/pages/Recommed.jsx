@@ -112,7 +112,7 @@ export default function Recommend() {
             <span>음식 레시피를 보고 싶으시면</span>
             <span>클릭해주세요!</span>
             <span>↓ ↓ ↓</span>
-            <RecipeItem id={itemData.RECIPE_ID} />
+            <RecipeItem itemData={itemData} />
           </>
         )}
       </ResultBox>
