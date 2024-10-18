@@ -35,12 +35,8 @@ export default function RecipeItem({ itemData }) {
   const navigate = useNavigate();
   return (
     <StyledRecipeItem onClick={() => navigate(`/detail/${itemData.RECIPE_ID}`)}>
-      {itemData && (
-        <>
-          <img src={itemData.IMG_URL} alt={itemData.NAME} />
-          <span>{itemData.NAME}</span>
-        </>
-      )}
+      <img src={itemData.IMG_URL} alt={itemData.NAME} />
+      <span>{itemData.NAME}</span>
     </StyledRecipeItem>
   );
 }
