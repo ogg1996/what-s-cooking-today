@@ -12,19 +12,53 @@ const StyledRecipeItem = styled.div`
   padding: 10px;
   cursor: pointer;
 
-  & > img {
+  & > div {
+    padding: 10px;
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+
     width: 200px;
-    height: 200px;
+    background-color: #000000;
+    background-image: url(${props => props.$setUrl});
+    background-size: cover;
+    aspect-ratio: 1;
     border-radius: 8px;
+
+    & > span {
+      display: none;
+      color: white;
+      text-align: right;
+      font-size: 18px;
+    }
+    & > span:first-child {
+      text-align: justify;
+      flex-grow: 1;
+    }
   }
+
   & > span {
     font-size: 20px;
   }
 
+  &:active,
+  &:hover {
+    & > div {
+      background-image: linear-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+        url(${props => props.$setUrl});
+      & > span {
+        display: inline;
+      }
+    }
+  }
+
   @media (max-width: 461px) {
-    & > img {
+    & > div {
       width: 165px;
-      height: 165px;
+
+      & > span {
+        font-size: 16px;
+      }
     }
     & > span {
       font-size: 16px;
@@ -32,8 +66,6 @@ const StyledRecipeItem = styled.div`
   }
 `;
 
-// TODO : 호버하면 뭔가 바뀌는게 있도록..
-// 스켈레톤 컴포넌트 준비..
 export default function RecipeItem({ id }) {
   const [itemData, setItemData] = useState(null);
   const navigate = useNavigate();
@@ -45,13 +77,22 @@ export default function RecipeItem({ id }) {
     });
   }, [id]);
   return (
-    <StyledRecipeItem onClick={() => navigate(`/detail/${itemData.RECIPE_ID}`)}>
+    // eslint-disable-next-line react/jsx-no-useless-fragment
+    <>
       {itemData && (
-        <>
-          <img src={itemData.IMG_URL} alt={itemData.NAME} />
+        <StyledRecipeItem
+          onClick={() => navigate(`/detail/${itemData.RECIPE_ID}`)}
+          $setUrl={itemData.IMG_URL}
+        >
+          <div>
+            <span>{itemData.SUMRY}</span>
+            <span>분류: {itemData.TYPE}</span>
+            <span>난이도: {itemData.LEVEL}</span>
+            <span>조리시간: {itemData.COOKING_TIME}</span>
+          </div>
           <span>{itemData.NAME}</span>
-        </>
+        </StyledRecipeItem>
       )}
-    </StyledRecipeItem>
+    </>
   );
 }
