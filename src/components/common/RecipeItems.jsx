@@ -17,10 +17,9 @@ const StyledRecipeItems = styled.div`
 export default function RecipeItems({ recipeItems }) {
   return (
     <StyledRecipeItems>
-      {recipeItems &&
-        recipeItems.map(item => (
-          <RecipeItem key={item.RECIPE_ID} id={item.RECIPE_ID} />
-        ))}
+      {recipeItems.map(item => (
+        <RecipeItem key={item.RECIPE_ID} itemData={item} />
+      ))}
     </StyledRecipeItems>
   );
 }

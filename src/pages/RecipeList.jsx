@@ -5,6 +5,7 @@ import Category from '../components/common/Category';
 import { useAxiosData } from '../hooks/useAxiosData';
 import RecipeItems from '../components/common/RecipeItems';
 import { setPageState } from '../redux';
+import SkeletonRecipeItems from '../skeletons/common/SkeletonRecipeItems';
 
 const StyledRecipeList = styled.div`
   flex-direction: column;
@@ -31,6 +32,7 @@ export default function RecipeList() {
   }, []);
 
   useEffect(() => {
+    setRecipeItems(null);
     useAxiosData(endurl).then(res => {
       const resData = res.data;
       setRecipeItems(resData);
@@ -39,7 +41,11 @@ export default function RecipeList() {
   return (
     <StyledRecipeList>
       <Category selected={selected} setSelected={setSelected} />
-      <RecipeItems recipeItems={recipeItems} />
+      {recipeItems ? (
+        <RecipeItems recipeItems={recipeItems} />
+      ) : (
+        <SkeletonRecipeItems />
+      )}
     </StyledRecipeList>
   );
 }
