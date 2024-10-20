@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import logoIcon from '@assets/images/icons/icon-logo.png';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
@@ -13,21 +13,6 @@ const StyledRecommend = styled.div`
   display: flex;
   flex-direction: column;
   gap: 40px;
-
-  & > button {
-    font-size: 22px;
-    height: 60px;
-
-    color: #fefbf8;
-    background-color: #8e8073;
-    border: none;
-    border-radius: 8px;
-    cursor: pointer;
-  }
-
-  & > button:active {
-    background-color: #c4c4c4;
-  }
 
   @media (max-width: 1000px) {
     width: 100%;
@@ -69,20 +54,85 @@ const ResultBox = styled.div`
   }
 `;
 
+const changeMenu = keyframes`
+  0% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-1.png');
+  }
+  12.5% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-2.png');
+  }
+  25% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-3.png');
+  }
+  37.5% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-4.png');
+  }
+  50% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-5.png');
+  }
+  62.5% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-6.png');
+  }
+  75% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-7.png');
+  }
+  87.5% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-8.png');
+  }
+  100% {
+    background-image: url('src/assets/images/menuImages/suggestMenu-1.png');
+  }
+`;
+
+const RecommendAnimBox = styled.div`
+  width: 200px;
+  margin-bottom: 20px;
+  aspect-ratio: 1;
+  background-size: cover;
+  background-position: center;
+  animation: ${changeMenu} 1s infinite;
+
+  @media (max-width: 461px) {
+    width: 165px;
+  }
+`;
+
+const RecommendButton = styled.button`
+  font-size: 22px;
+  height: 60px;
+
+  color: #fefbf8;
+  background-color: #8e8073;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+`;
+
+const ActiveRecommendButton = styled(RecommendButton)`
+  background-color: #c4c4c4;
+`;
+
 // TODO : 추천할 때 애니메이션 출력
 export default function Recommend() {
   const dispatch = useDispatch();
 
   const [selected, setSelected] = useState('전체');
   const [itemData, setItemData] = useState(null);
+  const [isRecommend, setIsRecommend] = useState(false);
 
   const handleClick = () => {
+    if (isRecommend) return;
+    setIsRecommend(true);
     const { VITE_DB_URL } = import.meta.env;
     // 옵션에 따라 받아오는 데이터가 다르도록
     const endurl =
       selected === '전체'
         ? `${VITE_DB_URL}/basic`
         : `${VITE_DB_URL}/basic?TYPE=${selected}`;
+    setTimeout(() => {
+      setIsRecommend(false);
+    }, 1500);
+
     useAxiosData(endurl).then(res => {
       const resData = res.data;
       const randomIndex = Math.floor(Math.random() * resData.length);
@@ -102,24 +152,38 @@ export default function Recommend() {
         <span>메뉴 추천해 드릴게요!</span>
       </LogoAndTitle>
       <ResultBox>
-        {!itemData ? (
+        {!itemData && (
           <>
             <span>옵션을 선택하고</span>
             <span>&apos;메뉴를 추천해줘!&apos;를 눌러보세요</span>
           </>
-        ) : (
+        )}
+        {itemData && !isRecommend ? (
           <>
             <span>음식 레시피를 보고 싶으시면</span>
             <span>클릭해주세요!</span>
             <span>↓ ↓ ↓</span>
             <RecipeItem id={itemData.RECIPE_ID} />
           </>
+        ) : (
+          isRecommend && (
+            <>
+              <RecommendAnimBox />
+              <span>메뉴 추천중...</span>
+            </>
+          )
         )}
       </ResultBox>
       <Category selected={selected} setSelected={setSelected} />
-      <button type="button" onClick={handleClick}>
-        메뉴를 추천해줘!
-      </button>
+      {!isRecommend ? (
+        <RecommendButton type="button" onClick={handleClick}>
+          메뉴를 추천해줘!
+        </RecommendButton>
+      ) : (
+        <ActiveRecommendButton type="button">
+          메뉴를 추천해줘!
+        </ActiveRecommendButton>
+      )}
     </StyledRecommend>
   );
 }
