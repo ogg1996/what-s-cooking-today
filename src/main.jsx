@@ -22,7 +22,12 @@ const GlobalStyle = createGlobalStyle`
 
   * {
     box-sizing: border-box;
+    -webkit-user-select:none;
+    -moz-user-select:none;
+    -ms-user-select:none;
+    user-select:none;
   }
+  
   html {
     width: 100%;
     margin: 0 auto;
