@@ -1,4 +1,6 @@
 import styled from 'styled-components';
+import SkeletonImg from '../base/SkeletonImg';
+import SkeletonText from '../base/SkeletonText';
 
 const StyledSkeletonRecipeItem = styled.div`
   display: flex;
@@ -7,29 +9,10 @@ const StyledSkeletonRecipeItem = styled.div`
   align-items: center;
   gap: 10px;
   padding: 10px;
-
-  & > div {
-    width: 200px;
-    height: 200px;
-    border-radius: 8px;
-    background-color: #dddddd;
-  }
-  & > span {
-    width: 150px;
-    height: 20px;
-    border-radius: 6px;
-    background-color: #dddddd;
-  }
+  width: 220px;
 
   @media (max-width: 461px) {
-    & > div {
-      width: 165px;
-      height: 165px;
-    }
-    & > span {
-      width: 125px;
-      height: 16px;
-    }
+    width: 185px;
   }
 `;
 
@@ -37,8 +20,8 @@ const StyledSkeletonRecipeItem = styled.div`
 export default function SkeletonRecipeItem() {
   return (
     <StyledSkeletonRecipeItem>
-      <div />
-      <span />
+      <SkeletonImg width="100%" radius="8px" />
+      <SkeletonText width="80%" height="20px" />
     </StyledSkeletonRecipeItem>
   );
 }

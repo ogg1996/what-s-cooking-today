@@ -5,7 +5,7 @@ import Category from '../components/common/Category';
 import { useAxiosData } from '../hooks/useAxiosData';
 import RecipeItems from '../components/common/RecipeItems';
 import { setPageState } from '../redux';
-import SkeletonRecipeItems from '../components/skeleton/SkeletonRecipeItems';
+import SkeletonRecipeItems from '../skeletons/common/SkeletonRecipeItems';
 
 const StyledRecipeList = styled.div`
   flex-direction: column;

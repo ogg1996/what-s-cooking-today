@@ -4,10 +4,14 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAxiosData } from '../hooks/useAxiosData';
 import { setPageState } from '../redux';
+import SkeletonBasicContainer from '../skeletons/Detail/SkeletonBasicContainer';
+import SkeletonIngerdientsContainer from '../skeletons/Detail/SkeletonIngredientsContainer';
+import SkeletonCookingContainer from '../skeletons/Detail/SkeletonCookingContainer';
 
 const StyledDetail = styled.div`
   display: flex;
   flex-direction: column;
+  width: 100%;
   max-width: 400px;
   margin: 0 20px;
   gap: 20px;
@@ -18,13 +22,9 @@ const StyledDetail = styled.div`
       margin-bottom: 10px;
     }
   }
-  img {
-    width: 100%;
-    border-radius: 20px;
-  }
 `;
 
-const BasicInfoContainer = styled.div`
+const BasicContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -41,9 +41,14 @@ const BasicInfoContainer = styled.div`
     justify-content: end;
     gap: 15px;
   }
+
+  & > img {
+    width: 100%;
+    border-radius: 20px;
+  }
 `;
 
-const IngredientsInfoContainer = styled.div`
+const IngredientsContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
@@ -54,13 +59,14 @@ const IngredientsInfoContainer = styled.div`
     border-bottom: 1px solid #c4c4c4;
     padding-bottom: 10px;
 
-    span {
+    & > span {
       width: 33%;
       text-align: center;
       font-size: 20px;
     }
   }
 `;
+
 const IngredientList = styled.div`
   display: flex;
   flex-direction: column;
@@ -69,7 +75,7 @@ const IngredientList = styled.div`
     display: flex;
     justify-content: space-between;
 
-    span {
+    & > span {
       width: 33%;
       text-align: center;
       font-size: 16px;
@@ -77,15 +83,17 @@ const IngredientList = styled.div`
   }
 `;
 
-const CookingInfoContainer = styled.div`
+const CookingContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 10px;
 `;
+
 const CookingList = styled.div`
   display: flex;
   flex-direction: column;
   gap: 15px;
+
   & > div {
     display: flex;
     flex-direction: column;
@@ -107,7 +115,6 @@ const CookingList = styled.div`
   }
 `;
 
-// TODO : 스켈레톤 컴포넌트
 export default function Detail() {
   const dispatch = useDispatch();
 
@@ -151,21 +158,24 @@ export default function Detail() {
 
     useAxiosData(`${VITE_DB_URL}/cooking?RECIPE_ID=${param.id}`).then(res => {
       const resData = res.data;
+
       setCookingData(resData);
     });
 
     useAxiosData(`${VITE_INGREDIENTS_API_URL}?RECIPE_ID=${param.id}`).then(
       res => {
         const resData = res.data.Grid_20150827000000000227_1.row;
-        setIngredientsData(resData);
+        setTimeout(() => {
+          setIngredientsData(resData);
+        }, 1000);
       }
     );
   }, []);
 
   return (
     <StyledDetail>
-      {basicData && (
-        <BasicInfoContainer>
+      {basicData ? (
+        <BasicContainer>
           <h2>{basicData.NAME}</h2>
           <span>{basicData.SUMRY}</span>
           <div>
@@ -174,16 +184,18 @@ export default function Detail() {
             <span>난이도: {basicData.LEVEL}</span>
           </div>
           <img src={basicData.IMG_URL} alt={basicData.NAME} />
-        </BasicInfoContainer>
+        </BasicContainer>
+      ) : (
+        <SkeletonBasicContainer />
       )}
-      <IngredientsInfoContainer>
-        <h3>준비 재료</h3>
-        <div>
-          <span>재료명</span>
-          <span>필요량</span>
-          <span>재료명</span>
-        </div>
-        {ingredientsData && (
+      {ingredientsData ? (
+        <IngredientsContainer>
+          <h3>준비 재료</h3>
+          <div>
+            <span>재료명</span>
+            <span>필요량</span>
+            <span>재료명</span>
+          </div>
           <IngredientList>
             {ingredientsData.map(item => (
               <div key={item.ROW_NUM}>
@@ -193,11 +205,13 @@ export default function Detail() {
               </div>
             ))}
           </IngredientList>
-        )}
-      </IngredientsInfoContainer>
-      <CookingInfoContainer>
-        <h3>조리 과정</h3>
-        {cookingData && (
+        </IngredientsContainer>
+      ) : (
+        <SkeletonIngerdientsContainer />
+      )}
+      {cookingData ? (
+        <CookingContainer>
+          <h3>조리 과정</h3>
           <CookingList>
             {cookingData.map(item => (
               <div key={item.STEP}>
@@ -211,8 +225,10 @@ export default function Detail() {
               </div>
             ))}
           </CookingList>
-        )}
-      </CookingInfoContainer>
+        </CookingContainer>
+      ) : (
+        <SkeletonCookingContainer />
+      )}
     </StyledDetail>
   );
 }
