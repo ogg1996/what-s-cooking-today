@@ -6,7 +6,7 @@ const StyledRecipeItems = styled.div`
   flex-wrap: wrap;
   max-width: 660px;
 
-  @media (max-width: 661px) {
+  @media (max-width: 675px) {
     max-width: 440px;
   }
   @media (max-width: 461px) {
