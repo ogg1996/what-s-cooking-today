@@ -27,7 +27,7 @@ const StyledRecipeItem = styled.div`
       display: none;
       color: white;
       text-align: right;
-      font-size: 18px;
+      font-size: 16px;
     }
     & > span:first-child {
       text-align: justify;
