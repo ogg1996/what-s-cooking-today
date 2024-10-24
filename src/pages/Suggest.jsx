@@ -7,7 +7,7 @@ import RecipeItem from '../components/common/RecipeItem';
 import Category from '../components/common/Category';
 import { setPageState } from '../redux';
 
-const StyledRecommend = styled.div`
+const StyledSuggest = styled.div`
   width: 450px;
 
   display: flex;
@@ -20,8 +20,7 @@ const StyledRecommend = styled.div`
   }
 `;
 
-// 컴포넌트명을 어떻게 지어야 할까요..?
-const LogoAndTitle = styled.div`
+const CommentBox = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -84,7 +83,7 @@ const changeMenu = keyframes`
   }
 `;
 
-const RecommendAnimBox = styled.div`
+const SuggestAnimBox = styled.div`
   width: 200px;
   margin-bottom: 20px;
   aspect-ratio: 1;
@@ -97,7 +96,7 @@ const RecommendAnimBox = styled.div`
   }
 `;
 
-const RecommendButton = styled.button`
+const SuggestButton = styled.button`
   font-size: 22px;
   height: 60px;
 
@@ -108,12 +107,12 @@ const RecommendButton = styled.button`
   cursor: pointer;
 `;
 
-const ActiveRecommendButton = styled(RecommendButton)`
+const ActiveSuggestButton = styled(SuggestButton)`
   background-color: #c4c4c4;
 `;
 
 // TODO : 추천할 때 애니메이션 출력
-export default function Recommend() {
+export default function Suggest() {
   const dispatch = useDispatch();
 
   const [selected, setSelected] = useState('전체');
@@ -145,12 +144,12 @@ export default function Recommend() {
   }, []);
 
   return (
-    <StyledRecommend>
-      <LogoAndTitle>
+    <StyledSuggest>
+      <CommentBox>
         <img src={logoIcon} alt="로고" />
         <span>오늘 뭐 해먹지?</span>
         <span>메뉴 추천해 드릴게요!</span>
-      </LogoAndTitle>
+      </CommentBox>
       <ResultBox>
         {!itemData && (
           <>
@@ -168,7 +167,7 @@ export default function Recommend() {
         ) : (
           isRecommend && (
             <>
-              <RecommendAnimBox />
+              <SuggestAnimBox />
               <span>메뉴 추천중...</span>
             </>
           )
@@ -176,14 +175,14 @@ export default function Recommend() {
       </ResultBox>
       <Category selected={selected} setSelected={setSelected} />
       {!isRecommend ? (
-        <RecommendButton type="button" onClick={handleClick}>
+        <SuggestButton type="button" onClick={handleClick}>
           메뉴를 추천해줘!
-        </RecommendButton>
+        </SuggestButton>
       ) : (
-        <ActiveRecommendButton type="button">
+        <ActiveSuggestButton type="button">
           메뉴를 추천해줘!
-        </ActiveRecommendButton>
+        </ActiveSuggestButton>
       )}
-    </StyledRecommend>
+    </StyledSuggest>
   );
 }

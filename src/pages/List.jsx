@@ -7,15 +7,14 @@ import RecipeItems from '../components/common/RecipeItems';
 import { setPageState } from '../redux';
 import SkeletonRecipeItems from '../skeletons/common/SkeletonRecipeItems';
 
-const StyledRecipeList = styled.div`
+const StyledList = styled.div`
   flex-direction: column;
   display: flex;
   align-items: center;
   gap: 20px;
 `;
 
-// TODO : 무한 스크롤 구현...
-export default function RecipeList() {
+export default function List() {
   const dispatch = useDispatch();
 
   const [selected, setSelected] = useState('전체');
@@ -39,13 +38,13 @@ export default function RecipeList() {
     });
   }, [selected]);
   return (
-    <StyledRecipeList>
+    <StyledList>
       <Category selected={selected} setSelected={setSelected} />
       {recipeItems ? (
         <RecipeItems recipeItems={recipeItems} />
       ) : (
         <SkeletonRecipeItems />
       )}
-    </StyledRecipeList>
+    </StyledList>
   );
 }
