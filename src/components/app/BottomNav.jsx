@@ -47,7 +47,7 @@ export default function BottomNav() {
   const pageState = useSelector(state => state.pageState.page);
   return (
     <StyledBottomNav>
-      <Link to="/recommend">
+      <Link to="/suggest">
         <img
           src={
             pageState === 'recommend'
@@ -60,7 +60,7 @@ export default function BottomNav() {
           메뉴 추천
         </ButtomNavItem>
       </Link>
-      <Link to="/recipeList">
+      <Link to="/list">
         <img
           src={pageState === 'recipeList' ? activeListIcon : defaultListIcon}
           alt="아이콘"

@@ -201,7 +201,7 @@ export default function Header() {
             </button>
           </HeaderSearchBar>
           <HeaderNav>
-            <Link to="/recommend">
+            <Link to="/suggest">
               <img
                 src={
                   pageState === 'recommend'
@@ -214,7 +214,7 @@ export default function Header() {
                 메뉴 추천
               </HeaderNavItem>
             </Link>
-            <Link to="/recipeList">
+            <Link to="/list">
               <img
                 src={
                   pageState === 'recipeList' ? activeListIcon : defaultListIcon
