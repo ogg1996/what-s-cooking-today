@@ -79,13 +79,27 @@ const HeaderLogo = styled(Link)`
 
 const HeaderSearchBar = styled.div`
   display: flex;
-  gap: 5px;
+  gap: 10px;
 
   & > input {
-    padding-left: 5px;
+    padding: 2px 12px 0 12px;
     height: 28px;
     width: 300px;
+
+    color: #000000;
+    background-color: #fefbf8;
+    border: none;
+    outline: none;
+    border-bottom: #8e8073 2px solid;
   }
+  & > input:focus {
+    padding: 0 12px;
+    padding-left: 10px;
+    background-color: #ffffff;
+    border: 2px solid #8e8073;
+    border-radius: 4px 4px 0 0;
+  }
+
   & > button {
     width: 60px;
     height: 28px;
