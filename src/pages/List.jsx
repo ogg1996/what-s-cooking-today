@@ -27,7 +27,7 @@ export default function List() {
       : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=1&_limit=20`;
 
   useEffect(() => {
-    dispatch(setPageState('recipeList'));
+    dispatch(setPageState('list'));
   }, []);
 
   useEffect(() => {

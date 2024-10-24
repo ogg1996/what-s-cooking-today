@@ -50,22 +50,20 @@ export default function BottomNav() {
       <Link to="/suggest">
         <img
           src={
-            pageState === 'recommend'
-              ? activeRecommendIcon
-              : defaultRecommendIcon
+            pageState === 'suggest' ? activeRecommendIcon : defaultRecommendIcon
           }
           alt="아이콘"
         />
-        <ButtomNavItem $active={pageState === 'recommend'}>
+        <ButtomNavItem $active={pageState === 'suggest'}>
           메뉴 추천
         </ButtomNavItem>
       </Link>
       <Link to="/list">
         <img
-          src={pageState === 'recipeList' ? activeListIcon : defaultListIcon}
+          src={pageState === 'list' ? activeListIcon : defaultListIcon}
           alt="아이콘"
         />
-        <ButtomNavItem $active={pageState === 'recipeList'}>
+        <ButtomNavItem $active={pageState === 'list'}>
           레시피 목록
         </ButtomNavItem>
       </Link>

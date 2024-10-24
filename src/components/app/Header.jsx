@@ -204,24 +204,22 @@ export default function Header() {
             <Link to="/suggest">
               <img
                 src={
-                  pageState === 'recommend'
+                  pageState === 'suggest'
                     ? activeRecommendIcon
                     : defaultRecommendIcon
                 }
                 alt="아이콘"
               />
-              <HeaderNavItem $active={pageState === 'recommend'}>
+              <HeaderNavItem $active={pageState === 'suggest'}>
                 메뉴 추천
               </HeaderNavItem>
             </Link>
             <Link to="/list">
               <img
-                src={
-                  pageState === 'recipeList' ? activeListIcon : defaultListIcon
-                }
+                src={pageState === 'list' ? activeListIcon : defaultListIcon}
                 alt="아이콘"
               />
-              <HeaderNavItem $active={pageState === 'recipeList'}>
+              <HeaderNavItem $active={pageState === 'list'}>
                 레시피 목록
               </HeaderNavItem>
             </Link>

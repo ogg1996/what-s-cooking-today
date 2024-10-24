@@ -140,7 +140,7 @@ export default function Suggest() {
   };
 
   useEffect(() => {
-    dispatch(setPageState('recommend'));
+    dispatch(setPageState('suggest'));
   }, []);
 
   return (
