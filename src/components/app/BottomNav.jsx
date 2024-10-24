@@ -1,8 +1,8 @@
 import styled from 'styled-components';
 import defaultListIcon from '@assets/images/icons/icon-list-default.png';
-import defaultRecommendIcon from '@assets/images/icons/icon-recommend-default.png';
+import defaultSuggestIcon from '@assets/images/icons/icon-suggest-default.png';
 import activeListIcon from '@assets/images/icons/icon-list-active.png';
-import activeRecommendIcon from '@assets/images/icons/icon-recommend-active.png';
+import activeSuggestdIcon from '@assets/images/icons/icon-suggest-active.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -50,7 +50,7 @@ export default function BottomNav() {
       <Link to="/suggest">
         <img
           src={
-            pageState === 'suggest' ? activeRecommendIcon : defaultRecommendIcon
+            pageState === 'suggest' ? activeSuggestdIcon : defaultSuggestIcon
           }
           alt="아이콘"
         />

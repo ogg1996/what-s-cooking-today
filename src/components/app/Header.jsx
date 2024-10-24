@@ -1,8 +1,8 @@
 import logoIcon from '@assets/images/icons/icon-logo.png';
 import defaultListIcon from '@assets/images/icons/icon-list-default.png';
-import defaultRecommendIcon from '@assets/images/icons/icon-recommend-default.png';
+import defaultSuggestIcon from '@assets/images/icons/icon-suggest-default.png';
 import activeListIcon from '@assets/images/icons/icon-list-active.png';
-import activeRecommendIcon from '@assets/images/icons/icon-recommend-active.png';
+import activeSuggestIcon from '@assets/images/icons/icon-suggest-active.png';
 import allowLeftIcon from '@assets/images/icons/icon-arrow-left.png';
 
 import { Link, useNavigate } from 'react-router-dom';
@@ -205,8 +205,8 @@ export default function Header() {
               <img
                 src={
                   pageState === 'suggest'
-                    ? activeRecommendIcon
-                    : defaultRecommendIcon
+                    ? activeSuggestIcon
+                    : defaultSuggestIcon
                 }
                 alt="아이콘"
               />
