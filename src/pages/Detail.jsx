@@ -2,11 +2,11 @@ import { useParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAxiosData } from '../hooks/useAxiosData';
-import { setPageState } from '../redux';
-import SkeletonBasicContainer from '../skeletons/Detail/SkeletonBasicContainer';
-import SkeletonIngerdientsContainer from '../skeletons/Detail/SkeletonIngredientsContainer';
-import SkeletonCookingContainer from '../skeletons/Detail/SkeletonCookingContainer';
+import { setPageState } from '@/redux';
+import { useAxiosData } from '@/hooks/useAxiosData';
+import SkeletonIngerdientsContainer from '@skeletons-detail/SkeletonIngredientsContainer';
+import SkeletonBasicContainer from '@skeletons-detail/SkeletonBasicContainer';
+import SkeletonCookingContainer from '@skeletons-detail/SkeletonCookingContainer';
 
 const StyledDetail = styled.div`
   display: flex;

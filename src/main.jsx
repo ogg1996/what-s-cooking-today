@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
 import App from './App';
-import './styles/reset.css';
+import '@/styles/reset.css';
 import { store } from './redux';
 
 const GlobalStyle = createGlobalStyle`

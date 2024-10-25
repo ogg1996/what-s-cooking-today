@@ -2,10 +2,10 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useAxiosData } from '../hooks/useAxiosData';
-import RecipeItems from '../components/common/RecipeItems';
-import { setPageState } from '../redux';
-import SkeletonRecipeItems from '../skeletons/common/SkeletonRecipeItems';
+import RecipeItems from '@components-common/RecipeItems';
+import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
+import { setPageState } from '@/redux';
+import { useAxiosData } from '@/hooks/useAxiosData';
 
 const StyledSearch = styled.div`
   font-size: 30px;

@@ -1,8 +1,8 @@
 import styled from 'styled-components';
-import defaultListIcon from '@assets/images/icons/icon-list-default.png';
-import defaultSuggestIcon from '@assets/images/icons/icon-suggest-default.png';
-import activeListIcon from '@assets/images/icons/icon-list-active.png';
-import activeSuggestdIcon from '@assets/images/icons/icon-suggest-active.png';
+import defaultListIcon from '@icons/icon-list-default.png';
+import defaultSuggestIcon from '@icons/icon-suggest-default.png';
+import activeListIcon from '@icons/icon-list-active.png';
+import activeSuggestdIcon from '@icons/icon-suggest-active.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 

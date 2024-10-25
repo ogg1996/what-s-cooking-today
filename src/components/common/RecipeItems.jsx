@@ -1,5 +1,5 @@
+import RecipeItem from '@components-common/RecipeItem';
 import styled from 'styled-components';
-import RecipeItem from './RecipeItem';
 
 const StyledRecipeItems = styled.div`
   display: flex;

@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Detail from './pages/Detail';
-import Suggest from './pages/Suggest';
-import List from './pages/List';
-import BottomNav from './components/app/BottomNav';
-import Header from './components/app/Header';
-import Search from './pages/Search';
+import Header from '@components-app/Header';
+import BottomNav from '@components-app/BottomNav';
+import Detail from '@/pages/Detail';
+import List from '@/pages/List';
+import Search from '@/pages/Search';
+import Suggest from '@/pages/Suggest';
 
 const StyledApp = styled.div`
   display: flex;

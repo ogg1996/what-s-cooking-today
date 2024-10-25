@@ -1,5 +1,5 @@
+import SkeletonText from '@skeletons-base/SkeletonText';
 import styled from 'styled-components';
-import SkeletonText from '../base/SkeletonText';
 
 const StyledSkeletonIngredientsContainer = styled.div`
   display: flex;

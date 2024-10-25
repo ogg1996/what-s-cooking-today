@@ -1,9 +1,9 @@
-import logoIcon from '@assets/images/icons/icon-logo.png';
-import defaultListIcon from '@assets/images/icons/icon-list-default.png';
-import defaultSuggestIcon from '@assets/images/icons/icon-suggest-default.png';
-import activeListIcon from '@assets/images/icons/icon-list-active.png';
-import activeSuggestIcon from '@assets/images/icons/icon-suggest-active.png';
-import allowLeftIcon from '@assets/images/icons/icon-arrow-left.png';
+import logoIcon from '@icons/icon-logo.png';
+import defaultListIcon from '@icons/icon-list-default.png';
+import defaultSuggestIcon from '@icons/icon-suggest-default.png';
+import activeListIcon from '@icons/icon-list-active.png';
+import activeSuggestIcon from '@icons/icon-suggest-active.png';
+import allowLeftIcon from '@icons/icon-arrow-left.png';
 
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';

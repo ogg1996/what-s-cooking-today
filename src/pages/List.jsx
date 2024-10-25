@@ -1,11 +1,11 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import Category from '../components/common/Category';
-import { useAxiosData } from '../hooks/useAxiosData';
-import RecipeItems from '../components/common/RecipeItems';
-import { setPageState } from '../redux';
-import SkeletonRecipeItems from '../skeletons/common/SkeletonRecipeItems';
+import { useAxiosData } from '@/hooks/useAxiosData';
+import { setPageState } from '@/redux';
+import RecipeItems from '@components-common/RecipeItems';
+import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
+import Category from '@components-common/Category';
 
 const StyledList = styled.div`
   flex-direction: column;

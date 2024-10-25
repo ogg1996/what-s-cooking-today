@@ -1,11 +1,11 @@
 import styled, { keyframes } from 'styled-components';
-import logoIcon from '@assets/images/icons/icon-logo.png';
+import logoIcon from '@icons/icon-logo.png';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAxiosData } from '../hooks/useAxiosData';
-import RecipeItem from '../components/common/RecipeItem';
-import Category from '../components/common/Category';
-import { setPageState } from '../redux';
+import Category from '@components-common/Category';
+import RecipeItem from '@components-common/RecipeItem';
+import { setPageState } from '@/redux';
+import { useAxiosData } from '@/hooks/useAxiosData';
 
 const StyledSuggest = styled.div`
   width: 450px;
