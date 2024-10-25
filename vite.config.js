@@ -8,10 +8,14 @@ export default defineConfig({
   resolve: {
     alias: {
       // 절대 경로 설정
-      '@': path.resolve(__dirname, 'src'),
-      '@assets': path.resolve(__dirname, 'src/assets'),
-      '@pages': path.resolve(__dirname, 'src/pages'),
-      '@components': path.resolve(__dirname, 'src/components')
+      '@icons': path.resolve(__dirname, 'src/assets/images/icons'),
+      '@menuImages': path.resolve(__dirname, 'src/assets/images/menuImages'),
+      '@components-app': path.resolve(__dirname, 'src/components/app'),
+      '@components-common': path.resolve(__dirname, 'src/components/common'),
+      '@skeletons-base': path.resolve(__dirname, 'src/skeletons/base'),
+      '@skeletons-common': path.resolve(__dirname, 'src/skeletons/common'),
+      '@skeletons-detail': path.resolve(__dirname, 'src/skeletons/detail'),
+      '@': path.resolve(__dirname, 'src')
     }
   },
   server: {

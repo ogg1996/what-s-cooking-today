@@ -8,7 +8,9 @@
     "react", // React 플러그인
     "react-hooks", // React Hooks 플러그인
     "jsx-a11y", // JSX 접근성 플러그인
-    "prettier" // Prettier 플러그인
+    "prettier", // Prettier 플러그인
+    "import",
+    "import/resolver"
   ],
   "rules": {
     "prettier/prettier": "error", // Prettier 규칙을 에러로 처리
@@ -21,14 +23,9 @@
   },
   "settings": {
     "import/resolver": {
-      "alias": {
-        "map": [
-          ["@", "./src"],
-          ["@assets", "./src/assets"],
-          ["@pages", "./src/pages"],
-          ["@components", "./src/components"]
-        ],
-        "extensions": [".js", ".jsx", ".json"]
+      "node": {
+        "paths": ["src"],
+        "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
   },
