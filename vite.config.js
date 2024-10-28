@@ -8,8 +8,6 @@ export default defineConfig({
   resolve: {
     alias: {
       // 절대 경로 설정
-      '@icons': path.resolve(__dirname, 'src/assets/images/icons'),
-      '@menuImages': path.resolve(__dirname, 'src/assets/images/menuImages'),
       '@components-app': path.resolve(__dirname, 'src/components/app'),
       '@components-common': path.resolve(__dirname, 'src/components/common'),
       '@skeletons-base': path.resolve(__dirname, 'src/skeletons/base'),
