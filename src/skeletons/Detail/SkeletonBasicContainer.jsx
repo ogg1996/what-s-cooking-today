@@ -7,6 +7,10 @@ const StyledSkeletonBasicContainer = styled.div`
   flex-direction: column;
   gap: 20px;
 
+  & > span:first-child {
+    margin-top: 29px;
+  }
+
   & > div {
     display: flex;
     justify-content: end;
