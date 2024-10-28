@@ -4,7 +4,7 @@
   "version": "0.0.0",
   "type": "module",
   "scripts": {
-    "dev": "concurrently \"json-server --watch src/assets/db.json --port 3000\"  \"vite\"",
+    "dev": "concurrently \"json-server src/assets/db.json --port 3000 --delay 100\"  \"vite\"",
     "build": "vite build",
     "lint": "eslint .",
     "preview": "vite preview"
@@ -13,7 +13,7 @@
     "@reduxjs/toolkit": "^2.2.8",
     "axios": "^1.7.7",
     "concurrently": "^9.0.1",
-    "json-server": "^1.0.0-beta.3",
+    "json-server": "^0.17.4",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
     "react-redux": "^9.1.2",
