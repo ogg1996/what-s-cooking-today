@@ -1,10 +1,3 @@
-import logoIcon from '@icons/icon-logo.png';
-import defaultListIcon from '@icons/icon-list-default.png';
-import defaultSuggestIcon from '@icons/icon-suggest-default.png';
-import activeListIcon from '@icons/icon-list-active.png';
-import activeSuggestIcon from '@icons/icon-suggest-active.png';
-import allowLeftIcon from '@icons/icon-arrow-left.png';
-
 import { Link, useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 import { useState } from 'react';
@@ -176,13 +169,19 @@ export default function Header() {
               navigate(-1);
             }}
           >
-            <img src={allowLeftIcon} alt="뒤로가기" />
+            <img
+              src="https://whatscookingtoday.kro.kr/icons/icon-arrow-left.png"
+              alt="뒤로가기"
+            />
           </button>
         </StyledDetailHeader>
       ) : (
         <StyledDefaultHeader>
           <HeaderLogo to="/">
-            <img src={logoIcon} alt="로고" />
+            <img
+              src="https://whatscookingtoday.kro.kr/icons/icon-logo.png"
+              alt="로고"
+            />
             <span>오늘 뭐 해먹지?</span>
           </HeaderLogo>
           <HeaderSearchBar>
@@ -205,8 +204,8 @@ export default function Header() {
               <img
                 src={
                   pageState === 'suggest'
-                    ? activeSuggestIcon
-                    : defaultSuggestIcon
+                    ? 'https://whatscookingtoday.kro.kr/icons/icon-suggest-active.png'
+                    : 'https://whatscookingtoday.kro.kr/icons/icon-suggest-default.png'
                 }
                 alt="아이콘"
               />
@@ -216,7 +215,11 @@ export default function Header() {
             </Link>
             <Link to="/list">
               <img
-                src={pageState === 'list' ? activeListIcon : defaultListIcon}
+                src={
+                  pageState === 'list'
+                    ? 'https://whatscookingtoday.kro.kr/icons/icon-list-active.png'
+                    : 'https://whatscookingtoday.kro.kr/icons/icon-list-default.png'
+                }
                 alt="아이콘"
               />
               <HeaderNavItem $active={pageState === 'list'}>

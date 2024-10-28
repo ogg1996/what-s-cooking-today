@@ -1,5 +1,4 @@
 import styled, { keyframes } from 'styled-components';
-import logoIcon from '@icons/icon-logo.png';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import Category from '@components-common/Category';
@@ -55,31 +54,31 @@ const ResultBox = styled.div`
 
 const changeMenu = keyframes`
   0% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-1.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-1.png');
   }
   12.5% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-2.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-2.png');
   }
   25% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-3.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-3.png');
   }
   37.5% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-4.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-4.png');
   }
   50% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-5.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-5.png');
   }
   62.5% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-6.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-6.png');
   }
   75% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-7.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-7.png');
   }
   87.5% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-8.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-8.png');
   }
   100% {
-    background-image: url('src/assets/images/menuImages/suggestMenu-1.png');
+    background-image: url('https://whatscookingtoday.kro.kr/suggestMenus/suggestMenu-1.png');
   }
 `;
 
@@ -146,7 +145,10 @@ export default function Suggest() {
   return (
     <StyledSuggest>
       <CommentBox>
-        <img src={logoIcon} alt="로고" />
+        <img
+          src="https://whatscookingtoday.kro.kr/icons/icon-logo.png"
+          alt="로고"
+        />
         <span>오늘 뭐 해먹지?</span>
         <span>메뉴 추천해 드릴게요!</span>
       </CommentBox>

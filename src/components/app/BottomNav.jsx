@@ -1,8 +1,4 @@
 import styled from 'styled-components';
-import defaultListIcon from '@icons/icon-list-default.png';
-import defaultSuggestIcon from '@icons/icon-suggest-default.png';
-import activeListIcon from '@icons/icon-list-active.png';
-import activeSuggestdIcon from '@icons/icon-suggest-active.png';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -50,7 +46,9 @@ export default function BottomNav() {
       <Link to="/suggest">
         <img
           src={
-            pageState === 'suggest' ? activeSuggestdIcon : defaultSuggestIcon
+            pageState === 'suggest'
+              ? 'https://whatscookingtoday.kro.kr/icons/icon-suggest-active.png'
+              : 'https://whatscookingtoday.kro.kr/icons/icon-suggest-default.png'
           }
           alt="아이콘"
         />
@@ -60,7 +58,11 @@ export default function BottomNav() {
       </Link>
       <Link to="/list">
         <img
-          src={pageState === 'list' ? activeListIcon : defaultListIcon}
+          src={
+            pageState === 'list'
+              ? 'https://whatscookingtoday.kro.kr/icons/icon-list-active.png'
+              : 'https://whatscookingtoday.kro.kr/icons/icon-list-default.png'
+          }
           alt="아이콘"
         />
         <ButtomNavItem $active={pageState === 'list'}>
