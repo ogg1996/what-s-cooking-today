@@ -17,7 +17,7 @@ const StyledRecipeItem = styled.div`
     gap: 3px;
 
     width: 200px;
-    background-color: #000000;
+    background-color: #c4c4c4;
     background-image: url(${props => props.$setUrl});
     background-size: cover;
     aspect-ratio: 1;
