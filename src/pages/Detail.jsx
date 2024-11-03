@@ -149,7 +149,7 @@ export default function Detail() {
   useEffect(() => {
     dispatch(setPageState('detail'));
 
-    const { VITE_DB_URL, VITE_INGREDIENTS_API_URL } = import.meta.env;
+    const { VITE_DB_URL } = import.meta.env;
 
     useAxiosData(`${VITE_DB_URL}/basic?RECIPE_ID=${param.id}`).then(res => {
       const resData = res.data[0];
@@ -162,9 +162,9 @@ export default function Detail() {
       setCookingData(resData);
     });
 
-    useAxiosData(`${VITE_INGREDIENTS_API_URL}?RECIPE_ID=${param.id}`).then(
+    useAxiosData(`${VITE_DB_URL}/ingredients?RECIPE_ID=${param.id}`).then(
       res => {
-        const resData = res.data.Grid_20150827000000000227_1.row;
+        const resData = res.data;
         setIngredientsData(resData);
       }
     );
@@ -217,8 +217,8 @@ export default function Detail() {
                   {stepNumber[item.STEP]} {item.DESC}
                 </p>
                 {item.STEP_TIP !== '' && <span>tip! {item.STEP_TIP}</span>}
-                {item.IMAGE_URL !== '' && (
-                  <img src={item.IMAGE_URL} alt={item.IMAGE_URL} />
+                {item.IMG_URL !== '' && (
+                  <img src={item.IMG_URL} alt={item.STEP} />
                 )}
               </div>
             ))}
