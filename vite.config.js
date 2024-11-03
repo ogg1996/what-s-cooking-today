@@ -10,6 +10,7 @@ export default defineConfig({
       // 절대 경로 설정
       '@components-app': path.resolve(__dirname, 'src/components/app'),
       '@components-common': path.resolve(__dirname, 'src/components/common'),
+      '@components-header': path.resolve(__dirname, 'src/components/header'),
       '@skeletons-base': path.resolve(__dirname, 'src/skeletons/base'),
       '@skeletons-common': path.resolve(__dirname, 'src/skeletons/common'),
       '@skeletons-detail': path.resolve(__dirname, 'src/skeletons/detail'),
