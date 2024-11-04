@@ -55,19 +55,25 @@ const StyledSearchBar = styled.div`
 export default function SearchBar() {
   const [query, setQuery] = useState('');
   const navigate = useNavigate();
+
+  const handleSearch = () => {
+    if (query !== '') {
+      navigate(`/search?query=${query}`);
+      setQuery('');
+    }
+  };
+
   return (
     <StyledSearchBar>
       <input
         type="text"
         placeholder="음식이름으로 검색!"
         onChange={e => setQuery(e.target.value.split(' ').join(''))}
-      />
-      <button
-        type="button"
-        onClick={() => {
-          if (query !== '') navigate(`/search?query=${query}`);
+        onKeyUp={e => {
+          if (e.key === 'Enter') handleSearch();
         }}
-      >
+      />
+      <button type="button" onClick={handleSearch}>
         검색
       </button>
     </StyledSearchBar>
