@@ -62,16 +62,21 @@ export default function SearchBar() {
       setQuery('');
     }
   };
+  const handleInput = e => {
+    const input = e.target.value.split(' ').join('');
+    setQuery(input);
+  };
 
   return (
     <StyledSearchBar>
       <input
         type="text"
         placeholder="음식이름으로 검색!"
-        onChange={e => setQuery(e.target.value.split(' ').join(''))}
+        onChange={e => handleInput(e)}
         onKeyUp={e => {
           if (e.key === 'Enter') handleSearch();
         }}
+        value={query}
       />
       <button type="button" onClick={handleSearch}>
         검색
