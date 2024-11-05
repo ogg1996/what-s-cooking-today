@@ -1,11 +1,11 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Detail from './pages/Detail';
-import Recommend from './pages/Recommed';
-import RecipeList from './pages/RecipeList';
-import BottomNav from './components/app/BottomNav';
-import Header from './components/app/Header';
-import Search from './pages/Search';
+import Header from '@components-app/Header';
+import BottomNav from '@components-app/BottomNav';
+import Detail from '@/pages/Detail';
+import List from '@/pages/List';
+import Search from '@/pages/Search';
+import Suggest from '@/pages/Suggest';
 
 const StyledApp = styled.div`
   display: flex;
@@ -30,9 +30,9 @@ export default function App() {
       <Header />
       <StyledApp>
         <Routes>
-          <Route path="/" element={<Recommend />} />
-          <Route path="/recommend" element={<Recommend />} />
-          <Route path="/recipeList" element={<RecipeList />} />
+          <Route path="/" element={<Suggest />} />
+          <Route path="/suggest" element={<Suggest />} />
+          <Route path="/list" element={<List />} />
           <Route path="/search" element={<Search />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>

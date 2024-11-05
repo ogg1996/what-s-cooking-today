@@ -3,7 +3,7 @@ import { BrowserRouter } from 'react-router-dom';
 import { createGlobalStyle } from 'styled-components';
 import { Provider } from 'react-redux';
 import App from './App';
-import './styles/reset.css';
+import '@/styles/reset.css';
 import { store } from './redux';
 
 const GlobalStyle = createGlobalStyle`
@@ -21,23 +21,17 @@ const GlobalStyle = createGlobalStyle`
   }
 
   * {
-    box-sizing: border-box;
     -webkit-user-select:none;
     -moz-user-select:none;
     -ms-user-select:none;
     user-select:none;
   }
-  
-  html {
-    width: 100%;
-    margin: 0 auto;
-  }
+
   body {
-    width: 100%;
     background-color: #fefbf8;
   }
+  
   #root{
-    width: 100%;
     font-family: 'Pretendard-medium','arial';
   }
 

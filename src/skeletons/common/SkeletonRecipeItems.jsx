@@ -1,5 +1,5 @@
+import SkeletonRecipeItem from '@skeletons-common/SkeletonRecipeItem';
 import styled from 'styled-components';
-import SkeletonRecipeItem from './SkeletonRecipeItem';
 
 const StyledSkeletonRecipeItems = styled.div`
   display: flex;

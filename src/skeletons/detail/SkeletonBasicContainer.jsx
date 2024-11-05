@@ -1,11 +1,15 @@
+import SkeletonImg from '@skeletons-base/SkeletonImg';
+import SkeletonText from '@skeletons-base/SkeletonText';
 import styled from 'styled-components';
-import SkeletonText from '../base/SkeletonText';
-import SkeletonImg from '../base/SkeletonImg';
 
 const StyledSkeletonBasicContainer = styled.div`
   display: flex;
   flex-direction: column;
   gap: 20px;
+
+  & > span:first-child {
+    margin-top: 29px;
+  }
 
   & > div {
     display: flex;

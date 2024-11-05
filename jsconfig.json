@@ -1,0 +1,16 @@
+{
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@components-app/*": ["src/components/app/*"],
+      "@components-common/*": ["src/components/common/*"],
+      "@components-header/*": ["src/components/header/*"],
+      "@skeletons-base/*": ["src/skeletons/base/*"],
+      "@skeletons-common/*": ["src/skeletons/common/*"],
+      "@skeletons-detail/*": ["src/skeletons/detail/*"],
+      "@/*": ["src/*"]
+    }
+  },
+  "include": ["src/**/*"],
+  "exclude": ["node_modules", "dist"]
+}

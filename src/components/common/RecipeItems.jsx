@@ -1,12 +1,12 @@
+import RecipeItem from '@components-common/RecipeItem';
 import styled from 'styled-components';
-import RecipeItem from './RecipeItem';
 
 const StyledRecipeItems = styled.div`
   display: flex;
   flex-wrap: wrap;
   max-width: 660px;
 
-  @media (max-width: 661px) {
+  @media (max-width: 675px) {
     max-width: 440px;
   }
   @media (max-width: 461px) {

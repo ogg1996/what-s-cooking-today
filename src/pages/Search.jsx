@@ -2,13 +2,14 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { useAxiosData } from '../hooks/useAxiosData';
-import RecipeItems from '../components/common/RecipeItems';
-import { setPageState } from '../redux';
-import SkeletonRecipeItems from '../skeletons/common/SkeletonRecipeItems';
+import RecipeItems from '@components-common/RecipeItems';
+import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
+import { setPageState } from '@/redux';
+import { useAxiosData } from '@/hooks/useAxiosData';
+import { useScrollToY } from '@/hooks/useScrollToY';
 
 const StyledSearch = styled.div`
-  font-size: 30px;
+  font-size: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -25,6 +26,7 @@ export default function Search() {
   const { VITE_DB_URL } = import.meta.env;
 
   useEffect(() => {
+    useScrollToY(0);
     dispatch(setPageState('search'));
   }, []);
 
@@ -38,9 +40,14 @@ export default function Search() {
 
   return (
     <StyledSearch>
-      <p>&apos;{query}&apos;로 검색한 결과 입니다.</p>
       {recipeItems ? (
-        <RecipeItems recipeItems={recipeItems} />
+        <>
+          <p>
+            &apos;{query}&apos;&#40;으&#41;로 검색한 결과는 총{' '}
+            {recipeItems.length}건 입니다.
+          </p>
+          <RecipeItems recipeItems={recipeItems} />
+        </>
       ) : (
         <SkeletonRecipeItems />
       )}

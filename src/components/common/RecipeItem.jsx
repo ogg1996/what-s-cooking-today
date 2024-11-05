@@ -17,17 +17,18 @@ const StyledRecipeItem = styled.div`
     gap: 3px;
 
     width: 200px;
-    background-color: #000000;
     background-image: url(${props => props.$setUrl});
+    background-color: #dddddd;
     background-size: cover;
-    aspect-ratio: 1;
+    background-position: center;
     border-radius: 8px;
+    aspect-ratio: 1;
 
     & > span {
       display: none;
       color: white;
       text-align: right;
-      font-size: 18px;
+      font-size: 16px;
     }
     & > span:first-child {
       text-align: justify;
