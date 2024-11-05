@@ -6,6 +6,7 @@ import RecipeItems from '@components-common/RecipeItems';
 import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
 import { setPageState } from '@/redux';
 import { useAxiosData } from '@/hooks/useAxiosData';
+import { useScrollTop } from '@/hooks/useScrollToY';
 
 const StyledSearch = styled.div`
   font-size: 20px;
@@ -25,6 +26,7 @@ export default function Search() {
   const { VITE_DB_URL } = import.meta.env;
 
   useEffect(() => {
+    useScrollTop();
     dispatch(setPageState('search'));
   }, []);
 

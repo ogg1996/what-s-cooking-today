@@ -5,6 +5,7 @@ import Category from '@components-common/Category';
 import RecipeItem from '@components-common/RecipeItem';
 import { setPageState } from '@/redux';
 import { useAxiosData } from '@/hooks/useAxiosData';
+import { useScrollToY } from '@/hooks/useScrollToY';
 
 const StyledSuggest = styled.div`
   width: 450px;
@@ -139,6 +140,7 @@ export default function Suggest() {
   };
 
   useEffect(() => {
+    useScrollToY(0);
     dispatch(setPageState('suggest'));
   }, []);
 
