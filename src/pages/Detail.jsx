@@ -7,7 +7,7 @@ import { useAxiosData } from '@/hooks/useAxiosData';
 import SkeletonIngerdientsContainer from '@skeletons-detail/SkeletonIngredientsContainer';
 import SkeletonBasicContainer from '@skeletons-detail/SkeletonBasicContainer';
 import SkeletonCookingContainer from '@skeletons-detail/SkeletonCookingContainer';
-import { useScrollTop } from '@/hooks/useScrollToY';
+import { useScrollToY } from '@/hooks/useScrollToY';
 
 const StyledDetail = styled.div`
   display: flex;
@@ -148,7 +148,7 @@ export default function Detail() {
   ];
 
   useEffect(() => {
-    useScrollTop();
+    useScrollToY(0);
     dispatch(setPageState('detail'));
 
     const { VITE_DB_URL } = import.meta.env;

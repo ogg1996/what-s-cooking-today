@@ -6,7 +6,7 @@ import { setPageState } from '@/redux';
 import RecipeItems from '@components-common/RecipeItems';
 import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
 import Category from '@components-common/Category';
-import { useScrollTop } from '@/hooks/useScrollToY';
+import { useScrollToY } from '@/hooks/useScrollToY';
 
 const StyledList = styled.div`
   flex-direction: column;
@@ -28,7 +28,7 @@ export default function List() {
       : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=1&_limit=20`;
 
   useEffect(() => {
-    useScrollTop();
+    useScrollToY(0);
     dispatch(setPageState('list'));
   }, []);
 
