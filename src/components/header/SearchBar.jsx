@@ -54,6 +54,7 @@ const StyledSearchBar = styled.div`
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
+  const [isFocus, setIsFocus] = useState(false);
   const navigate = useNavigate();
 
   const handleSearch = () => {
@@ -76,6 +77,8 @@ export default function SearchBar() {
         onKeyUp={e => {
           if (e.key === 'Enter') handleSearch();
         }}
+        onFocus={() => setIsFocus(true)}
+        onBlur={() => setIsFocus(false)}
         value={query}
       />
       <button type="button" onClick={handleSearch}>
