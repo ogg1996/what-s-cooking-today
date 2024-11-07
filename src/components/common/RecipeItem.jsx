@@ -28,6 +28,7 @@ const StyledRecipeItem = styled.div`
       display: none;
       color: white;
       text-align: right;
+      font-family: 'Pretendard-Bold';
       font-size: 16px;
     }
     & > span:first-child {
