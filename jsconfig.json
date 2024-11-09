@@ -5,6 +5,7 @@
       "@components-app/*": ["src/components/app/*"],
       "@components-common/*": ["src/components/common/*"],
       "@components-header/*": ["src/components/header/*"],
+      "@components-searchBar/*": ["src/components/searchBar/*"],
       "@skeletons-base/*": ["src/skeletons/base/*"],
       "@skeletons-common/*": ["src/skeletons/common/*"],
       "@skeletons-detail/*": ["src/skeletons/detail/*"],
