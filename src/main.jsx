@@ -25,6 +25,22 @@ const GlobalStyle = createGlobalStyle`
     font-family: 'Pretendard-medium';
   }
 
+  ::-webkit-scrollbar {
+    width: 5px;
+  }
+
+  ::-webkit-scrollbar-thumb {
+    background: #cccccc;
+    border-radius: 2.5px;
+  }
+
+  ::-webkit-scrollbar-button:start:decrement,
+  ::-webkit-scrollbar-button:end:increment {
+    display: block;
+    height: 0;
+    background-color: transparent;
+  }
+
 `;
 
 createRoot(document.getElementById('root')).render(
