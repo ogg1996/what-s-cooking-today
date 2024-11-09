@@ -93,3 +93,16 @@ button {
   overflow: visible;
   cursor: pointer;
 }
+
+/* ul 스타일 초기화 */
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+/* li 스타일 초기화 */
+li {
+  margin: 0;
+  padding: 0;
+}
