@@ -17,7 +17,7 @@ const StyledRelatedSearchTerms = styled.div`
   border-radius: 0 0 4px 4px;
 
   & > p {
-    font-size: 24px;
+    font-size: 16px;
     padding-left: 4px;
     padding-bottom: 4px;
     border-bottom: 2px solid #c4c4c4;
@@ -30,7 +30,7 @@ const StyledRelatedSearchTerms = styled.div`
     overflow-y: scroll;
 
     li {
-      font-size: 20px;
+      font-size: 16px;
       display: flex;
 
       a {

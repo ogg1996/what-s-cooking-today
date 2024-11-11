@@ -22,10 +22,10 @@ const StyledHistory = styled.div`
     justify-content: space-between;
 
     & > span {
-      font-size: 24px;
+      font-size: 16px;
     }
     & > button {
-      font-size: 20px;
+      font-size: 12px;
       color: #c4c4c4;
     }
     & > button:hover,
@@ -36,11 +36,11 @@ const StyledHistory = styled.div`
   & > ul {
     padding: 0 4px 0 8px;
     margin: 4px 0;
-    max-height: 100px;
+    max-height: 80px;
     overflow-y: scroll;
 
     li {
-      font-size: 20px;
+      font-size: 16px;
 
       display: flex;
       justify-content: space-between;
@@ -54,7 +54,7 @@ const StyledHistory = styled.div`
       }
       & > button {
         width: 15%;
-        font-size: 16px;
+        font-size: 12px;
         color: #c4c4c4;
       }
       & > button:hover,

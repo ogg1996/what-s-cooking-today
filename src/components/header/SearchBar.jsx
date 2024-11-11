@@ -129,7 +129,7 @@ export default function SearchBar() {
               if (e.key === 'Enter') handleSearch();
             }}
             onFocus={() => setIsFocus(true)}
-            // onBlur={handleInputFocus}
+            onBlur={handleInputFocus}
             value={query}
           />
           {isFocus &&
