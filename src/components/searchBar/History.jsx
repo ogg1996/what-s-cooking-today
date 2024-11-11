@@ -21,8 +21,11 @@ const StyledHistory = styled.div`
     display: flex;
     justify-content: space-between;
 
+    & > span {
+      font-size: 24px;
+    }
     & > button {
-      font-size: 12px;
+      font-size: 20px;
       color: #c4c4c4;
     }
     & > button:hover,
@@ -37,31 +40,31 @@ const StyledHistory = styled.div`
     overflow-y: scroll;
 
     li {
-      font-size: 14px;
+      font-size: 20px;
 
       display: flex;
       justify-content: space-between;
 
       & > a {
-        width: 80%;
+        width: 85%;
         text-align: start;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
       & > button {
-        width: 30px;
-        font-size: 12px;
+        width: 15%;
+        font-size: 16px;
         color: #c4c4c4;
       }
       & > button:hover,
       & > button:active {
         color: #ff0000;
       }
-      a:hover,
-      a:active {
-        background-color: #dddddd;
-      }
+    }
+    li:hover,
+    li:active {
+      background-color: #dddddd;
     }
   }
 `;
@@ -93,10 +96,11 @@ export default function History() {
   }
 
   return (
-    <StyledHistory>
+    <StyledHistory tabIndex="0" className="maintainFocus">
       <div>
         <span>검색 기록</span>
         <button
+          className="maintainFocus"
           onClick={() => {
             removeHistories();
             setList([]);
@@ -110,6 +114,7 @@ export default function History() {
           <li key={el.timeStamp}>
             <Link to={`/search?query=${el.query}`}>{el.query}</Link>
             <button
+              className="maintainFocus"
               onClick={() => {
                 const histories = removeHistory(el.query);
                 setList(histories);

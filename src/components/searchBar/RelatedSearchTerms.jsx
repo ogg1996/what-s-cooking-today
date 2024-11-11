@@ -17,6 +17,7 @@ const StyledRelatedSearchTerms = styled.div`
   border-radius: 0 0 4px 4px;
 
   & > p {
+    font-size: 24px;
     padding-left: 4px;
     padding-bottom: 4px;
     border-bottom: 2px solid #c4c4c4;
@@ -29,7 +30,7 @@ const StyledRelatedSearchTerms = styled.div`
     overflow-y: scroll;
 
     li {
-      font-size: 14px;
+      font-size: 20px;
       display: flex;
 
       a {
@@ -49,11 +50,9 @@ const StyledRelatedSearchTerms = styled.div`
 export default function RelatedSearchTerms({ query }) {
   const [list, setList] = useState([]);
   useEffect(() => {
-    console.log(query);
     if (query.length < 2) return;
     const reg = getRegExp(query, {
-      initialSearch: true,
-      fuzzy: true
+      initialSearch: true
     });
     const filterdKeywords = searchKeywords.filter(keyward =>
       keyward.NAME.match(reg)
@@ -61,7 +60,7 @@ export default function RelatedSearchTerms({ query }) {
     setList(filterdKeywords);
   }, [query]);
   return (
-    <StyledRelatedSearchTerms>
+    <StyledRelatedSearchTerms tabIndex="0" className="maintainFocus">
       <p>연관 검색어</p>
       <ul>
         {list.map(el => (

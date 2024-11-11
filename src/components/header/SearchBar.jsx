@@ -1,6 +1,6 @@
 import History from '@components-searchBar/History';
 import RelatedSearchTerms from '@components-searchBar/RelatedSearchTerms';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -71,6 +71,8 @@ export default function SearchBar() {
   const [isFocus, setIsFocus] = useState(false);
   const navigate = useNavigate();
 
+  const inputRef = useRef(null);
+
   function addHistory() {
     if (!localStorage.getItem('histories')) {
       localStorage.setItem('histories', '[]');
@@ -92,6 +94,7 @@ export default function SearchBar() {
   const handleSearch = () => {
     if (query !== '') {
       navigate(`/search?query=${query}`);
+      inputRef.current.blur();
       addHistory();
       setIsFocus(false);
       setQuery('');
@@ -102,6 +105,17 @@ export default function SearchBar() {
     setQuery(input);
   };
 
+  const handleInputFocus = e => {
+    if (
+      e.relatedTarget &&
+      e.relatedTarget.classList.contains('maintainFocus')
+    ) {
+      inputRef.current.focus();
+    } else {
+      setTimeout(() => setIsFocus(false), 100);
+    }
+  };
+
   return (
     <>
       <StyledSearchBar>
@@ -109,15 +123,13 @@ export default function SearchBar() {
           <input
             type="text"
             placeholder="음식이름으로 검색!"
+            ref={inputRef}
             onChange={e => handleInput(e)}
             onKeyUp={e => {
               if (e.key === 'Enter') handleSearch();
             }}
             onFocus={() => setIsFocus(true)}
-            onBlur={() => {
-              // 임시 코드
-              setTimeout(() => setIsFocus(false), 100);
-            }}
+            // onBlur={handleInputFocus}
             value={query}
           />
           {isFocus &&
