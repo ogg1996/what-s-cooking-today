@@ -35,6 +35,8 @@ const StyledBottomNav = styled.nav`
   }
 `;
 const ButtomNavItem = styled.span`
+  font-family: ${({ $active }) =>
+    $active ? 'Pretendard-bold' : 'Pretendard-Medium'};
   font-size: 12px;
   color: ${({ $active }) => ($active ? '#e74c3c' : '#99806c;')};
 `;

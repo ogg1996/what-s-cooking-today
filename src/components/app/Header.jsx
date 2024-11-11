@@ -53,7 +53,7 @@ const HeaderLogo = styled(Link)`
     height: 40px;
   }
   span {
-    font-family: 'Cafe24Supermagic-Bold', 'arial';
+    font-family: 'Supermagic-Bold';
     margin-left: 6px;
     font-size: 28px;
   }
@@ -94,6 +94,8 @@ const HeaderNav = styled.nav`
 `;
 
 const HeaderNavItem = styled.span`
+  font-family: ${({ $active }) =>
+    $active ? 'Pretendard-bold' : 'Pretendard-Medium'};
   font-size: 16px;
   color: ${({ $active }) => ($active ? '#e74c3c' : '#99806c;')};
 `;

@@ -103,6 +103,8 @@ const CookingList = styled.div`
     padding-bottom: 15px;
     border-bottom: 1px solid #c4c4c4;
 
+    font-size: 18px;
+
     p {
       line-height: 25px;
     }

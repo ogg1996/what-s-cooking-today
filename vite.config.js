@@ -11,6 +11,10 @@ export default defineConfig({
       '@components-app': path.resolve(__dirname, 'src/components/app'),
       '@components-common': path.resolve(__dirname, 'src/components/common'),
       '@components-header': path.resolve(__dirname, 'src/components/header'),
+      '@components-searchBar': path.resolve(
+        __dirname,
+        'src/components/searchBar'
+      ),
       '@skeletons-base': path.resolve(__dirname, 'src/skeletons/base'),
       '@skeletons-common': path.resolve(__dirname, 'src/skeletons/common'),
       '@skeletons-detail': path.resolve(__dirname, 'src/skeletons/detail'),

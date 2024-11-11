@@ -1,4 +1,6 @@
-import { useState } from 'react';
+import History from '@components-searchBar/History';
+import RelatedSearchTerms from '@components-searchBar/RelatedSearchTerms';
+import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -6,23 +8,31 @@ const StyledSearchBar = styled.div`
   display: flex;
   gap: 10px;
 
-  & > input {
-    padding: 2px 12px 0 12px;
-    height: 28px;
-    width: 300px;
+  & > div {
+    position: relative;
+    input {
+      padding: 2px 12px 0 12px;
+      height: 28px;
+      width: 300px;
 
-    color: #000000;
-    background-color: #fefbf8;
-    border: none;
-    outline: none;
-    border-bottom: #8e8073 2px solid;
+      color: #000000;
+      background-color: #fefbf8;
+      border: none;
+      outline: none;
+      border-bottom: #8e8073 2px solid;
+    }
+    p {
+      margin-top: 0;
+    }
   }
-  & > input:focus {
-    padding: 0 12px;
-    padding-left: 10px;
-    background-color: #ffffff;
-    border: 2px solid #8e8073;
-    border-radius: 4px 4px 0 0;
+  & {
+    div > input:focus {
+      padding: 0 12px;
+      padding-left: 10px;
+      background-color: #ffffff;
+      border: 2px solid #8e8073;
+      border-radius: 4px 4px 0 0;
+    }
   }
 
   & > button {
@@ -41,24 +51,52 @@ const StyledSearchBar = styled.div`
   }
 
   @media (max-width: 650px) {
-    & > input {
-      width: 200px;
+    & > div {
+      input {
+        width: 200px;
+      }
     }
   }
   @media (max-width: 500px) {
-    & > input {
-      width: 300px;
+    & > div {
+      input {
+        width: 300px;
+      }
     }
   }
 `;
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
+  const [isFocus, setIsFocus] = useState(false);
   const navigate = useNavigate();
+
+  const inputRef = useRef(null);
+
+  function addHistory() {
+    if (!localStorage.getItem('histories')) {
+      localStorage.setItem('histories', '[]');
+    }
+
+    const histories = JSON.parse(localStorage.getItem('histories'));
+    const filteredHistories = histories.filter(el => el.query !== query);
+
+    const history = {
+      query: query,
+      timeStamp: Number(new Date())
+    };
+    console.log(history.timeStamp);
+
+    const newHistories = [history, ...filteredHistories];
+    localStorage.setItem('histories', JSON.stringify(newHistories));
+  }
 
   const handleSearch = () => {
     if (query !== '') {
       navigate(`/search?query=${query}`);
+      inputRef.current.blur();
+      addHistory();
+      setIsFocus(false);
       setQuery('');
     }
   };
@@ -67,20 +105,40 @@ export default function SearchBar() {
     setQuery(input);
   };
 
+  const handleInputFocus = e => {
+    if (
+      e.relatedTarget &&
+      e.relatedTarget.classList.contains('maintainFocus')
+    ) {
+      inputRef.current.focus();
+    } else {
+      setTimeout(() => setIsFocus(false), 100);
+    }
+  };
+
   return (
-    <StyledSearchBar>
-      <input
-        type="text"
-        placeholder="음식이름으로 검색!"
-        onChange={e => handleInput(e)}
-        onKeyUp={e => {
-          if (e.key === 'Enter') handleSearch();
-        }}
-        value={query}
-      />
-      <button type="button" onClick={handleSearch}>
-        검색
-      </button>
-    </StyledSearchBar>
+    <>
+      <StyledSearchBar>
+        <div>
+          <input
+            type="text"
+            placeholder="음식이름으로 검색!"
+            ref={inputRef}
+            onChange={e => handleInput(e)}
+            onKeyUp={e => {
+              if (e.key === 'Enter') handleSearch();
+            }}
+            onFocus={() => setIsFocus(true)}
+            onBlur={handleInputFocus}
+            value={query}
+          />
+          {isFocus &&
+            (query === '' ? <History /> : <RelatedSearchTerms query={query} />)}
+        </div>
+        <button type="button" onClick={handleSearch}>
+          검색
+        </button>
+      </StyledSearchBar>
+    </>
   );
 }

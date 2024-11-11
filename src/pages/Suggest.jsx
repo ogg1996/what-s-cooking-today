@@ -31,7 +31,7 @@ const CommentBox = styled.div`
     margin-bottom: 15px;
   }
   & > span {
-    font-family: 'Cafe24Supermagic-Bold', 'arial';
+    font-family: 'Supermagic-Bold';
     font-size: 18px;
   }
 `;
