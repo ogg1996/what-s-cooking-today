@@ -1,6 +1,7 @@
-import SkeletonImg from '@skeletons-base/SkeletonImg';
-import SkeletonText from '@skeletons-base/SkeletonText';
 import styled from 'styled-components';
+
+import SkeletonImg from '@components/common/skeletons/SkeletonImg';
+import SkeletonText from '@components/common/skeletons/SkeletonText';
 
 const StyledSkeletonBasicContainer = styled.div`
   display: flex;

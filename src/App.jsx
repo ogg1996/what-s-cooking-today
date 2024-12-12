@@ -1,7 +1,7 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from '@components-app/Header';
-import BottomNav from '@components-app/BottomNav';
+import Header from '@components/layout/Header/Header';
+import BottomNav from '@components/layout/BottomNav';
 import Detail from '@/pages/Detail';
 import List from '@/pages/List';
 import Search from '@/pages/Search';

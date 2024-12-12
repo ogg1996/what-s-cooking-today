@@ -1,4 +1,4 @@
-import SkeletonRecipeItem from '@skeletons-common/SkeletonRecipeItem';
+import SkeletonRecipeItem from '@components/common/skeletons/SkeletonRecipeItem';
 import styled from 'styled-components';
 
 const StyledSkeletonRecipeItems = styled.div`

@@ -1,7 +1,7 @@
 import { Link, useNavigate } from 'react-router-dom';
-import styled from 'styled-components';
 import { useSelector } from 'react-redux';
-import SearchBar from '@components-header/SearchBar';
+import styled from 'styled-components';
+import SearchBar from '@components/layout/Header/SearchBar/SearchBar';
 
 const StyledDefaultHeader = styled.header`
   z-index: 999;
@@ -115,19 +115,13 @@ export default function Header() {
               navigate(-1);
             }}
           >
-            <img
-              src="https://whatscookingtoday.kro.kr/icons/icon-arrow-left.png"
-              alt="뒤로가기"
-            />
+            <img src="/icons/icon-arrow-left.png" alt="뒤로가기" />
           </button>
         </StyledDetailHeader>
       ) : (
         <StyledDefaultHeader>
           <HeaderLogo to="/">
-            <img
-              src="https://whatscookingtoday.kro.kr/icons/icon-logo.png"
-              alt="로고"
-            />
+            <img src="/icons/icon-logo.png" alt="로고" />
             <span>오늘 뭐 해먹지?</span>
           </HeaderLogo>
           <SearchBar />
@@ -136,8 +130,8 @@ export default function Header() {
               <img
                 src={
                   pageState === 'suggest'
-                    ? 'https://whatscookingtoday.kro.kr/icons/icon-suggest-active.png'
-                    : 'https://whatscookingtoday.kro.kr/icons/icon-suggest-default.png'
+                    ? '/icons/icon-suggest-active.png'
+                    : '/icons/icon-suggest-default.png'
                 }
                 alt="아이콘"
               />
@@ -149,8 +143,8 @@ export default function Header() {
               <img
                 src={
                   pageState === 'list'
-                    ? 'https://whatscookingtoday.kro.kr/icons/icon-list-active.png'
-                    : 'https://whatscookingtoday.kro.kr/icons/icon-list-default.png'
+                    ? '/icons/icon-list-active.png'
+                    : '/icons/icon-list-default.png'
                 }
                 alt="아이콘"
               />

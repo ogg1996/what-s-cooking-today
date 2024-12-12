@@ -1,4 +1,4 @@
-import SkeletonText from '@skeletons-base/SkeletonText';
+import SkeletonText from '@components/common/skeletons/SkeletonText';
 import styled from 'styled-components';
 
 const StyledSkeletonIngredientsContainer = styled.div`

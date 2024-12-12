@@ -1,5 +1,5 @@
-import SkeletonImg from '@skeletons-base/SkeletonImg';
-import SkeletonText from '@skeletons-base/SkeletonText';
+import SkeletonImg from '@components/common/skeletons/SkeletonImg';
+import SkeletonText from '@components/common/skeletons/SkeletonText';
 import styled from 'styled-components';
 
 const StyledSkeletonRecipeItem = styled.div`

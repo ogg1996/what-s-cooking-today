@@ -100,6 +100,7 @@ export default function History() {
       <div>
         <span>검색 기록</span>
         <button
+          type="button"
           className="maintainFocus"
           onClick={() => {
             removeHistories();
@@ -114,6 +115,7 @@ export default function History() {
           <li key={el.timeStamp}>
             <Link to={`/search?query=${el.query}`}>{el.query}</Link>
             <button
+              type="button"
               className="maintainFocus"
               onClick={() => {
                 const histories = removeHistory(el.query);

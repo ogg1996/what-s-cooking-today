@@ -8,16 +8,12 @@ export default defineConfig({
   resolve: {
     alias: {
       // 절대 경로 설정
-      '@components-app': path.resolve(__dirname, 'src/components/app'),
-      '@components-common': path.resolve(__dirname, 'src/components/common'),
-      '@components-header': path.resolve(__dirname, 'src/components/header'),
-      '@components-searchBar': path.resolve(
-        __dirname,
-        'src/components/searchBar'
-      ),
-      '@skeletons-base': path.resolve(__dirname, 'src/skeletons/base'),
-      '@skeletons-common': path.resolve(__dirname, 'src/skeletons/common'),
-      '@skeletons-detail': path.resolve(__dirname, 'src/skeletons/detail'),
+      '@assets': path.resolve(__dirname, 'src/assets'),
+      '@components': path.resolve(__dirname, 'src/components'),
+      '@hooks': path.resolve(__dirname, 'src/hooks'),
+      '@styles': path.resolve(__dirname, 'src/styles'),
+      '@pages': path.resolve(__dirname, 'src/pages'),
+      '@utils': path.resolve(__dirname, 'src/utils'),
       '@': path.resolve(__dirname, 'src')
     }
   }

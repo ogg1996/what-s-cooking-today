@@ -1,4 +1,4 @@
-import RecipeItem from '@components-common/RecipeItem';
+import RecipeItem from '@components/common/RecipeItem';
 import styled from 'styled-components';
 
 const StyledRecipeItems = styled.div`
