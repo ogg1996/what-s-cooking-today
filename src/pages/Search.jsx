@@ -9,11 +9,22 @@ import { useAxiosData } from '@/hooks/useAxiosData';
 import { useScrollToY } from '@/hooks/useScrollToY';
 
 const StyledSearch = styled.div`
-  font-size: 20px;
   display: flex;
   flex-direction: column;
   align-items: center;
   gap: 30px;
+
+  & > p {
+    padding: 0 10px;
+    width: 660px;
+
+    @media (max-width: 675px) {
+      max-width: 440px;
+    }
+    @media (max-width: 461px) {
+      max-width: 370px;
+    }
+  }
 `;
 
 export default function Search() {
@@ -43,7 +54,7 @@ export default function Search() {
       {recipeItems ? (
         <>
           <p>
-            &apos;{query}&apos;&#40;으&#41;로 검색한 결과는 총{' '}
+            &apos;{query}&apos; &#40;으&#41;로 검색한 결과는 총{' '}
             {recipeItems.length}건 입니다.
           </p>
           <RecipeItems recipeItems={recipeItems} />

@@ -37,6 +37,7 @@ const StyledRecipeItem = styled.div`
   }
 
   & > span {
+    font-family: 'Pretendard-Bold';
     font-size: 20px;
   }
 
