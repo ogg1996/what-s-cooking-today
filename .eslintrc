@@ -9,11 +9,9 @@
     "react-hooks", // React Hooks 플러그인
     "jsx-a11y", // JSX 접근성 플러그인
     "prettier", // Prettier 플러그인
-    "import",
-    "import/resolver"
+    "import"
   ],
   "rules": {
-    "prettier/prettier": "error", // Prettier 규칙을 에러로 처리
     "react/self-closing-comp": "error", // JSX 자식이 없는 태그를 self-closing으로 강제
     "import/no-extraneous-dependencies": ["error", { "devDependencies": true }],
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
@@ -23,8 +21,16 @@
   },
   "settings": {
     "import/resolver": {
-      "node": {
-        "paths": ["src"],
+      "alias": {
+        "map": [
+          ["@assets", "./src/assets"],
+          ["@components", "./src/components"],
+          ["@hooks", "./src/hooks"],
+          ["@pages", "./src/pages"],
+          ["@styles", "./src/styles"],
+          ["@utils", "./src/utils"],
+          ["@", "./src"]
+        ],
         "extensions": [".js", ".jsx", ".ts", ".tsx"]
       }
     }
