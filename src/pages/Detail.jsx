@@ -5,9 +5,9 @@ import { useDispatch } from 'react-redux';
 import { setPageState } from '@/redux';
 import { useAxiosData } from '@/hooks/useAxiosData';
 import scrollToTop from '@utils/scrollToTop';
-import SkeletonBasicContainer from '@components/detail/SkeletonBasicContainer';
-import SkeletonIngerdientsContainer from '@components/detail/SkeletonIngredientsContainer';
-import SkeletonCookingContainer from '@components/detail/SkeletonCookingContainer';
+import SkeletonBasicContainer from '@components/detail/skeletons/SkeletonBasicContainer';
+import SkeletonIngerdientsContainer from '@components/detail/skeletons/SkeletonIngredientsContainer';
+import SkeletonCookingContainer from '@components/detail/skeletons/SkeletonCookingContainer';
 
 const StyledDetail = styled.div`
   display: flex;
