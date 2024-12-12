@@ -2,11 +2,11 @@ import { useEffect, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import RecipeItems from '@components-common/RecipeItems';
-import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
 import { setPageState } from '@/redux';
 import { useAxiosData } from '@/hooks/useAxiosData';
-import { useScrollToY } from '@/hooks/useScrollToY';
+import scrollToTop from '@utils/scrollToTop';
+import RecipeItems from '@components/common/RecipeItems';
+import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
 
 const StyledSearch = styled.div`
   display: flex;
@@ -37,7 +37,7 @@ export default function Search() {
   const { VITE_DB_URL } = import.meta.env;
 
   useEffect(() => {
-    useScrollToY(0);
+    scrollToTop(0);
     dispatch(setPageState('search'));
   }, []);
 

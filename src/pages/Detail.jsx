@@ -4,10 +4,10 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageState } from '@/redux';
 import { useAxiosData } from '@/hooks/useAxiosData';
-import SkeletonIngerdientsContainer from '@skeletons-detail/SkeletonIngredientsContainer';
-import SkeletonBasicContainer from '@skeletons-detail/SkeletonBasicContainer';
-import SkeletonCookingContainer from '@skeletons-detail/SkeletonCookingContainer';
-import { useScrollToY } from '@/hooks/useScrollToY';
+import scrollToTop from '@utils/scrollToTop';
+import SkeletonBasicContainer from '@components/detail/SkeletonBasicContainer';
+import SkeletonIngerdientsContainer from '@components/detail/SkeletonIngredientsContainer';
+import SkeletonCookingContainer from '@components/detail/SkeletonCookingContainer';
 
 const StyledDetail = styled.div`
   display: flex;
@@ -150,7 +150,7 @@ export default function Detail() {
   ];
 
   useEffect(() => {
-    useScrollToY(0);
+    scrollToTop(0);
     dispatch(setPageState('detail'));
 
     const { VITE_DB_URL } = import.meta.env;

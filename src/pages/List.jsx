@@ -1,12 +1,12 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAxiosData } from '@/hooks/useAxiosData';
+import { useAxiosData } from '@hooks/useAxiosData';
 import { setPageState } from '@/redux';
-import RecipeItems from '@components-common/RecipeItems';
-import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
-import Category from '@components-common/Category';
-import { useScrollToY } from '@/hooks/useScrollToY';
+import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
+import RecipeItems from '@components/common/RecipeItems';
+import Category from '@components/common/Category';
+import scrollToTop from '@utils/scrollToTop';
 
 const StyledList = styled.div`
   flex-direction: column;
@@ -28,7 +28,7 @@ export default function List() {
       : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=1&_limit=20`;
 
   useEffect(() => {
-    useScrollToY(0);
+    scrollToTop(0);
     dispatch(setPageState('list'));
   }, []);
 

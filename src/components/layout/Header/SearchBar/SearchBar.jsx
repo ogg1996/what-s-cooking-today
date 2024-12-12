@@ -1,5 +1,5 @@
-import History from '@components-searchBar/History';
-import RelatedSearchTerms from '@components-searchBar/RelatedSearchTerms';
+import History from '@components/layout/Header/SearchBar/History';
+import RelatedSearchTerms from '@components/layout/Header/SearchBar/RelatedSearchTerms';
 import { useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -82,10 +82,9 @@ export default function SearchBar() {
     const filteredHistories = histories.filter(el => el.query !== query);
 
     const history = {
-      query: query,
+      query,
       timeStamp: Number(new Date())
     };
-    console.log(history.timeStamp);
 
     const newHistories = [history, ...filteredHistories];
     localStorage.setItem('histories', JSON.stringify(newHistories));
@@ -117,28 +116,26 @@ export default function SearchBar() {
   };
 
   return (
-    <>
-      <StyledSearchBar>
-        <div>
-          <input
-            type="text"
-            placeholder="음식이름으로 검색!"
-            ref={inputRef}
-            onChange={e => handleInput(e)}
-            onKeyUp={e => {
-              if (e.key === 'Enter') handleSearch();
-            }}
-            onFocus={() => setIsFocus(true)}
-            onBlur={handleInputFocus}
-            value={query}
-          />
-          {isFocus &&
-            (query === '' ? <History /> : <RelatedSearchTerms query={query} />)}
-        </div>
-        <button type="button" onClick={handleSearch}>
-          검색
-        </button>
-      </StyledSearchBar>
-    </>
+    <StyledSearchBar>
+      <div>
+        <input
+          type="text"
+          placeholder="음식이름으로 검색!"
+          ref={inputRef}
+          onChange={e => handleInput(e)}
+          onKeyUp={e => {
+            if (e.key === 'Enter') handleSearch();
+          }}
+          onFocus={() => setIsFocus(true)}
+          onBlur={handleInputFocus}
+          value={query}
+        />
+        {isFocus &&
+          (query === '' ? <History /> : <RelatedSearchTerms query={query} />)}
+      </div>
+      <button type="button" onClick={handleSearch}>
+        검색
+      </button>
+    </StyledSearchBar>
   );
 }

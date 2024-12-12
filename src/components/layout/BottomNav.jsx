@@ -49,8 +49,8 @@ export default function BottomNav() {
         <img
           src={
             pageState === 'suggest'
-              ? 'https://whatscookingtoday.kro.kr/icons/icon-suggest-active.png'
-              : 'https://whatscookingtoday.kro.kr/icons/icon-suggest-default.png'
+              ? '/icons/icon-suggest-active.png'
+              : '/icons/icon-suggest-default.png'
           }
           alt="아이콘"
         />
@@ -62,8 +62,8 @@ export default function BottomNav() {
         <img
           src={
             pageState === 'list'
-              ? 'https://whatscookingtoday.kro.kr/icons/icon-list-active.png'
-              : 'https://whatscookingtoday.kro.kr/icons/icon-list-default.png'
+              ? '/icons/icon-list-active.png'
+              : '/icons/icon-list-default.png'
           }
           alt="아이콘"
         />
