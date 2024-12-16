@@ -1,4 +1,4 @@
-export const searchKeywords = [
+const searchKeywords = [
   {
     RECIPE_ID: 123,
     NAME: '가는파잡채'
@@ -2148,3 +2148,5 @@ export const searchKeywords = [
     NAME: '흑임자죽'
   }
 ];
+
+export default searchKeywords;

@@ -37,7 +37,7 @@ export default function Search() {
   const { VITE_DB_URL } = import.meta.env;
 
   useEffect(() => {
-    scrollToTop(0);
+    scrollToTop();
     dispatch(setPageState('search'));
   }, []);
 

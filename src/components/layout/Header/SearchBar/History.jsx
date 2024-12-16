@@ -85,15 +85,15 @@ export default function History() {
     setList(filteredHistories);
   }, []);
 
-  function removeHistories() {
+  const removeHistories = () => {
     localStorage.removeItem('histories');
-  }
+  };
 
-  function removeHistory(query) {
+  const removeHistory = query => {
     const newHistories = list.filter(el => el.query !== query);
     localStorage.setItem('histories', JSON.stringify(newHistories));
     return newHistories;
-  }
+  };
 
   return (
     <StyledHistory tabIndex="0" className="maintainFocus">

@@ -1,4 +1,4 @@
-import { searchKeywords } from '@/assets/searchKeywords';
+import searchKeywords from '@assets/searchKeywords';
 import { getRegExp } from 'korean-regexp';
 import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
