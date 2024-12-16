@@ -14,12 +14,12 @@ const StyledRecipeItems = styled.div`
   }
 `;
 
-export default function RecipeItems({ recipeItems }) {
+export default function RecipeItems({ data }) {
   return (
     <StyledRecipeItems>
-      {recipeItems.map(item => (
-        <RecipeItem key={item.RECIPE_ID} itemData={item} />
-      ))}
+      {data.pages.map(page =>
+        page.map(item => <RecipeItem key={item.RECIPE_ID} itemData={item} />)
+      )}
     </StyledRecipeItems>
   );
 }
