@@ -105,56 +105,55 @@ export default function Header() {
 
   const navigate = useNavigate();
 
+  if (pageState === 'detail')
+    return (
+      <StyledDetailHeader>
+        <button
+          type="button"
+          onClick={() => {
+            navigate(-1);
+          }}
+        >
+          <img src="/icons/icon-arrow-left.png" alt="뒤로가기" />
+        </button>
+      </StyledDetailHeader>
+    );
+
   return (
-    <div>
-      {pageState === 'detail' ? (
-        <StyledDetailHeader>
-          <button
-            type="button"
-            onClick={() => {
-              navigate(-1);
-            }}
-          >
-            <img src="/icons/icon-arrow-left.png" alt="뒤로가기" />
-          </button>
-        </StyledDetailHeader>
-      ) : (
-        <StyledDefaultHeader>
-          <HeaderLogo to="/">
-            <img src="/icons/icon-logo.png" alt="로고" />
-            <span>오늘 뭐 해먹지?</span>
-          </HeaderLogo>
-          <SearchBar />
-          <HeaderNav>
-            <Link to="/suggest">
-              <img
-                src={
-                  pageState === 'suggest'
-                    ? '/icons/icon-suggest-active.png'
-                    : '/icons/icon-suggest-default.png'
-                }
-                alt="아이콘"
-              />
-              <HeaderNavItem $active={pageState === 'suggest'}>
-                메뉴 추천
-              </HeaderNavItem>
-            </Link>
-            <Link to="/list">
-              <img
-                src={
-                  pageState === 'list'
-                    ? '/icons/icon-list-active.png'
-                    : '/icons/icon-list-default.png'
-                }
-                alt="아이콘"
-              />
-              <HeaderNavItem $active={pageState === 'list'}>
-                레시피 목록
-              </HeaderNavItem>
-            </Link>
-          </HeaderNav>
-        </StyledDefaultHeader>
-      )}
-    </div>
+    <StyledDefaultHeader>
+      <HeaderLogo to="/">
+        <img src="/icons/icon-logo.png" alt="로고" />
+        <span>오늘 뭐 해먹지?</span>
+      </HeaderLogo>
+      <SearchBar />
+      <HeaderNav>
+        <Link to="/suggest">
+          <img
+            src={
+              pageState === 'suggest'
+                ? '/icons/icon-suggest-active.png'
+                : '/icons/icon-suggest-default.png'
+            }
+            alt="아이콘"
+          />
+          <HeaderNavItem $active={pageState === 'suggest'}>
+            메뉴 추천
+          </HeaderNavItem>
+        </Link>
+        <Link to="/list">
+          <img
+            src={
+              pageState === 'list'
+                ? '/icons/icon-list-active.png'
+                : '/icons/icon-list-default.png'
+            }
+            alt="아이콘"
+          />
+          <HeaderNavItem $active={pageState === 'list'}>
+            레시피 목록
+          </HeaderNavItem>
+        </Link>
+      </HeaderNav>
+    </StyledDefaultHeader>
   );
 }

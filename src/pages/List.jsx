@@ -28,7 +28,7 @@ export default function List() {
       : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=1&_limit=20`;
 
   useEffect(() => {
-    scrollToTop(0);
+    scrollToTop();
     dispatch(setPageState('list'));
   }, []);
 
