@@ -1,4 +1,4 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
@@ -7,16 +7,22 @@ import { useAxiosData } from '@/hooks/useAxiosData';
 import scrollToTop from '@utils/scrollToTop';
 import RecipeItems from '@components/common/RecipeItems';
 import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
+import { useInfiniteQuery } from '@tanstack/react-query';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import LoadingSpiner from '@components/common/LoadingSpiner';
 
 const StyledSearch = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
+
   gap: 30px;
 
   & > p {
     padding: 0 10px;
     width: 660px;
+    text-align: center;
+    margin: 0;
 
     @media (max-width: 675px) {
       max-width: 440px;
@@ -30,8 +36,6 @@ const StyledSearch = styled.div`
 export default function Search() {
   const dispatch = useDispatch();
 
-  const [recipeItems, setRecipeItems] = useState(null);
-
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
   const { VITE_DB_URL } = import.meta.env;
@@ -39,28 +43,47 @@ export default function Search() {
   useEffect(() => {
     scrollToTop();
     dispatch(setPageState('search'));
-  }, []);
+  }, [query]);
+
+  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
+    useInfiniteQuery({
+      queryKey: ['search', query],
+      queryFn: ({ pageParam }) =>
+        useAxiosData(
+          `${VITE_DB_URL}/basic?NAME_like=${query}&_page=${pageParam}&_limit=20`
+        ).then(res => {
+          const resData = res.data;
+          return resData;
+        }),
+      getNextPageParam: (last, all) => {
+        if (last.length < 20) return undefined;
+        return all.length + 1;
+      },
+      initialPageParam: 1
+    });
+
+  const { ref, isIntersecting } = useIntersectionObserver();
 
   useEffect(() => {
-    setRecipeItems(null);
-    useAxiosData(`${VITE_DB_URL}/basic?NAME_like=${query}`).then(res => {
-      const resData = res.data;
-      setRecipeItems(resData);
-    });
-  }, [searchParams]);
+    if (isIntersecting && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [isIntersecting]);
 
   return (
     <StyledSearch>
-      {recipeItems ? (
+      {!isLoading && data ? (
         <>
-          <p>
-            &apos;{query}&apos; &#40;으&#41;로 검색한 결과는 총{' '}
-            {recipeItems.length}건 입니다.
-          </p>
-          <RecipeItems recipeItems={recipeItems} />
+          <p>&apos;{query}&apos; &#40;으&#41;로 검색한 결과입니다.</p>
+          <RecipeItems data={data} />
         </>
       ) : (
         <SkeletonRecipeItems />
+      )}
+      {hasNextPage && (
+        <div ref={ref}>
+          <LoadingSpiner />
+        </div>
       )}
     </StyledSearch>
   );
