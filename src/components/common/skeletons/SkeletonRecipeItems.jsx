@@ -17,9 +17,8 @@ const StyledSkeletonRecipeItems = styled.div`
 export default function SkeletonRecipeItems() {
   return (
     <StyledSkeletonRecipeItems>
-      {Array.from({ length: 20 }).map((_, index) => (
-        // eslint-disable-next-line react/no-array-index-key
-        <SkeletonRecipeItem key={index} />
+      {Array.from({ length: 12 }).map(() => (
+        <SkeletonRecipeItem key={Number(Date())} />
       ))}
     </StyledSkeletonRecipeItems>
   );
