@@ -16,7 +16,7 @@ const StyledSuggest = styled.div`
   flex-direction: column;
   gap: 40px;
 
-  @media (max-width: 1000px) {
+  @media (max-width: 450px) {
     width: 100%;
     margin: 0 30px;
   }
