@@ -17,7 +17,9 @@
     "react/jsx-filename-extension": [1, { "extensions": [".js", ".jsx"] }],
     "import/prefer-default-export": "off",
     "react/react-in-jsx-scope": "off",
-    "react/prop-types": "off" // 프롭 타입 유효성 검사 x
+    "react/prop-types": "off", // 프롭 타입 유효성 검사 x
+    "jsx-a11y/alt-text": "off",
+    "react/no-array-index-key": "off"
   },
   "settings": {
     "import/resolver": {
