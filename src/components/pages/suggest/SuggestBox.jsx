@@ -1,4 +1,4 @@
-import RecipeItem from '@components/common/RecipeItem';
+import SuggestItem from '@components/pages/suggest/SuggestItem';
 import styled, { keyframes } from 'styled-components';
 
 const StyledSuggestBox = styled.div`
@@ -71,7 +71,7 @@ export default function SuggestBox({ itemData, isRecommend }) {
         </>
       )}
       {itemData && !isRecommend ? (
-        <RecipeItem itemData={itemData} />
+        <SuggestItem itemData={itemData} />
       ) : (
         isRecommend && (
           <>

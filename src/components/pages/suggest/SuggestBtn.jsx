@@ -17,7 +17,10 @@ const ActiveSuggestButton = styled(SuggestButton)`
 
 export default function SuggestBtn({ isRecommend, handleClick }) {
   if (isRecommend)
-    <ActiveSuggestButton type="button">메뉴를 추천해줘!</ActiveSuggestButton>;
+    return (
+      <ActiveSuggestButton type="button">메뉴를 추천해줘!</ActiveSuggestButton>
+    );
+
   return (
     <SuggestButton type="button" onClick={handleClick}>
       메뉴를 추천해줘!
