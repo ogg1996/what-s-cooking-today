@@ -4,14 +4,9 @@ import styled from 'styled-components';
 const StyledRecipeItems = styled.div`
   display: flex;
   flex-wrap: wrap;
-  max-width: 660px;
-
-  @media (max-width: 675px) {
-    max-width: 440px;
-  }
-  @media (max-width: 461px) {
-    max-width: 370px;
-  }
+  max-width: 1024px;
+  width: 100%;
+  padding: 16px;
 `;
 
 export default function RecipeItems({ data }) {

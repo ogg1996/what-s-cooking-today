@@ -15,7 +15,7 @@ const StyledList = styled.div`
   flex-direction: column;
   display: flex;
   align-items: center;
-  gap: 20px;
+  width: 100%;
 `;
 
 export default function List() {
@@ -36,14 +36,14 @@ export default function List() {
       queryFn: ({ pageParam }) =>
         useAxiosData(
           selected === '전체'
-            ? `${VITE_DB_URL}/basic?_page=${pageParam}&_limit=20`
-            : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=${pageParam}&_limit=20`
+            ? `${VITE_DB_URL}/basic?_page=${pageParam}&_limit=12`
+            : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=${pageParam}&_limit=12`
         ).then(res => {
           const resData = res.data;
           return resData;
         }),
       getNextPageParam: (last, all) => {
-        if (last.length < 20) return undefined;
+        if (last.length < 12) return undefined;
         return all.length + 1;
       },
       initialPageParam: 1
