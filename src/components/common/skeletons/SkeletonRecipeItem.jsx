@@ -3,25 +3,55 @@ import SkeletonText from '@components/common/skeletons/SkeletonText';
 import styled from 'styled-components';
 
 const StyledSkeletonRecipeItem = styled.div`
+  width: 50%;
+  aspect-ratio: 1 / 1.3;
   display: flex;
-  flex-direction: column;
   justify-content: center;
   align-items: center;
-  gap: 10px;
-  padding: 10px;
-  width: 220px;
 
-  @media (max-width: 461px) {
-    width: 185px;
+  & > div {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    width: 85%;
+    padding: 6px;
+    border-radius: 4px;
+
+    & > div {
+      display: flex;
+      flex-direction: column;
+      gap: 21px;
+
+      & > div {
+        display: flex;
+        justify-content: flex-end;
+        gap: 16px;
+        color: #999999;
+      }
+    }
+  }
+
+  @media (min-width: 625px) {
+    width: 33.3%;
+  }
+  @media (min-width: 800px) {
+    width: 25%;
   }
 `;
 
-// TODO : 호버하면 뭔가 바뀌는게 있도록..
 export default function SkeletonRecipeItem() {
   return (
     <StyledSkeletonRecipeItem>
-      <SkeletonImg width="100%" radius="8px" />
-      <SkeletonText width="80%" height="20px" />
+      <div>
+        <SkeletonImg width="100%" radius="4px" />
+        <div>
+          <SkeletonText width="60%" height="21px" />
+          <div>
+            <SkeletonText width="20%" height="19px" />
+            <SkeletonText width="20%" height="19px" />
+          </div>
+        </div>
+      </div>
     </StyledSkeletonRecipeItem>
   );
 }

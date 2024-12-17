@@ -20,7 +20,7 @@ const skeletonImgAnim = keyframes`
 
 const SkeletonImg = styled.span`
   width: ${props => (props.width ? `${props.width}` : '200px')};
-  aspect-ratio: 1;
+  aspect-ratio: 1 / 1;
   border-radius: ${props => (props.radius ? `${props.radius}` : '6px')};
   background-color: #dddddd;
 
