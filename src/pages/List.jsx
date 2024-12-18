@@ -10,7 +10,6 @@ import scrollToTop from '@utils/scrollToTop';
 import LoadingSpiner from '@components/common/LoadingSpiner';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
-import Meta from '@components/common/Meta';
 
 const StyledList = styled.div`
   flex-direction: column;
@@ -60,11 +59,6 @@ export default function List() {
 
   return (
     <StyledList>
-      <Meta
-        title="오늘 뭐 해먹지? : 레시피 목록"
-        description="요리하고 싶은 레시피를 찾아보세요!"
-        imgPath="/icons/icon-og-logo.png"
-      />
       <Category selected={selected} setSelected={setSelected} />
       {!isLoading && data ? (
         <RecipeItems data={data} />
