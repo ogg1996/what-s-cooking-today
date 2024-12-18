@@ -11,7 +11,6 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import LoadingSpiner from '@components/common/LoadingSpiner';
 import SkeletonText from '@components/common/skeletons/SkeletonText';
-import Meta from '@components/common/Meta';
 
 const StyledSearch = styled.div`
   display: flex;
@@ -68,11 +67,6 @@ export default function Search() {
 
   return (
     <StyledSearch>
-      <Meta
-        title="오늘 뭐 해먹지? : 검색 결과"
-        description={`"${query}" (으)로 검색한 결과입니다.`}
-        imgPath="/icons/icon-og-logo.png"
-      />
       {!isLoading && data ? (
         <>
           <p>

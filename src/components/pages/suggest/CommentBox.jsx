@@ -8,7 +8,7 @@ const StyledCommentBox = styled.div`
   & > img {
     width: 50px;
     height: 50px;
-    margin-bottom: 5px;
+    margin-bottom: 15px;
   }
   & > span {
     font-family: 'Supermagic-Bold';
