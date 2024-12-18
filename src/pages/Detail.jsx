@@ -11,6 +11,7 @@ import SkeletonCookingContainer from '@components/pages/detail/skeletons/Skeleto
 import BasicContainer from '@components/pages/detail/BasicContainer';
 import IngredientsContainer from '@components/pages/detail/IngredientsContainer';
 import CookingContainer from '@components/pages/detail/CookingContainer';
+import Meta from '@components/common/Meta';
 
 const StyledDetail = styled.div`
   display: flex;
@@ -62,16 +63,26 @@ export default function Detail() {
 
   return (
     <StyledDetail>
+      {basicData && (
+        <Meta
+          title={`오늘 뭐 해먹지? : ${basicData.NAME} 레시피`}
+          description={basicData.SUMRY}
+          imgUrl={basicData.IMG_URL}
+        />
+      )}
+
       {basicData ? (
         <BasicContainer basicData={basicData} />
       ) : (
         <SkeletonBasicContainer />
       )}
+
       {ingredientsData ? (
         <IngredientsContainer ingredientsData={ingredientsData} />
       ) : (
         <SkeletonIngerdientsContainer />
       )}
+
       {cookingData ? (
         <CookingContainer cookingData={cookingData} />
       ) : (

@@ -8,6 +8,7 @@ import scrollToTop from '@utils/scrollToTop';
 import CommentBox from '@components/pages/suggest/CommentBox';
 import SuggestBox from '@components/pages/suggest/SuggestBox';
 import SuggestBtn from '@components/pages/suggest/SuggestBtn';
+import Meta from '@components/common/Meta';
 
 const StyledSuggest = styled.div`
   width: 450px;
@@ -55,6 +56,11 @@ export default function Suggest() {
 
   return (
     <StyledSuggest>
+      <Meta
+        title="오늘 뭐 해먹지? : 메뉴 추천"
+        description="메뉴를 추천해드려요!"
+        imgPath="/icons/icon-og-logo.png"
+      />
       <CommentBox />
       <SuggestBox itemData={itemData} isRecommend={isRecommend} />
       <Category selected={selected} setSelected={setSelected} />

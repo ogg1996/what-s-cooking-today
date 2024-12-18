@@ -8,6 +8,7 @@ import '@styles/reset.css';
 import '@styles/font/Pretendard-Bold.css';
 import '@styles/font/Pretendard-Medium.css';
 import '@styles/font/Supermagic-Bold.css';
+import { HelmetProvider } from 'react-helmet-async';
 import { store } from './redux';
 
 const GlobalStyle = createGlobalStyle`
@@ -48,12 +49,14 @@ const GlobalStyle = createGlobalStyle`
 const queryClient = new QueryClient();
 
 createRoot(document.getElementById('root')).render(
-  <QueryClientProvider client={queryClient}>
-    <BrowserRouter>
-      <GlobalStyle />
-      <Provider store={store}>
-        <App />
-      </Provider>
-    </BrowserRouter>
-  </QueryClientProvider>
+  <HelmetProvider>
+    <QueryClientProvider client={queryClient}>
+      <BrowserRouter>
+        <GlobalStyle />
+        <Provider store={store}>
+          <App />
+        </Provider>
+      </BrowserRouter>
+    </QueryClientProvider>
+  </HelmetProvider>
 );
