@@ -1,15 +1,17 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { useAxiosData } from '@hooks/useAxiosData';
 import { setPageState } from '@/redux';
 import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
 import RecipeItems from '@components/common/RecipeItems';
-import Category from '@components/common/Category';
 import scrollToTop from '@utils/scrollToTop';
 import LoadingSpiner from '@components/common/LoadingSpiner';
 import { useInfiniteQuery } from '@tanstack/react-query';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import { useParams } from 'react-router-dom';
+import ListFoodTypes from '@components/pages/list/ListFoodTypes';
+import foodTypes from '@assets/foodTypes';
 
 const StyledList = styled.div`
   flex-direction: column;
@@ -20,8 +22,9 @@ const StyledList = styled.div`
 
 export default function List() {
   const dispatch = useDispatch();
+  const param = useParams();
 
-  const [selected, setSelected] = useState('전체');
+  const selectedType = foodTypes.find(type => type.en === param.type);
 
   const { VITE_DB_URL } = import.meta.env;
 
@@ -32,12 +35,12 @@ export default function List() {
 
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
-      queryKey: ['list', selected],
+      queryKey: ['list', param],
       queryFn: ({ pageParam }) =>
         useAxiosData(
-          selected === '전체'
+          param.type === 'all'
             ? `${VITE_DB_URL}/basic?_page=${pageParam}&_limit=12`
-            : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=${pageParam}&_limit=12`
+            : `${VITE_DB_URL}/basic?TYPE=${selectedType.kr}&_page=${pageParam}&_limit=12`
         ).then(res => {
           const resData = res.data;
           return resData;
@@ -59,7 +62,7 @@ export default function List() {
 
   return (
     <StyledList>
-      <Category selected={selected} setSelected={setSelected} />
+      <ListFoodTypes />
       {!isLoading && data ? (
         <RecipeItems data={data} />
       ) : (

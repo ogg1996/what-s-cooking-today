@@ -32,7 +32,7 @@ export default function App() {
         <Routes>
           <Route path="/" element={<Suggest />} />
           <Route path="/suggest" element={<Suggest />} />
-          <Route path="/list" element={<List />} />
+          <Route path="/list/:type" element={<List />} />
           <Route path="/search" element={<Search />} />
           <Route path="/detail/:id" element={<Detail />} />
         </Routes>
