@@ -59,7 +59,7 @@ export default function BottomNav() {
           메뉴 추천
         </ButtomNavItem>
       </Link>
-      <Link to="/list">
+      <Link to="/list/all">
         <img
           src={
             pageState === 'list'

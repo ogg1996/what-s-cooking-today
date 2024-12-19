@@ -40,7 +40,6 @@ const StyledDetailHeader = styled.div`
   align-items: center;
 
   background-color: #fefbf8;
-  border-bottom: 1px solid #c4c4c4;
 `;
 
 const HeaderLogo = styled(Link)`
@@ -140,7 +139,7 @@ export default function Header() {
             메뉴 추천
           </HeaderNavItem>
         </Link>
-        <Link to="/list">
+        <Link to="/list/all">
           <img
             src={
               pageState === 'list'

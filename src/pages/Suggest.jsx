@@ -3,11 +3,11 @@ import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageState } from '@/redux';
 import { useAxiosData } from '@/hooks/useAxiosData';
-import Category from '@components/common/Category';
 import scrollToTop from '@utils/scrollToTop';
 import CommentBox from '@components/pages/suggest/CommentBox';
 import SuggestBox from '@components/pages/suggest/SuggestBox';
 import SuggestBtn from '@components/pages/suggest/SuggestBtn';
+import SuggestFoodTypes from '@components/pages/suggest/SuggestFoodTypes';
 
 const StyledSuggest = styled.div`
   width: 450px;
@@ -57,7 +57,7 @@ export default function Suggest() {
     <StyledSuggest>
       <CommentBox />
       <SuggestBox itemData={itemData} isRecommend={isRecommend} />
-      <Category selected={selected} setSelected={setSelected} />
+      <SuggestFoodTypes selected={selected} setSelected={setSelected} />
       <SuggestBtn isRecommend={isRecommend} handleClick={handleClick} />
     </StyledSuggest>
   );
