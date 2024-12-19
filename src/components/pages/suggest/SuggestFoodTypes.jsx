@@ -1,10 +1,11 @@
+import foodTypes from '@assets/foodTypes';
 import styled from 'styled-components';
 
-const StyeldCategory = styled.div`
+const StyeldSuggestFoodTypes = styled.div`
   display: flex;
   gap: 5px;
 `;
-const ItemBtn = styled.button`
+const OptionBtn = styled.button`
   width: 52px;
   height: 32px;
   font-size: 16px;
@@ -17,20 +18,19 @@ const ItemBtn = styled.button`
   cursor: pointer;
 `;
 
-export default function Category({ selected, setSelected }) {
-  const category = ['전체', '한식', '중식', '일식', '양식', '기타'];
+export default function SuggestFoodTypes({ selected, setSelected }) {
   return (
-    <StyeldCategory>
-      {category.map(item => (
-        <ItemBtn
+    <StyeldSuggestFoodTypes>
+      {foodTypes.map(type => (
+        <OptionBtn
           type="button"
-          key={item}
-          selected={selected === item}
-          onClick={() => setSelected(item)}
+          key={type}
+          selected={selected === type.kr}
+          onClick={() => setSelected(type.kr)}
         >
-          {item}
-        </ItemBtn>
+          {type.kr}
+        </OptionBtn>
       ))}
-    </StyeldCategory>
+    </StyeldSuggestFoodTypes>
   );
 }
