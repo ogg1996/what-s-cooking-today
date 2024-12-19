@@ -13,9 +13,8 @@ const StyledSkeletonRecipeItem = styled.div`
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 85%;
-    padding: 6px;
-    border-radius: 4px;
+    width: 100%;
+    padding: 12px;
 
     & > div {
       display: flex;

@@ -5,7 +5,7 @@ import styled from 'styled-components';
 
 const StyledRecipeItem = styled.div`
   width: 50%;
-  aspect-ratio: 1 / 1.3;
+  aspect-ratio: 1 / 1.1;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -14,22 +14,8 @@ const StyledRecipeItem = styled.div`
     display: flex;
     flex-direction: column;
     gap: 6px;
-    width: 85%;
-    padding: 6px;
-    border-radius: 4px;
-
-    & > img {
-      width: 100%;
-      aspect-ratio: 1 / 1;
-      border-radius: 4px;
-      background-color: #dddddd;
-    }
-  }
-
-  & > a:hover {
-    transform: scale(1.1);
-    transition: 0.3s;
-    background-color: #e6e1db;
+    width: 100%;
+    padding: 12px;
   }
 
   @media (min-width: 550px) {
@@ -37,6 +23,25 @@ const StyledRecipeItem = styled.div`
   }
   @media (min-width: 800px) {
     width: 25%;
+  }
+`;
+
+const ImgContainer = styled.div`
+  width: 100%;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  background-color: #dddddd;
+  overflow: hidden;
+
+  & > img {
+    width: 100%;
+    aspect-ratio: 1 /1;
+    border-radius: 4px;
+    transition: transform 0.3s ease-in-out;
+  }
+
+  a:hover & > img {
+    transform: scale(1.2);
   }
 `;
 
@@ -58,6 +63,10 @@ const RecipeInfo = styled.div`
     gap: 16px;
     color: #999999;
   }
+
+  a:hover & > span {
+    color: #d68b44;
+  }
 `;
 
 export default function RecipeItem({ itemData }) {
@@ -73,7 +82,9 @@ export default function RecipeItem({ itemData }) {
     return (
       <StyledRecipeItem>
         <Link to={`/detail/${itemData.RECIPE_ID}`}>
-          <img ref={ref} loading="lazy" />
+          <ImgContainer>
+            <img ref={ref} loading="lazy" />
+          </ImgContainer>
           <RecipeInfo>
             <span>{itemData.NAME}</span>
             <div>
