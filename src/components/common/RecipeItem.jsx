@@ -18,10 +18,6 @@ const StyledRecipeItem = styled.div`
     padding: 12px;
   }
 
-  & > a:hover {
-    background-color: #e6e1db;
-  }
-
   @media (min-width: 550px) {
     width: 33.3%;
   }
@@ -66,6 +62,10 @@ const RecipeInfo = styled.div`
     justify-content: flex-end;
     gap: 16px;
     color: #999999;
+  }
+
+  a:hover & > span {
+    color: #d68b44;
   }
 `;
 
