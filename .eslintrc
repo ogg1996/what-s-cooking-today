@@ -25,6 +25,7 @@
     "import/resolver": {
       "alias": {
         "map": [
+          ["@api", "./src/api"],
           ["@assets", "./src/assets"],
           ["@components", "./src/components"],
           ["@hooks", "./src/hooks"],

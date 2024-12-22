@@ -8,6 +8,7 @@ export default defineConfig({
   resolve: {
     alias: {
       // 절대 경로 설정
+      '@api': path.resolve(__dirname, 'src/api'),
       '@assets': path.resolve(__dirname, 'src/assets'),
       '@components': path.resolve(__dirname, 'src/components'),
       '@hooks': path.resolve(__dirname, 'src/hooks'),

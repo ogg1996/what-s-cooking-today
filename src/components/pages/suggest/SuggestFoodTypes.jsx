@@ -24,9 +24,9 @@ export default function SuggestFoodTypes({ selected, setSelected }) {
       {foodTypes.map(type => (
         <OptionBtn
           type="button"
-          key={type}
-          selected={selected === type.kr}
-          onClick={() => setSelected(type.kr)}
+          key={`suggest-${type.en}`}
+          selected={selected === type.en}
+          onClick={() => setSelected(type.en)}
         >
           {type.kr}
         </OptionBtn>

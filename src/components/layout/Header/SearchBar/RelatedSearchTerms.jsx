@@ -1,6 +1,5 @@
-import searchKeywords from '@assets/searchKeywords';
-import { getRegExp } from 'korean-regexp';
-import { useEffect, useState } from 'react';
+import searchApi from '@api/searchApi';
+import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -48,26 +47,21 @@ const StyledRelatedSearchTerms = styled.div`
   }
 `;
 export default function RelatedSearchTerms({ query }) {
-  const [list, setList] = useState([]);
-  useEffect(() => {
-    if (query.length < 2) return;
-    const reg = getRegExp(query, {
-      initialSearch: true
-    });
-    const filterdKeywords = searchKeywords.filter(keyward =>
-      keyward.NAME.match(reg)
-    );
-    setList(filterdKeywords);
-  }, [query]);
+  const { data, isLoading } = useQuery({
+    queryKey: ['searching', query],
+    queryFn: () => searchApi(query, 1, 6)
+  });
+
   return (
     <StyledRelatedSearchTerms tabIndex="0" className="maintainFocus">
       <p>연관 검색어</p>
       <ul>
-        {list.map(el => (
-          <li key={el.RECIPE_ID}>
-            <Link to={`/detail/${el.RECIPE_ID}`}>{el.NAME}</Link>
-          </li>
-        ))}
+        {!isLoading &&
+          data.data.map(el => (
+            <li key={el.RECIPE_ID}>
+              <Link to={`/detail/${el.RECIPE_ID}`}>{el.NAME}</Link>
+            </li>
+          ))}
       </ul>
     </StyledRelatedSearchTerms>
   );

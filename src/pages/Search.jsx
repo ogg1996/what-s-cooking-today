@@ -3,7 +3,6 @@ import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setPageState } from '@/redux';
-import { useAxiosData } from '@/hooks/useAxiosData';
 import scrollToTop from '@utils/scrollToTop';
 import RecipeItems from '@components/common/RecipeItems';
 import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
@@ -11,6 +10,7 @@ import { useInfiniteQuery } from '@tanstack/react-query';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import LoadingSpiner from '@components/common/LoadingSpiner';
 import SkeletonText from '@components/common/skeletons/SkeletonText';
+import searchApi from '@api/searchApi';
 
 const StyledSearch = styled.div`
   display: flex;
@@ -33,7 +33,6 @@ export default function Search() {
 
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
-  const { VITE_DB_URL } = import.meta.env;
 
   useEffect(() => {
     scrollToTop();
@@ -43,16 +42,10 @@ export default function Search() {
   const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
     useInfiniteQuery({
       queryKey: ['search', query],
-      queryFn: ({ pageParam }) =>
-        useAxiosData(
-          `${VITE_DB_URL}/basic?NAME_like=${query}&_page=${pageParam}&_limit=12`
-        ).then(res => {
-          const resData = res.data;
-          return resData;
-        }),
-      getNextPageParam: (last, all) => {
-        if (last.length < 12) return undefined;
-        return all.length + 1;
+      queryFn: ({ pageParam }) => searchApi(query, pageParam, 12),
+      getNextPageParam: last => {
+        if (last.page === last.totalPages) return undefined;
+        return last.page + 1;
       },
       initialPageParam: 1
     });

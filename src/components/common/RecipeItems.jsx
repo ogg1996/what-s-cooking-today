@@ -13,7 +13,9 @@ export default function RecipeItems({ data }) {
   return (
     <StyledRecipeItems>
       {data.pages.map(page =>
-        page.map(item => <RecipeItem key={item.RECIPE_ID} itemData={item} />)
+        page.data.map(item => (
+          <RecipeItem key={item.RECIPE_ID} itemData={item} />
+        ))
       )}
     </StyledRecipeItems>
   );

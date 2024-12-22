@@ -28,7 +28,7 @@ export default function ListFoodTypes() {
       {foodTypes.map(type => (
         <LinkBtn
           to={`/list/${type.en}`}
-          key={type.en}
+          key={`list-${type.en}`}
           selected={param.type === type.en}
         >
           {type.kr}
