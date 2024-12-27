@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setPageState } from '@/redux';
+import { setPageState } from '@/store/pageStateSlice';
 import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
 import RecipeItems from '@components/common/RecipeItems';
 import scrollToTop from '@utils/scrollToTop';

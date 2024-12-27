@@ -2,7 +2,7 @@ import { useEffect } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import { setPageState } from '@/redux';
+import { setPageState } from '@/store/pageStateSlice';
 import scrollToTop from '@utils/scrollToTop';
 import RecipeItems from '@components/common/RecipeItems';
 import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
@@ -17,6 +17,7 @@ const StyledSearch = styled.div`
   flex-direction: column;
   align-items: center;
 
+  max-width: 1024px;
   width: 100%;
 
   & > p {
@@ -30,7 +31,6 @@ const StyledSearch = styled.div`
 
 export default function Search() {
   const dispatch = useDispatch();
-
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
 
@@ -44,7 +44,7 @@ export default function Search() {
       queryKey: ['search', query],
       queryFn: ({ pageParam }) => searchApi(query, pageParam, 12),
       getNextPageParam: last => {
-        if (last.page === last.totalPages) return undefined;
+        if (last.page >= last.totalPages) return undefined;
         return last.page + 1;
       },
       initialPageParam: 1
@@ -63,7 +63,8 @@ export default function Search() {
       {!isLoading && data ? (
         <>
           <p>
-            <strong>{query}</strong> &#40;으&#41;로 검색한 결과입니다.
+            <strong>{query}</strong> &#40;으&#41;로 검색한 결과 &#40;
+            {data.pages[0].total}건&#41;
           </p>
           <RecipeItems data={data} />
         </>

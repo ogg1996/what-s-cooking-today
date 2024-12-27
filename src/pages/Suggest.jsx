@@ -1,7 +1,7 @@
 import styled from 'styled-components';
 import { useEffect, useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { setPageState } from '@/redux';
+import { setPageState } from '@/store/pageStateSlice';
 import scrollToTop from '@utils/scrollToTop';
 import CommentBox from '@components/pages/suggest/CommentBox';
 import SuggestBox from '@components/pages/suggest/SuggestBox';
@@ -24,7 +24,6 @@ const StyledSuggest = styled.div`
 
 export default function Suggest() {
   const dispatch = useDispatch();
-
   const [selected, setSelected] = useState('all');
   const [itemData, setItemData] = useState(null);
   const [isRecommend, setIsRecommend] = useState(false);
