@@ -1,19 +1,14 @@
-import { useEffect, useState } from 'react';
+import {
+  removeHistories,
+  removeHistory,
+  checkQueryExp
+} from '@store/searchHistorySlice';
+import { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledHistory = styled.div`
-  display: 'flex';
-  flex-direction: column;
-  position: absolute;
-
-  width: 100%;
-  padding: 4px 4px;
-  background-color: #ffffff;
-  border: 2px solid #8e8073;
-  border-top: 0;
-  border-radius: 0 0 4px 4px;
-
   & > div {
     padding: 0 4px 4px 4px;
     border-bottom: 2px solid #c4c4c4;
@@ -22,108 +17,89 @@ const StyledHistory = styled.div`
     justify-content: space-between;
 
     & > span {
-      font-size: 16px;
+      font-size: 20px;
     }
     & > button {
-      font-size: 12px;
-      color: #c4c4c4;
+      font-size: 14px;
+      color: #999999;
     }
-    & > button:hover,
-    & > button:active {
+    & > button:hover {
       color: #ff0000;
     }
   }
+
   & > ul {
-    padding: 0 4px 0 8px;
     margin: 4px 0;
-    max-height: 80px;
-    overflow-y: scroll;
+    max-height: 105px;
+    overflow-y: hidden;
 
     li {
-      font-size: 16px;
+      font-size: 18px;
+      padding: 0 4px 0 8px;
 
       display: flex;
       justify-content: space-between;
+      align-items: center;
 
       & > a {
-        width: 85%;
+        flex-grow: 1;
         text-align: start;
         white-space: nowrap;
         overflow: hidden;
         text-overflow: ellipsis;
       }
-      & > button {
-        width: 15%;
-        font-size: 12px;
-        color: #c4c4c4;
-      }
-      & > button:hover,
-      & > button:active {
-        color: #ff0000;
-      }
     }
-    li:hover,
-    li:active {
+    li:hover {
       background-color: #dddddd;
     }
   }
 `;
+
+const RemoveButton = styled.button`
+  width: 18px;
+  height: 18px;
+  margin-right: 4px;
+  border: none;
+  border-radius: 4px;
+  background-image: url('/icons/icon-cancel-default.png');
+  background-size: cover;
+
+  &:hover {
+    background-image: url('/icons/icon-cancel-active.png');
+  }
+`;
+
 export default function History() {
-  const [list, setList] = useState([]);
+  const searchHistory = useSelector(state => state.searchHistory.history);
+  const dispatch = useDispatch();
+
   useEffect(() => {
-    const histories = JSON.parse(localStorage.getItem('histories')) || [];
-    const today = new Date();
-    const aWeekAgo = new Date();
-    aWeekAgo.setDate(today.getDate() - 7);
-
-    const aWeekAgoTimeStamp = aWeekAgo.getTime();
-    const filteredHistories = histories.filter(
-      el => el.timeStamp >= aWeekAgoTimeStamp
-    );
-    localStorage.setItem('histories', JSON.stringify(filteredHistories));
-
-    setList(filteredHistories);
+    dispatch(checkQueryExp());
   }, []);
 
-  const removeHistories = () => {
-    localStorage.removeItem('histories');
-  };
-
-  const removeHistory = query => {
-    const newHistories = list.filter(el => el.query !== query);
-    localStorage.setItem('histories', JSON.stringify(newHistories));
-    return newHistories;
-  };
-
   return (
-    <StyledHistory tabIndex="0" className="maintainFocus">
+    <StyledHistory>
       <div>
         <span>검색 기록</span>
         <button
           type="button"
-          className="maintainFocus"
           onClick={() => {
-            removeHistories();
-            setList([]);
+            dispatch(removeHistories());
           }}
         >
           전체삭제
         </button>
       </div>
       <ul>
-        {list.map(el => (
+        {searchHistory.map(el => (
           <li key={el.timeStamp}>
             <Link to={`/search?query=${el.query}`}>{el.query}</Link>
-            <button
+            <RemoveButton
               type="button"
-              className="maintainFocus"
               onClick={() => {
-                const histories = removeHistory(el.query);
-                setList(histories);
+                dispatch(removeHistory(el.query));
               }}
-            >
-              삭제
-            </button>
+            />
           </li>
         ))}
       </ul>
