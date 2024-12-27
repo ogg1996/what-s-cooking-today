@@ -1,11 +1,15 @@
 import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
-import Header from '@components/layout/Header/Header';
+
+import Suggest from '@pages/Suggest';
+import List from '@pages/List';
+import Search from '@pages/Search';
+import Detail from '@pages/Detail';
+
+import Header from '@components/layout/header/Header';
 import BottomNav from '@components/layout/BottomNav';
-import Detail from '@/pages/Detail';
-import List from '@/pages/List';
-import Search from '@/pages/Search';
-import Suggest from '@/pages/Suggest';
+import Modal from '@components/layout/modal/Modal';
+import { useSelector } from 'react-redux';
 
 const StyledApp = styled.div`
   display: flex;
@@ -25,8 +29,11 @@ const StyledApp = styled.div`
 `;
 
 export default function App() {
+  const modalState = useSelector(state => state.modalState.modal);
+
   return (
     <>
+      {modalState && <Modal />}
       <Header />
       <StyledApp>
         <Routes>
