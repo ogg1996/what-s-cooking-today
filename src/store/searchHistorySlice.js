@@ -9,7 +9,7 @@ export const searchHistorySlice = createSlice({
     checkQueryExp: state => {
       const today = new Date();
       const aWeekAgo = new Date();
-      aWeekAgo.setTime(today.getTime() - 1000 * 10);
+      aWeekAgo.setTime(today.getTime() - 1000 * 60 * 10);
       const aWeekAgoTimeStamp = aWeekAgo.getTime();
 
       state.history = state.history.filter(
