@@ -2,7 +2,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import styled from 'styled-components';
 
 import { setModalState } from '@store/modalStateSlice';
-import SearchModal from './SearchModal';
+import SearchModal from '@components/layout/modal/searchModal/SearchModal';
 
 const Dimmed = styled.div`
   display: grid;

@@ -3,22 +3,19 @@ import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledRelatedSearchTerms = styled.div`
+const StyledSearchBarRelatedSearchs = styled.div`
   & > p {
-    font-size: 20px;
-    padding-left: 4px;
-    padding-bottom: 4px;
-    border-bottom: 2px solid #c4c4c4;
+    margin-bottom: 6px;
+    font-family: 'Pretendard-bold';
   }
 
   & > ul {
     margin: 4px 0;
-    max-height: 105px;
+    max-height: 135px;
     overflow-y: hidden;
 
     li {
-      padding: 0 8px;
-      font-size: 18px;
+      padding: 4px 6px;
       display: flex;
 
       a {
@@ -35,14 +32,16 @@ const StyledRelatedSearchTerms = styled.div`
     }
   }
 `;
-export default function RelatedSearchTerms({ query }) {
+export default function SearchBarRelatedSearchs({ query }) {
+  if (!query) return null;
+
   const { data, isLoading } = useQuery({
-    queryKey: ['searching', query],
+    queryKey: ['searchBarSearching', query],
     queryFn: () => searchApi(query, 1, 5)
   });
 
   return (
-    <StyledRelatedSearchTerms tabIndex="0" className="maintainFocus">
+    <StyledSearchBarRelatedSearchs>
       <p>연관 검색어</p>
       <ul>
         {!isLoading &&
@@ -52,6 +51,6 @@ export default function RelatedSearchTerms({ query }) {
             </li>
           ))}
       </ul>
-    </StyledRelatedSearchTerms>
+    </StyledSearchBarRelatedSearchs>
   );
 }

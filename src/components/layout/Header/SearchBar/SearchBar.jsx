@@ -4,8 +4,8 @@ import { useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
 
 import { addHistory } from '@store/searchHistorySlice';
-import History from '@components/layout/header/searchBar/History';
-import RelatedSearchTerms from '@components/layout/header/searchBar/RelatedSearchTerms';
+import SearchBarHistory from '@components/layout/header/searchBar/SearchBarHistory';
+import SearchBarRelatedSearchs from '@components/layout/header/searchBar/SearchBarRelatedSearchs';
 
 const StyledSearchBar = styled.div`
   position: relative;
@@ -19,15 +19,14 @@ const StyledSearchBar = styled.div`
 
 const InputBox = styled.div`
   display: flex;
-  justify-content: space-between;
   align-items: center;
+  gap: 6px;
   border-bottom: 2px solid #8e8073;
 
   & > input {
     padding: 4px 0 4px 8px;
-    width: 300px;
+    flex-grow: 1;
 
-    color: #000000;
     background-color: #fefbf8;
     border: none;
     outline: none;
@@ -66,7 +65,7 @@ const SearchDropDown = styled.div`
   color: #685443;
   min-width: 360px;
   max-width: 360px;
-  padding: 4px 4px;
+  padding: 8px;
   background-color: #fefbf8;
   border: 2px solid #8e8073;
   border-radius: 4px;
@@ -127,7 +126,11 @@ export default function SearchBar() {
           ref={dropDownRef}
           onBlur={() => setDropdownVisible(false)}
         >
-          {query === '' ? <History /> : <RelatedSearchTerms query={query} />}
+          {query === '' ? (
+            <SearchBarHistory query={query} />
+          ) : (
+            <SearchBarRelatedSearchs query={query} />
+          )}
         </SearchDropDown>
       )}
     </StyledSearchBar>

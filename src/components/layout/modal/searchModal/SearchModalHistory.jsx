@@ -5,19 +5,22 @@ import {
 } from '@store/searchHistorySlice';
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Link } from 'react-router-dom';
+import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
 
-const StyledHistory = styled.div`
-  & > div {
-    padding: 0 4px 4px 4px;
-    border-bottom: 2px solid #c4c4c4;
+const StyledSearchModalHistory = styled.div`
+  display: flex;
+  flex-direction: column;
 
+  & > div {
     display: flex;
     justify-content: space-between;
 
     & > span {
-      font-size: 20px;
+      color: #685443;
+      font-family: 'Pretendard-bold';
+      font-size: 18px;
+      padding: 8px 16px;
     }
     & > button {
       font-size: 14px;
@@ -30,29 +33,28 @@ const StyledHistory = styled.div`
 
   & > ul {
     margin: 4px 0;
-    max-height: 105px;
     overflow-y: hidden;
+    padding: 8px 16px;
 
     li {
+      color: #685443;
       font-size: 18px;
-      padding: 0 4px 0 8px;
+      padding: 4px 8px;
 
       display: flex;
       justify-content: space-between;
       align-items: center;
-
-      & > a {
-        flex-grow: 1;
-        text-align: start;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-      }
+      gap: 8px;
     }
     li:hover {
       background-color: #dddddd;
     }
   }
+`;
+const HistoryLink = styled.button`
+  color: #685443;
+  flex-grow: 1;
+  text-align: start;
 `;
 
 const RemoveButton = styled.button`
@@ -69,7 +71,9 @@ const RemoveButton = styled.button`
   }
 `;
 
-export default function History() {
+export default function SearchModalHistory({ closeSearchModal }) {
+  const navigate = useNavigate();
+
   const searchHistory = useSelector(state => state.searchHistory.history);
   const dispatch = useDispatch();
 
@@ -78,22 +82,33 @@ export default function History() {
   }, []);
 
   return (
-    <StyledHistory>
+    <StyledSearchModalHistory>
       <div>
-        <span>검색 기록</span>
-        <button
-          type="button"
-          onClick={() => {
-            dispatch(removeHistories());
-          }}
-        >
-          전체삭제
-        </button>
+        {searchHistory.length !== 0 && (
+          <>
+            <span>검색 기록</span>
+            <button
+              type="button"
+              onClick={() => {
+                dispatch(removeHistories());
+              }}
+            >
+              전체삭제
+            </button>
+          </>
+        )}
       </div>
       <ul>
         {searchHistory.map(el => (
           <li key={el.timeStamp}>
-            <Link to={`/search?query=${el.query}`}>{el.query}</Link>
+            <HistoryLink
+              type="button"
+              onClick={() =>
+                closeSearchModal(navigate(`/search?query=${el.query}`))
+              }
+            >
+              {el.query}
+            </HistoryLink>
             <RemoveButton
               type="button"
               onClick={() => {
@@ -103,6 +118,6 @@ export default function History() {
           </li>
         ))}
       </ul>
-    </StyledHistory>
+    </StyledSearchModalHistory>
   );
 }
