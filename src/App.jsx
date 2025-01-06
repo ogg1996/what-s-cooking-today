@@ -6,10 +6,11 @@ import List from '@pages/List';
 import Search from '@pages/Search';
 import Detail from '@pages/Detail';
 
-import Header from '@components/layout/header/Header';
 import BottomNav from '@components/layout/BottomNav';
 import Modal from '@components/layout/modal/Modal';
 import { useSelector } from 'react-redux';
+import Header from '@components/layout/Header/Header';
+import { useEffect } from 'react';
 
 const StyledApp = styled.div`
   display: flex;
@@ -30,6 +31,14 @@ const StyledApp = styled.div`
 
 export default function App() {
   const modalState = useSelector(state => state.modalState.modal);
+
+  useEffect(() => {
+    if (modalState) {
+      document.body.style.overflowY = 'hidden';
+    } else {
+      document.body.style.overflowY = 'auto';
+    }
+  }, [modalState]);
 
   return (
     <>
