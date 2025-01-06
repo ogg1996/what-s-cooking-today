@@ -6,6 +6,7 @@ import styled from 'styled-components';
 const StyledSearchBarRelatedSearchs = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 
   & > p {
     padding: 8px 16px;
@@ -17,28 +18,31 @@ const StyledSearchBarRelatedSearchs = styled.div`
   & > ul {
     margin: 4px 0;
     padding: 8px 16px;
-    overflow-y: scroll;
 
     & > li {
-      padding: 8px 8px;
-      display: flex;
-      gap: 8px;
-      cursor: pointer;
+      & > button {
+        width: 100%;
+        padding: 8px 8px;
+        display: flex;
+        gap: 8px;
+        text-align: start;
 
-      & > img {
-        width: 42px;
-        height: 42px;
-        background-color: #777777;
-      }
-
-      & > div {
-        & > p {
-          color: #685443;
+        & > img {
+          width: 42px;
+          height: 42px;
+          border-radius: 4px;
+          background-color: #777777;
         }
+
         & > div {
-          color: #777777;
-          display: flex;
-          gap: 8px;
+          & > p {
+            color: #685443;
+          }
+          & > div {
+            color: #777777;
+            display: flex;
+            gap: 8px;
+          }
         }
       }
     }

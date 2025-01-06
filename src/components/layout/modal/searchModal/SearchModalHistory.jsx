@@ -11,6 +11,7 @@ import styled from 'styled-components';
 const StyledSearchModalHistory = styled.div`
   display: flex;
   flex-direction: column;
+  overflow-y: auto;
 
   & > div {
     display: flex;
@@ -33,7 +34,6 @@ const StyledSearchModalHistory = styled.div`
 
   & > ul {
     margin: 4px 0;
-    overflow-y: hidden;
     padding: 8px 16px;
 
     li {
