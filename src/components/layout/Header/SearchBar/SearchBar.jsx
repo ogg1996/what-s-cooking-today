@@ -6,6 +6,7 @@ import { useDispatch } from 'react-redux';
 import { addHistory } from '@store/searchHistorySlice';
 import SearchBarHistory from '@components/layout/header/searchBar/SearchBarHistory';
 import SearchBarRelatedSearchs from '@components/layout/header/searchBar/SearchBarRelatedSearchs';
+import { useDebounce } from 'use-debounce';
 
 const StyledSearchBar = styled.div`
   position: relative;
@@ -65,6 +66,7 @@ const SearchDropDown = styled.div`
   color: #685443;
   min-width: 360px;
   max-width: 360px;
+  min-height: 72px;
   padding: 8px;
   background-color: #fefbf8;
   border: 2px solid #8e8073;
@@ -73,6 +75,7 @@ const SearchDropDown = styled.div`
 
 export default function SearchBar() {
   const [query, setQuery] = useState('');
+  const [debounceQuery] = useDebounce(query.replace(/\s+/g, ''), 500);
   const [isDropdownVisible, setDropdownVisible] = useState(false);
   const inputRef = useRef(null);
   const dropDownRef = useRef(null);
@@ -80,8 +83,20 @@ export default function SearchBar() {
 
   const dispatch = useDispatch();
 
+  const handleOnChange = e => {
+    const inputValue = e.target.value;
+    if (query.length === 21) {
+      setQuery(inputValue.slice(0, -1));
+      return;
+    }
+
+    if (query === '' && inputValue.startsWith(' ')) return;
+    if (query[query.length - 1] === ' ' && inputValue.endsWith(' ')) return;
+    setQuery(inputValue);
+  };
+
   const handleSearch = () => {
-    if (query.trim() !== '') {
+    if (query.length > 1) {
       navigate(`/search?query=${query}`);
       dispatch(addHistory(query));
       setDropdownVisible(false);
@@ -100,7 +115,7 @@ export default function SearchBar() {
           onKeyUp={e => {
             if (e.key === 'Enter') handleSearch();
           }}
-          onChange={e => setQuery(e.target.value)}
+          onChange={e => handleOnChange(e)}
           onFocus={() => setDropdownVisible(true)}
           onBlur={e => {
             if (dropDownRef.current.contains(e.relatedTarget)) return;
@@ -126,10 +141,10 @@ export default function SearchBar() {
           ref={dropDownRef}
           onBlur={() => setDropdownVisible(false)}
         >
-          {query === '' ? (
-            <SearchBarHistory query={query} />
+          {debounceQuery.length > 1 ? (
+            <SearchBarRelatedSearchs query={debounceQuery} />
           ) : (
-            <SearchBarRelatedSearchs query={query} />
+            <SearchBarHistory />
           )}
         </SearchDropDown>
       )}

@@ -71,7 +71,6 @@ const InputBox = styled.div`
     padding: 4px 0 4px 8px;
     flex-grow: 1;
 
-    color: #000000;
     background-color: #fefbf8;
     border: none;
     outline: none;
@@ -112,7 +111,7 @@ const CancelButton = styled.button`
 export default function SearchModal() {
   const [query, setQuery] = useState('');
   const [isVisible, setVisible] = useState(true);
-  const [debounceQuery] = useDebounce(query, 500);
+  const [debounceQuery] = useDebounce(query.replace(/\s+/g, ''), 500);
 
   const inputRef = useRef(null);
   const navigate = useNavigate();
@@ -129,8 +128,20 @@ export default function SearchModal() {
     }, 200);
   };
 
+  const handleOnChange = e => {
+    const inputValue = e.target.value;
+    if (query.length === 21) {
+      setQuery(inputValue.slice(0, -1));
+      return;
+    }
+
+    if (query === '' && inputValue.startsWith(' ')) return;
+    if (query[query.length - 1] === ' ' && inputValue.endsWith(' ')) return;
+    setQuery(inputValue);
+  };
+
   const handleSearch = () => {
-    if (query.trim() !== '') {
+    if (query.length > 1) {
       closeSearchModal(() => {
         dispatch(addHistory(query));
         navigate(`/search?query=${query}`);
@@ -155,7 +166,7 @@ export default function SearchModal() {
             onKeyUp={e => {
               if (e.key === 'Enter') handleSearch();
             }}
-            onChange={e => setQuery(e.target.value)}
+            onChange={e => handleOnChange(e)}
             ref={inputRef}
             value={query}
           />
@@ -174,13 +185,13 @@ export default function SearchModal() {
           취소
         </CancelButton>
       </InputArea>
-      {debounceQuery === '' ? (
-        <SearchModalHistory closeSearchModal={closeSearchModal} />
-      ) : (
+      {debounceQuery.length > 1 ? (
         <SearchModalRelatedSearchs
           closeSearchModal={closeSearchModal}
-          query={query}
+          query={debounceQuery}
         />
+      ) : (
+        <SearchModalHistory closeSearchModal={closeSearchModal} />
       )}
     </StyledModal>
   );

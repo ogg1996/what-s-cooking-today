@@ -1,4 +1,5 @@
 import searchApi from '@api/searchApi';
+import RecipeName from '@components/common/RecipeName';
 import { useQuery } from '@tanstack/react-query';
 import { useNavigate } from 'react-router-dom';
 import styled from 'styled-components';
@@ -13,6 +14,11 @@ const StyledSearchBarRelatedSearchs = styled.div`
     color: #685443;
     font-family: 'Pretendard-bold';
     font-size: 18px;
+  }
+  & > span {
+    padding: 8px 24px;
+    color: #685443;
+    font-size: 16px;
   }
 
   & > ul {
@@ -35,14 +41,12 @@ const StyledSearchBarRelatedSearchs = styled.div`
         }
 
         & > div {
-          & > p {
-            color: #685443;
-          }
-          & > div {
-            color: #777777;
-            display: flex;
-            gap: 8px;
-          }
+          flex-grow: 1;
+          width: 240px;
+          text-align: start;
+          white-space: nowrap;
+          overflow: hidden;
+          text-overflow: ellipsis;
         }
       }
     }
@@ -52,9 +56,14 @@ const StyledSearchBarRelatedSearchs = styled.div`
     }
   }
 `;
-export default function SearchModalRelatedSearchs({ closeSearchModal, query }) {
-  if (!query) return null;
 
+const RecipeSummaryInfoBox = styled.div`
+  color: #777777;
+  display: flex;
+  gap: 8px;
+`;
+
+export default function SearchModalRelatedSearchs({ closeSearchModal, query }) {
   const navigate = useNavigate();
 
   const { data, isLoading } = useQuery({
@@ -65,29 +74,33 @@ export default function SearchModalRelatedSearchs({ closeSearchModal, query }) {
   return (
     <StyledSearchBarRelatedSearchs>
       <p>연관 검색어</p>
-      <ul>
-        {!isLoading &&
-          data.data.map(el => (
-            <li key={el.RECIPE_ID}>
-              <button
-                type="button"
-                onClick={() => {
-                  closeSearchModal(navigate(`/detail/${el.RECIPE_ID}`));
-                }}
-              >
-                <img src={el.IMG_URL} loading="lazy" />
-                <div>
-                  <p>{el.NAME}</p>
+      {!isLoading &&
+        (!data.total ? (
+          <span>검색 결과가 없습니다.</span>
+        ) : (
+          <ul>
+            {data.data.map(el => (
+              <li key={el.RECIPE_ID}>
+                <button
+                  type="button"
+                  onClick={() => {
+                    closeSearchModal(navigate(`/detail/${el.RECIPE_ID}`));
+                  }}
+                >
+                  <img src={el.IMG_URL} loading="lazy" />
                   <div>
-                    <span>{el.TYPE}</span>
-                    <span>{el.LEVEL}</span>
-                    <span>{el.COOKING_TIME}</span>
+                    <RecipeName recipeName={el.NAME} query={query} />
+                    <RecipeSummaryInfoBox>
+                      <span>{el.TYPE}</span>
+                      <span>{el.LEVEL}</span>
+                      <span>{el.COOKING_TIME}</span>
+                    </RecipeSummaryInfoBox>
                   </div>
-                </div>
-              </button>
-            </li>
-          ))}
-      </ul>
+                </button>
+              </li>
+            ))}
+          </ul>
+        ))}
     </StyledSearchBarRelatedSearchs>
   );
 }

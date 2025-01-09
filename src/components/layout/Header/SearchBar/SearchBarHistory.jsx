@@ -26,6 +26,10 @@ const StyledSearchBarHistory = styled.div`
     }
   }
 
+  & > p {
+    padding: 4px 6px;
+  }
+
   & > ul {
     max-height: 135px;
     overflow-y: hidden;
@@ -40,9 +44,6 @@ const StyledSearchBarHistory = styled.div`
       & > a {
         flex-grow: 1;
         text-align: start;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
     }
     li:hover {
@@ -88,8 +89,8 @@ export default function SearchBarHistory() {
           </button>
         )}
       </div>
-      {searchHistory ? (
-        <p>검색기록이 없습니다.</p>
+      {searchHistory.length === 0 ? (
+        <p>검색 기록이 없습니다.</p>
       ) : (
         <ul>
           {searchHistory.map(el => (

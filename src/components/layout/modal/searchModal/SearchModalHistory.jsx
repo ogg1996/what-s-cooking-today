@@ -54,7 +54,11 @@ const StyledSearchModalHistory = styled.div`
 const HistoryLink = styled.button`
   color: #685443;
   flex-grow: 1;
+  width: 265px;
   text-align: start;
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 `;
 
 const RemoveButton = styled.button`

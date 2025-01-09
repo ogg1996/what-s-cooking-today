@@ -1,16 +1,23 @@
 import searchApi from '@api/searchApi';
+import RecipeName from '@components/common/RecipeName';
 import { useQuery } from '@tanstack/react-query';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
 const StyledSearchBarRelatedSearchs = styled.div`
-  & > p {
+  & > div {
     margin-bottom: 6px;
-    font-family: 'Pretendard-bold';
+
+    & > span {
+      font-family: 'Pretendard-bold';
+    }
+  }
+
+  & > p {
+    padding: 4px 6px;
   }
 
   & > ul {
-    margin: 4px 0;
     max-height: 135px;
     overflow-y: hidden;
 
@@ -21,9 +28,6 @@ const StyledSearchBarRelatedSearchs = styled.div`
       a {
         flex-grow: 1;
         text-align: start;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
       }
     }
 
@@ -32,9 +36,8 @@ const StyledSearchBarRelatedSearchs = styled.div`
     }
   }
 `;
-export default function SearchBarRelatedSearchs({ query }) {
-  if (!query) return null;
 
+export default function SearchBarRelatedSearchs({ query }) {
   const { data, isLoading } = useQuery({
     queryKey: ['searchBarSearching', query],
     queryFn: () => searchApi(query, 1, 5)
@@ -42,15 +45,23 @@ export default function SearchBarRelatedSearchs({ query }) {
 
   return (
     <StyledSearchBarRelatedSearchs>
-      <p>연관 검색어</p>
-      <ul>
-        {!isLoading &&
-          data.data.map(el => (
-            <li key={el.RECIPE_ID}>
-              <Link to={`/detail/${el.RECIPE_ID}`}>{el.NAME}</Link>
-            </li>
-          ))}
-      </ul>
+      <div>
+        <span>연관 검색어</span>
+      </div>
+      {!isLoading &&
+        (!data.total ? (
+          <p>검색 결과가 없습니다.</p>
+        ) : (
+          <ul>
+            {data.data.map(el => (
+              <li key={el.RECIPE_ID}>
+                <Link to={`/detail/${el.RECIPE_ID}`}>
+                  <RecipeName recipeName={el.NAME} query={query} />
+                </Link>
+              </li>
+            ))}
+          </ul>
+        ))}
     </StyledSearchBarRelatedSearchs>
   );
 }
