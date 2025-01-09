@@ -1,16 +1,16 @@
-import { Route, Routes } from 'react-router-dom';
 import styled from 'styled-components';
+import { useEffect } from 'react';
+import { Route, Routes } from 'react-router-dom';
+import { useSelector } from 'react-redux';
 
 import Suggest from '@pages/Suggest';
 import List from '@pages/List';
 import Search from '@pages/Search';
 import Detail from '@pages/Detail';
 
+import Header from '@components/layout/header/Header';
 import BottomNav from '@components/layout/BottomNav';
 import Modal from '@components/layout/modal/Modal';
-import { useSelector } from 'react-redux';
-import Header from '@components/layout/Header/Header';
-import { useEffect } from 'react';
 
 const StyledApp = styled.div`
   display: flex;
