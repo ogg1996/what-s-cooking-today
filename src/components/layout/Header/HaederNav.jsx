@@ -2,50 +2,41 @@ import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
-const StyledBottomNav = styled.nav`
-  display: none;
+const StyledHeaderNav = styled.nav`
+  display: flex;
+  align-items: center;
+  gap: 32px;
+
+  & > a {
+    display: flex;
+    align-items: center;
+    cursor: pointer;
+
+    gap: 6px;
+
+    img {
+      width: 24px;
+      height: 24px;
+    }
+  }
 
   @media (max-width: 1000px) {
-    display: flex;
-
-    z-index: 10;
-    position: fixed;
-    bottom: 0px;
-
-    width: 100%;
-    height: 52px;
-    padding: 0 16px;
-
-    background-color: #f6f1eb;
-    border-top: 1px solid #c4c4c4;
-
-    & > a {
-      flex-grow: 1;
-
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      align-items: center;
-
-      img {
-        width: 24px;
-        height: 24px;
-      }
-    }
+    display: none;
   }
 `;
 
-const ButtomNavItem = styled.span`
+const HeaderNavItem = styled.span`
   font-family: ${({ $active }) =>
     $active ? 'Pretendard-bold' : 'Pretendard-Medium'};
-  font-size: 12px;
+  font-size: 16px;
   color: ${({ $active }) => ($active ? '#e74c3c' : '#99806c;')};
 `;
 
-export default function BottomNav() {
+export default function HeaderNav() {
   const pageState = useSelector(state => state.pageState.page);
+
   return (
-    <StyledBottomNav>
+    <StyledHeaderNav>
       <Link to="/suggest">
         <img
           src={
@@ -55,9 +46,9 @@ export default function BottomNav() {
           }
           alt="아이콘"
         />
-        <ButtomNavItem $active={pageState === 'suggest'}>
+        <HeaderNavItem $active={pageState === 'suggest'}>
           메뉴 추천
-        </ButtomNavItem>
+        </HeaderNavItem>
       </Link>
       <Link to="/list/all">
         <img
@@ -68,10 +59,10 @@ export default function BottomNav() {
           }
           alt="아이콘"
         />
-        <ButtomNavItem $active={pageState === 'list'}>
+        <HeaderNavItem $active={pageState === 'list'}>
           레시피 목록
-        </ButtomNavItem>
+        </HeaderNavItem>
       </Link>
-    </StyledBottomNav>
+    </StyledHeaderNav>
   );
 }

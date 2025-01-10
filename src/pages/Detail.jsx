@@ -2,7 +2,7 @@ import styled from 'styled-components';
 import { useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { setPageState } from '@/redux';
+import { setPageState } from '@/store/pageStateSlice';
 import scrollToTop from '@utils/scrollToTop';
 import SkeletonBasicContainer from '@components/pages/detail/skeletons/SkeletonBasicContainer';
 import SkeletonIngerdientsContainer from '@components/pages/detail/skeletons/SkeletonIngredientsContainer';
@@ -31,7 +31,6 @@ const StyledDetail = styled.div`
 
 export default function Detail() {
   const dispatch = useDispatch();
-
   const param = useParams();
 
   const { data, isLoading } = useQuery({

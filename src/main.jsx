@@ -8,7 +8,9 @@ import '@styles/reset.css';
 import '@styles/font/Pretendard-Bold.css';
 import '@styles/font/Pretendard-Medium.css';
 import '@styles/font/Supermagic-Bold.css';
-import { store } from './redux';
+import store from '@store/store';
+import { PersistGate } from 'redux-persist/integration/react';
+import persistStore from 'redux-persist/es/persistStore';
 
 const GlobalStyle = createGlobalStyle`
   * {
@@ -46,13 +48,16 @@ const GlobalStyle = createGlobalStyle`
 `;
 
 const queryClient = new QueryClient();
+const persister = persistStore(store);
 
 createRoot(document.getElementById('root')).render(
   <QueryClientProvider client={queryClient}>
     <BrowserRouter>
       <GlobalStyle />
       <Provider store={store}>
-        <App />
+        <PersistGate loading={null} persistor={persister}>
+          <App />
+        </PersistGate>
       </Provider>
     </BrowserRouter>
   </QueryClientProvider>
