@@ -1,3 +1,4 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -40,11 +41,33 @@ const StyledSuggestItem = styled.div`
   }
 `;
 
+const ImgContainer = styled.div`
+  width: 200px;
+  aspect-ratio: 1 / 1;
+  border-radius: 4px;
+  background-color: #dddddd;
+
+  & > img {
+    width: 100%;
+    aspect-ratio: 1 /1;
+    border-radius: 4px;
+    opacity: ${({ $isImgLoaded }) => ($isImgLoaded ? 1 : 0)};
+    transition: transform 0.3s ease-in-out;
+  }
+
+  a:hover & > img {
+    transform: scale(1.2);
+  }
+`;
+
 export default function SuggestItem({ itemData }) {
+  const [isImgLoaded, setImgLoaded] = useState(false);
   if (itemData)
     return (
       <StyledSuggestItem>
-        <img src={itemData.IMG_URL} loading="lazy" />
+        <ImgContainer $isImgLoaded={isImgLoaded}>
+          <img src={itemData.IMG_URL} onLoad={() => setImgLoaded(true)} />
+        </ImgContainer>
         <p>
           오늘의 추천 음식은 <strong>{itemData.NAME}</strong> 입니다!
         </p>

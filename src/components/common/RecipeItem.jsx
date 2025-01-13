@@ -1,5 +1,5 @@
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Link } from 'react-router-dom';
 import styled from 'styled-components';
 
@@ -37,6 +37,7 @@ const ImgContainer = styled.div`
     width: 100%;
     aspect-ratio: 1 /1;
     border-radius: 4px;
+    opacity: ${({ $isImgLoaded }) => ($isImgLoaded ? 1 : 0)};
     transition: transform 0.3s ease-in-out;
   }
 
@@ -70,6 +71,7 @@ const RecipeInfo = styled.div`
 `;
 
 export default function RecipeItem({ itemData }) {
+  const [isImgLoaded, setImgLoaded] = useState(false);
   const { ref, isIntersecting } = useIntersectionObserver();
 
   if (itemData) {
@@ -82,8 +84,8 @@ export default function RecipeItem({ itemData }) {
     return (
       <StyledRecipeItem>
         <Link to={`/detail/${itemData.RECIPE_ID}`}>
-          <ImgContainer>
-            <img ref={ref} loading="lazy" />
+          <ImgContainer $isImgLoaded={isImgLoaded}>
+            <img ref={ref} onLoad={() => setImgLoaded(true)} />
           </ImgContainer>
           <RecipeInfo>
             <span>{itemData.NAME}</span>

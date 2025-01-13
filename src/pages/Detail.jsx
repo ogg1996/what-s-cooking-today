@@ -20,6 +20,7 @@ const StyledDetail = styled.div`
   max-width: 400px;
   margin: 0 20px;
   gap: 20px;
+  color: #685443;
 
   & > div {
     h3 {

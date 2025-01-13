@@ -14,6 +14,7 @@ const StyledBasicContainer = styled.div`
   }
   & > div {
     display: flex;
+    color: #888888;
     justify-content: end;
     gap: 15px;
   }
@@ -21,6 +22,7 @@ const StyledBasicContainer = styled.div`
   & > img {
     width: 100%;
     border-radius: 20px;
+    background-color: #dddddd;
   }
 `;
 
