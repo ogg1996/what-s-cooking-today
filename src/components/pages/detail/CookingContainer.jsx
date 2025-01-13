@@ -28,6 +28,9 @@ const CookingList = styled.div`
     span {
       color: #888888;
     }
+    img {
+      border-radius: 20px;
+    }
   }
   & > div:last-child {
     padding-bottom: 0;
