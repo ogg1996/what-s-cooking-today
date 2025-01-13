@@ -16,7 +16,7 @@ jobs:
         run: npm i
 
       - name: env 파일 생성
-        run: echo "VITE_DB_URL=${{ secrets.VITE_API_URL }}" >> .env
+        run: echo "VITE_API_URL=${{ secrets.VITE_API_URL }}" >> .env
 
       - name: 빌드
         run: npm run build
