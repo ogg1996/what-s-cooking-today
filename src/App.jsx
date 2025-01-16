@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { keyframes } from 'styled-components';
 import { useEffect } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
@@ -11,6 +11,7 @@ import Detail from '@pages/Detail';
 import Header from '@components/layout/header/Header';
 import BottomNav from '@components/layout/BottomNav';
 import Modal from '@components/layout/modal/Modal';
+import scrollToTop from '@utils/scrollToTop';
 
 const StyledApp = styled.div`
   display: flex;
@@ -29,8 +30,66 @@ const StyledApp = styled.div`
   }
 `;
 
+const topButtonHoverAnim = keyframes`
+  0% {
+    transform: translateY(0);
+  }
+  10% {
+    transform: translateY(-3%);
+  }
+  20% {
+    transform: translateY(-6%);
+  }
+  30% {
+    transform: translateY(-9%);
+  }
+  40% {
+    transform: translateY(-12%);
+  }
+  50% {
+    transform: translateY(-15%);
+  }
+  60% {
+    transform: translateY(-12%);
+  }
+  70% {
+    transform: translateY(-9%);
+  }
+  80% {
+    transform: translateY(-6%);
+  }
+  90% {
+    transform: translateY(-3%);
+  }
+  100% {
+    transform: translateY(0%);
+  }
+`;
+
+const TopButton = styled.button`
+  position: fixed;
+
+  right: 20px;
+  bottom: 20px;
+
+  width: 48px;
+  height: 48px;
+
+  border-radius: 50%;
+
+  @media (max-width: 1000px) {
+    right: 10px;
+    bottom: 60px;
+  }
+
+  &:hover {
+    animation: ${topButtonHoverAnim} 0.5s infinite;
+  }
+`;
+
 export default function App() {
   const modalState = useSelector(state => state.modalState.modal);
+  const pageState = useSelector(state => state.pageState.page);
 
   useEffect(() => {
     if (modalState) {
@@ -39,7 +98,6 @@ export default function App() {
       document.body.style.overflowY = 'auto';
     }
   }, [modalState]);
-
   return (
     <>
       {modalState && <Modal />}
@@ -54,6 +112,13 @@ export default function App() {
         </Routes>
       </StyledApp>
       <BottomNav />
+      {(pageState === 'list' ||
+        pageState === 'detail' ||
+        pageState === 'search') && (
+        <TopButton type="button" onClick={() => scrollToTop('smooth')}>
+          <img src="/icons/icon-arrow-top.png" />
+        </TopButton>
+      )}
     </>
   );
 }
