@@ -79,7 +79,7 @@ const TopButton = styled.button`
 
   @media (max-width: 1000px) {
     right: 10px;
-    bottom: 60px;
+    bottom: 72px;
   }
 
   &:hover {
@@ -98,6 +98,7 @@ export default function App() {
       document.body.style.overflowY = 'auto';
     }
   }, [modalState]);
+
   return (
     <>
       {modalState && <Modal />}

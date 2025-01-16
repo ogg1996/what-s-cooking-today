@@ -30,12 +30,11 @@ const GlobalStyle = createGlobalStyle`
   }
 
   ::-webkit-scrollbar {
-    width: 5px;
+    width: 8px;
   }
 
   ::-webkit-scrollbar-thumb {
-    background: #cccccc;
-    border-radius: 2.5px;
+    background: #d68b44;
   }
 
   ::-webkit-scrollbar-button:start:decrement,
