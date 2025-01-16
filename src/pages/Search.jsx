@@ -1,12 +1,12 @@
 import { useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useNavigationType, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
 import { setPageState } from '@/store/pageStateSlice';
 import scrollToTop from '@utils/scrollToTop';
 import RecipeItems from '@components/common/RecipeItems';
 import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
-import { useInfiniteQuery } from '@tanstack/react-query';
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
 import useIntersectionObserver from '@hooks/useIntersectionObserver';
 import LoadingSpiner from '@components/common/LoadingSpiner';
 import SkeletonText from '@components/common/skeletons/SkeletonText';
@@ -33,24 +33,40 @@ export default function Search() {
   const dispatch = useDispatch();
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
+  const queryClient = useQueryClient();
+
+  const useNaviType = useNavigationType();
+
+  const queryKey = ['search', query];
+
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch
+  } = useInfiniteQuery({
+    queryKey: ['search', query],
+    queryFn: ({ pageParam }) => searchApi(query, pageParam, 12),
+    getNextPageParam: last => {
+      if (last.page >= last.totalPages) return undefined;
+      return last.page + 1;
+    },
+    initialPageParam: 1
+  });
+
+  const { ref, isIntersecting } = useIntersectionObserver();
 
   useEffect(() => {
+    if (useNaviType === 'PUSH') {
+      queryClient.removeQueries({ queryKey });
+      refetch();
+    }
+
     scrollToTop();
     dispatch(setPageState('search'));
   }, [query]);
-
-  const { data, isLoading, fetchNextPage, hasNextPage, isFetchingNextPage } =
-    useInfiniteQuery({
-      queryKey: ['search', query],
-      queryFn: ({ pageParam }) => searchApi(query, pageParam, 12),
-      getNextPageParam: last => {
-        if (last.page >= last.totalPages) return undefined;
-        return last.page + 1;
-      },
-      initialPageParam: 1
-    });
-
-  const { ref, isIntersecting } = useIntersectionObserver();
 
   useEffect(() => {
     if (isIntersecting && hasNextPage && !isFetchingNextPage) {

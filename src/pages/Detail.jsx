@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { useParams } from 'react-router-dom';
+import { useNavigationType, useParams } from 'react-router-dom';
 import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
 import { setPageState } from '@/store/pageStateSlice';
@@ -10,7 +10,7 @@ import SkeletonCookingContainer from '@components/pages/detail/skeletons/Skeleto
 import BasicContainer from '@components/pages/detail/BasicContainer';
 import IngredientsContainer from '@components/pages/detail/IngredientsContainer';
 import CookingContainer from '@components/pages/detail/CookingContainer';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
 import detailAPi from '@api/detailApi';
 
 const StyledDetail = styled.div`
@@ -33,13 +33,22 @@ const StyledDetail = styled.div`
 export default function Detail() {
   const dispatch = useDispatch();
   const param = useParams();
+  const queryClient = useQueryClient();
+
+  const useNaviType = useNavigationType();
+
+  const queryKey = ['detail', param.id];
 
   const { data, isLoading } = useQuery({
-    queryKey: ['detail', param.id],
+    queryKey,
     queryFn: () => detailAPi(param.id)
   });
 
   useEffect(() => {
+    if (useNaviType === 'PUSH') {
+      queryClient.removeQueries({ queryKey });
+    }
+
     scrollToTop();
     dispatch(setPageState('detail'));
   }, []);

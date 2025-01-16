@@ -8,7 +8,8 @@ import SuggestBox from '@components/pages/suggest/SuggestBox';
 import SuggestBtn from '@components/pages/suggest/SuggestBtn';
 import SuggestFoodTypes from '@components/pages/suggest/SuggestFoodTypes';
 import suggestApi from '@api/suggestApi';
-import { useQuery } from '@tanstack/react-query';
+import { useQuery, useQueryClient } from '@tanstack/react-query';
+import { useNavigationType } from 'react-router-dom';
 
 const StyledSuggest = styled.div`
   width: 450px;
@@ -25,14 +26,28 @@ const StyledSuggest = styled.div`
 
 export default function Suggest() {
   const dispatch = useDispatch();
+  const queryClient = useQueryClient();
   const [selected, setSelected] = useState('all');
   const [isRecommend, setIsRecommend] = useState(false);
 
+  const useNaviType = useNavigationType();
+
+  const queryKey = ['suggest'];
+
   const { data, refetch } = useQuery({
-    queryKey: ['suggest'],
+    queryKey,
     queryFn: () => suggestApi(selected),
     enabled: false
   });
+
+  useEffect(() => {
+    if (useNaviType === 'PUSH') {
+      queryClient.removeQueries({ queryKey });
+    }
+
+    scrollToTop();
+    dispatch(setPageState('suggest'));
+  }, []);
 
   const handleClick = () => {
     if (isRecommend) return;
@@ -42,11 +57,6 @@ export default function Suggest() {
     refetch();
     setIsRecommend(true);
   };
-
-  useEffect(() => {
-    scrollToTop();
-    dispatch(setPageState('suggest'));
-  }, []);
 
   return (
     <StyledSuggest>

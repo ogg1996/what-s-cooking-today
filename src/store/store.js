@@ -1,9 +1,9 @@
 import { combineReducers, configureStore } from '@reduxjs/toolkit';
 import storage from 'redux-persist/lib/storage';
 import persistReducer from 'redux-persist/es/persistReducer';
-import { pageStateSlice } from './pageStateSlice';
-import { searchHistorySlice } from './searchHistorySlice';
-import { modalStateSlice } from './modalStateSlice';
+import { modalStateSlice } from '@store/modalStateSlice';
+import { pageStateSlice } from '@store/pageStateSlice';
+import { searchHistorySlice } from '@store/searchHistorySlice';
 
 const persistConfig = {
   key: 'root',
