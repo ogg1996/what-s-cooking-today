@@ -8,6 +8,7 @@ import SuggestBox from '@components/pages/suggest/SuggestBox';
 import SuggestBtn from '@components/pages/suggest/SuggestBtn';
 import SuggestFoodTypes from '@components/pages/suggest/SuggestFoodTypes';
 import suggestApi from '@api/suggestApi';
+import { useQuery } from '@tanstack/react-query';
 
 const StyledSuggest = styled.div`
   width: 450px;
@@ -25,18 +26,21 @@ const StyledSuggest = styled.div`
 export default function Suggest() {
   const dispatch = useDispatch();
   const [selected, setSelected] = useState('all');
-  const [itemData, setItemData] = useState(null);
   const [isRecommend, setIsRecommend] = useState(false);
+
+  const { data, refetch } = useQuery({
+    queryKey: ['suggest'],
+    queryFn: () => suggestApi(selected),
+    enabled: false
+  });
 
   const handleClick = () => {
     if (isRecommend) return;
     setTimeout(() => {
       setIsRecommend(false);
     }, 1500);
-    suggestApi(selected).then(res => {
-      setItemData(res);
-      setIsRecommend(true);
-    });
+    refetch();
+    setIsRecommend(true);
   };
 
   useEffect(() => {
@@ -47,7 +51,7 @@ export default function Suggest() {
   return (
     <StyledSuggest>
       <CommentBox />
-      <SuggestBox itemData={itemData} isRecommend={isRecommend} />
+      <SuggestBox itemData={data} isRecommend={isRecommend} />
       <SuggestFoodTypes selected={selected} setSelected={setSelected} />
       <SuggestBtn isRecommend={isRecommend} handleClick={handleClick} />
     </StyledSuggest>

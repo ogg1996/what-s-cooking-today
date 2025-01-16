@@ -34,10 +34,8 @@ const StyledSuggestItem = styled.div`
     border-radius: 8px;
     cursor: pointer;
   }
-
-  & > a:hover {
-    transform: scale(1.1);
-    transition: 0.2s;
+  a:hover {
+    background-color: #d68b44;
   }
 `;
 
@@ -53,10 +51,6 @@ const ImgContainer = styled.div`
     border-radius: 4px;
     opacity: ${({ $isImgLoaded }) => ($isImgLoaded ? 1 : 0)};
     transition: transform 0.3s ease-in-out;
-  }
-
-  a:hover & > img {
-    transform: scale(1.2);
   }
 `;
 
