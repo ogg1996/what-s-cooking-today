@@ -1,51 +1,80 @@
 import styled from 'styled-components';
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { useAxiosData } from '@/hooks/useAxiosData';
-import { setPageState } from '@/redux';
-import RecipeItems from '@components-common/RecipeItems';
-import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
-import Category from '@components-common/Category';
-import { useScrollToY } from '@/hooks/useScrollToY';
+import { setPageState } from '@/store/pageStateSlice';
+import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
+import RecipeItems from '@components/common/RecipeItems';
+import scrollToTop from '@utils/scrollToTop';
+import LoadingSpiner from '@components/common/LoadingSpiner';
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import { useNavigationType, useParams } from 'react-router-dom';
+import ListFoodTypes from '@components/pages/list/ListFoodTypes';
+import listApi from '@api/listApi';
 
 const StyledList = styled.div`
   flex-direction: column;
   display: flex;
   align-items: center;
-  gap: 20px;
+  width: 100%;
 `;
 
 export default function List() {
   const dispatch = useDispatch();
+  const param = useParams();
+  const queryClient = useQueryClient();
 
-  const [selected, setSelected] = useState('전체');
-  const [recipeItems, setRecipeItems] = useState(null);
+  const useNaviType = useNavigationType();
 
-  const { VITE_DB_URL } = import.meta.env;
-  const endurl =
-    selected === '전체'
-      ? `${VITE_DB_URL}/basic?_page=1&_limit=20`
-      : `${VITE_DB_URL}/basic?TYPE=${selected}&_page=1&_limit=20`;
+  const queryKey = ['list', param.type];
+
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch
+  } = useInfiniteQuery({
+    queryKey,
+    queryFn: ({ pageParam }) => listApi(param.type, pageParam, 12),
+    getNextPageParam: last => {
+      if (last.page === last.totalPages) return undefined;
+      return last.page + 1;
+    },
+    initialPageParam: 1
+  });
 
   useEffect(() => {
-    useScrollToY(0);
+    if (useNaviType === 'PUSH') {
+      queryClient.removeQueries({ queryKey });
+      refetch();
+    }
+
+    scrollToTop();
     dispatch(setPageState('list'));
-  }, []);
+  }, [param.type]);
+
+  const { ref, isIntersecting } = useIntersectionObserver();
 
   useEffect(() => {
-    setRecipeItems(null);
-    useAxiosData(endurl).then(res => {
-      const resData = res.data;
-      setRecipeItems(resData);
-    });
-  }, [selected]);
+    if (isIntersecting && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [isIntersecting]);
+
   return (
     <StyledList>
-      <Category selected={selected} setSelected={setSelected} />
-      {recipeItems ? (
-        <RecipeItems recipeItems={recipeItems} />
+      <ListFoodTypes />
+      {!isLoading && data ? (
+        <RecipeItems data={data} />
       ) : (
         <SkeletonRecipeItems />
+      )}
+      {hasNextPage && (
+        <div ref={ref}>
+          <LoadingSpiner />
+        </div>
       )}
     </StyledList>
   );

@@ -1,66 +1,99 @@
-import { useEffect, useState } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useEffect } from 'react';
+import { useNavigationType, useSearchParams } from 'react-router-dom';
 import styled from 'styled-components';
 import { useDispatch } from 'react-redux';
-import RecipeItems from '@components-common/RecipeItems';
-import SkeletonRecipeItems from '@skeletons-common/SkeletonRecipeItems';
-import { setPageState } from '@/redux';
-import { useAxiosData } from '@/hooks/useAxiosData';
-import { useScrollToY } from '@/hooks/useScrollToY';
+import { setPageState } from '@/store/pageStateSlice';
+import scrollToTop from '@utils/scrollToTop';
+import RecipeItems from '@components/common/RecipeItems';
+import SkeletonRecipeItems from '@components/common/skeletons/SkeletonRecipeItems';
+import { useInfiniteQuery, useQueryClient } from '@tanstack/react-query';
+import useIntersectionObserver from '@hooks/useIntersectionObserver';
+import LoadingSpiner from '@components/common/LoadingSpiner';
+import SkeletonText from '@components/common/skeletons/SkeletonText';
+import searchApi from '@api/searchApi';
 
 const StyledSearch = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  gap: 30px;
+
+  max-width: 1024px;
+  width: 100%;
 
   & > p {
     padding: 0 10px;
-    width: 660px;
 
-    @media (max-width: 675px) {
-      max-width: 440px;
-    }
-    @media (max-width: 461px) {
-      max-width: 370px;
-    }
+    font-size: 20px;
+    text-align: center;
+    color: #685443;
   }
 `;
 
 export default function Search() {
   const dispatch = useDispatch();
-
-  const [recipeItems, setRecipeItems] = useState(null);
-
   const [searchParams] = useSearchParams();
   const query = searchParams.get('query');
-  const { VITE_DB_URL } = import.meta.env;
+  const queryClient = useQueryClient();
+
+  const useNaviType = useNavigationType();
+
+  const queryKey = ['search', query];
+
+  const {
+    data,
+    isLoading,
+    fetchNextPage,
+    hasNextPage,
+    isFetchingNextPage,
+    refetch
+  } = useInfiniteQuery({
+    queryKey: ['search', query],
+    queryFn: ({ pageParam }) => searchApi(query, pageParam, 12),
+    getNextPageParam: last => {
+      if (last.page >= last.totalPages) return undefined;
+      return last.page + 1;
+    },
+    initialPageParam: 1
+  });
+
+  const { ref, isIntersecting } = useIntersectionObserver();
 
   useEffect(() => {
-    useScrollToY(0);
+    if (useNaviType === 'PUSH') {
+      queryClient.removeQueries({ queryKey });
+      refetch();
+    }
+
+    scrollToTop();
     dispatch(setPageState('search'));
-  }, []);
+  }, [query]);
 
   useEffect(() => {
-    setRecipeItems(null);
-    useAxiosData(`${VITE_DB_URL}/basic?NAME_like=${query}`).then(res => {
-      const resData = res.data;
-      setRecipeItems(resData);
-    });
-  }, [searchParams]);
+    if (isIntersecting && hasNextPage && !isFetchingNextPage) {
+      fetchNextPage();
+    }
+  }, [isIntersecting]);
 
   return (
     <StyledSearch>
-      {recipeItems ? (
+      {!isLoading && data ? (
         <>
           <p>
-            &apos;{query}&apos; &#40;으&#41;로 검색한 결과는 총{' '}
-            {recipeItems.length}건 입니다.
+            <strong>{query}</strong> &#40;으&#41;로 검색한 결과 &#40;
+            {data.pages[0].total}건&#41;
           </p>
-          <RecipeItems recipeItems={recipeItems} />
+          <RecipeItems data={data} />
         </>
       ) : (
-        <SkeletonRecipeItems />
+        <>
+          <SkeletonText width="250px" height="19px" />
+          <SkeletonRecipeItems />
+        </>
+      )}
+      {hasNextPage && (
+        <div ref={ref}>
+          <LoadingSpiner />
+        </div>
       )}
     </StyledSearch>
   );
