@@ -1,11 +1,8 @@
 # 🍳 오늘 뭐 해먹지?
 > **음식 레시피를 추천하거나 제공하는 사이트**
 
-## 📌 프로젝트 소개
-이 프로젝트는 음식 메뉴를 추천해주고 조리법을 알려주는 사이트입니다.
-
-### 🛠 사용 기술
-#### 📌 **Frontend**
+## 🛠 사용 기술
+### 📌 **Frontend**
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
 ![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-%232764D3?logo=redux&logoColor=white)
 ![React Query](https://img.shields.io/badge/React%20Query-%23FF4154?logo=reactquery&logoColor=white)
@@ -13,17 +10,16 @@
 ![Styled-components](https://img.shields.io/badge/Styled--Components-%23DB7093?logo=styled-components&logoColor=white)
 ![Axios](https://img.shields.io/badge/Axios-%23007EC6?logo=axios&logoColor=white)
 
-#### 🏗 **Build & Development**
+### 🏗 **Build & Development**
 ![Vite](https://img.shields.io/badge/Vite-%23646CFF?logo=vite&logoColor=white)
 ![ESLint](https://img.shields.io/badge/ESLint-%234B32C3?logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-%23F7B93E?logo=prettier&logoColor=white)
 
-#### 🚀 **Build & Deployment**
-![Vite Build](https://img.shields.io/badge/Vite%20Build-%23646CFF?logo=vite&logoColor=white)
-![Vite Preview](https://img.shields.io/badge/Vite%20Preview-%23646CFF?logo=vite&logoColor=white)
+## 📊 레퍼런스
+이 프로젝트는 [**먹방맵**](https://www.mukbangmap.com/menuFinder)을 밴치마킹하여 제작했습니다.
 
-### 📊 레퍼런스
-- [먹방맵](https://www.mukbangmap.com/menuFinder)
+## 📌 프로젝트 소개
+### 1️⃣ 반응형 디자인
 
 ## 🚀 시작하기
 
