@@ -19,14 +19,11 @@ const StyledApp = styled.div`
 
   width: 100%;
   min-height: 100vh;
-  padding-top: 94px;
+  padding-top: 84px;
   padding-bottom: 30px;
 
   @media (max-width: 1000px) {
     padding-bottom: 82px;
-  }
-  @media (max-width: 500px) {
-    padding-top: 114px;
   }
 `;
 
