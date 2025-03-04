@@ -18,49 +18,83 @@
 ## 📊 레퍼런스
 이 프로젝트는 [**먹방맵**](https://www.mukbangmap.com/menuFinder)을 밴치마킹하여 제작했습니다.
 
-### 📌 프로젝트 소개
-#### 1️⃣ 반응형 디자인
+## 📌 프로젝트 소개
+### 1️⃣ 반응형 디자인
+  - **미디어 쿼리를 활용하여 화면 크기에 따라 자동으로 조정되는 반응형 디자인을 구현하였습니다.**
+
+<br>
 
 **추천 페이지**
 <table>
-  <tr>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%B6%94%EC%B2%9C.PNG"></td>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%B6%94%EC%B2%9C.PNG"></td>
-  </tr>
+    <tr>
+      <td><strong>웹</strong></td>
+      <td><strong>모바일</strong></td>
+    </tr>
+    <tr>
+      <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%B6%94%EC%B2%9C.PNG"></td>
+      <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%B6%94%EC%B2%9C.PNG"></td>
+    </tr>
 </table>
+
+<br>
 
 **목록 페이지**
 <table>
+  <tr>
+    <td><strong>웹</strong></td>
+    <td><strong>모바일</strong></td>
+  </tr>
   <tr>
     <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EB%AA%A9%EB%A1%9D.PNG"></td>
     <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EB%AA%A9%EB%A1%9D.PNG"></td>
   </tr>
 </table>
 
+<br>
+
 **상세 페이지**
 <table>
+  <tr>
+    <td><strong>웹</strong></td>
+    <td><strong>모바일</strong></td>
+  </tr>
   <tr>
     <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%83%81%EC%84%B8.PNG"></td>
     <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%83%81%EC%84%B8.PNG"></td>
   </tr>
 </table>
 
+<br>
+
 **검색 페이지**
+<br>
+
 <table>
+  <tr>
+    <td><strong>웹</strong></td>
+    <td><strong>모바일</strong></td>
+  </tr>
   <tr>
     <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EA%B2%80%EC%83%89.PNG"></td>
     <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EA%B2%80%EC%83%89.PNG"></td>
   </tr>
 </table>
 
+<br>
+
 **검색 창**
 <table>
+  <tr>
+    <td><strong>웹</strong></td>
+    <td><strong>모바일</strong></td>
+  </tr>
   <tr>
     <td valign="top"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EA%B2%80%EC%83%89%EC%B0%BD.PNG"></td>
     <td valign="top"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EA%B2%80%EC%83%89%EC%B0%BD.PNG"></td>
   </tr>
 </table>
 
+<br>
 
 ## 🚀 시작하기
 
