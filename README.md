@@ -95,7 +95,24 @@
 <br>
 
 ### 2️⃣ UI/UX 개선
-> 호버 효과(버튼, 아이템)
+> 호버 효과
+
+**버튼과 레시피 아이템에 호버 효과를 적용하여 UI를 개선하였습니다.**
+
+<table>
+    <tr>
+        <td><strong>일반 버튼</strong></td>
+        <td><strong>레시피 아이템</strong></td>
+        <td><strong>탑 버튼</strong></td>
+    </tr>
+    <tr>
+        <td valign="middle"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%EB%B2%84%ED%8A%BC.gif"></td>
+        <td valign="middle"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%EB%A0%88%EC%8B%9C%ED%94%BC.gif"></td>
+        <td valign="middle"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%ED%83%91%EB%B2%84%ED%8A%BC.gif"></td>
+    </tr>
+</table>
+
+<br>
 
 > 스켈레톤 컴포넌트 (로딩 중 사용자 경험 개선)
 
