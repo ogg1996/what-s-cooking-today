@@ -23,68 +23,38 @@
 > 미디어 쿼리를 활용하여 화면 크기에 따라 자동으로 조정되는 반응형 디자인을 구현하였습니다.
 
 **추천 페이지**
-<table>
-    <tr>
-      <td><strong>웹</strong></td>
-      <td><strong>모바일</strong></td>
-    </tr>
-    <tr>
-      <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%B6%94%EC%B2%9C.PNG"></td>
-      <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%B6%94%EC%B2%9C.PNG"></td>
-    </tr>
-</table>
+|웹|모바일|
+|---|---|
+|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%B6%94%EC%B2%9C.PNG)|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%B6%94%EC%B2%9C.PNG)|
 
 <br>
 
 **목록 페이지**
-<table>
-  <tr>
-    <td><strong>웹</strong></td>
-    <td><strong>모바일</strong></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EB%AA%A9%EB%A1%9D.PNG"></td>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EB%AA%A9%EB%A1%9D.PNG"></td>
-  </tr>
-</table>
+|웹|모바일|
+|---|---|
+|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EB%AA%A9%EB%A1%9D.PNG)|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EB%AA%A9%EB%A1%9D.PNG)|
 
 <br>
 
 **상세 페이지**
-<table>
-  <tr>
-    <td><strong>웹</strong></td>
-    <td><strong>모바일</strong></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%83%81%EC%84%B8.PNG"></td>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%83%81%EC%84%B8.PNG"></td>
-  </tr>
-</table>
+|웹|모바일|
+|---|---|
+|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EC%83%81%EC%84%B8.PNG)|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EC%83%81%EC%84%B8.PNG)|
 
 <br>
 
 **검색 페이지**
-<br>
-
-<table>
-  <tr>
-    <td><strong>웹</strong></td>
-    <td><strong>모바일</strong></td>
-  </tr>
-  <tr>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EA%B2%80%EC%83%89.PNG"></td>
-    <td><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EA%B2%80%EC%83%89.PNG"></td>
-  </tr>
-</table>
+|웹|모바일|
+|---|---|
+|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EA%B2%80%EC%83%89.PNG)|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EB%AA%A8%EB%B0%94%EC%9D%BC_%EA%B2%80%EC%83%89.PNG)
 
 <br>
 
 **검색 창**
 <table>
   <tr>
-    <td><strong>웹</strong></td>
-    <td><strong>모바일</strong></td>
+    <th><strong>웹</strong></th>
+    <th><strong>모바일</strong></th>
   </tr>
   <tr>
     <td valign="top"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/%EC%9B%B9_%EA%B2%80%EC%83%89%EC%B0%BD.PNG"></td>
@@ -101,13 +71,17 @@
 
 <table>
     <tr>
-        <td><strong>일반 버튼</strong></td>
-        <td><strong>레시피 아이템</strong></td>
-        <td><strong>탑 버튼</strong></td>
+        <th><strong>일반 버튼</strong></th>
+        <th><strong>레시피 아이템</strong></th>
     </tr>
     <tr>
-        <td valign="middle"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%EB%B2%84%ED%8A%BC.gif"></td>
+        <td rowspan="3"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%EB%B2%84%ED%8A%BC.gif"></td>
         <td valign="middle"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%EB%A0%88%EC%8B%9C%ED%94%BC.gif"></td>
+    </tr>
+    <tr style="height: 37px;">
+        <th style="height: 37px;"><strong>탑 버튼</strong></th>
+    </tr>
+    <tr>
         <td valign="middle"><img src="https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%ED%98%B8%EB%B2%84_%ED%83%91%EB%B2%84%ED%8A%BC.gif"></td>
     </tr>
 </table>
