@@ -20,7 +20,7 @@
 
 ## 📌 기능 소개 및 기술적 접근
 ### 1️⃣ 반응형 디자인
-> 미디어 쿼리를 활용하여 화면 크기에 따라 자동으로 조정되는 반응형 디자인을 구현하였습니다.
+> **미디어 쿼리를 활용하여 화면 크기에 따라 자동으로 조정되는 반응형 디자인을 구현하였습니다.**
 
 **추천 페이지**
 |웹|모바일|
@@ -64,8 +64,8 @@
 
 <br>
 
-### 2️⃣ UI/UX 개선
-> 호버 효과
+### 2️⃣ UI/UX
+> **호버 효과**
 
 **버튼과 레시피 아이템에 호버 효과를 적용하여 UI를 개선하였습니다.**
 
@@ -88,25 +88,39 @@
 
 <br>
 
-> 스켈레톤 컴포넌트 (로딩 중 사용자 경험 개선)
+> **스켈레톤 컴포넌트**
 
-> 간단한 추천 애니메이션 적용(로딩 중 사용자 경험 개선)
+|목록|상세보기|
+|---|---|
+|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%EC%8A%A4%EC%BC%88%EB%A0%88%ED%86%A4_%EB%AA%A9%EB%A1%9D.gif)|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%EC%8A%A4%EC%BC%88%EB%A0%88%ED%86%A4_%EC%83%81%EC%84%B8.gif)|
 
-> 선택한 메뉴 하이라이트 효과
+
+> **간단한 추천 애니메이션 적용(로딩 중 사용자 경험 개선)**
+
+|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%EC%B6%94%EC%B2%9C.gif)|
 
 ### 3️⃣ 검색 기능
-> 검색 히스토리 (사용자가 검색한 기록 저장 및 활용)
+> **검색 히스토리**
 
-> 연관 검색어 자동 완성 (API 데이터 기반)
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC.gif)
 
-> 연관 검색어 하이라이트 (검색어 일치 부분 강조)
+> **연관 검색어 자동 완성 및 일치하는 부분 하이라이트 기능**
+
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%EC%97%B0%EA%B4%80%EA%B2%80%EC%83%89.gif)
+
 
 ### 4️⃣ 성능 최적화
-> 인피니티 스크롤 (스크롤 기반 동적 데이터 로딩)
+> **인피니티 스크롤** (스크롤 기반 동적 데이터 로딩)
 
-> 폰트 다이나믹 서브셋 (필요한 글자만 로드하여 최적화)
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_InfiniteScroll.gif)
 
-> 이미지 레이지 로딩 (Intersection Observer 활용)
+> **폰트 다이나믹 서브셋** (필요한 글자만 로드하여 최적화)
+
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_DynamicSubset.gif)
+
+> **이미지 레이지 로딩** (Intersection Observer 활용)
+
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_ImageLazyLoading.gif)
 
 ## 🚀 시작하기
 
