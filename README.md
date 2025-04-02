@@ -15,14 +15,16 @@
 ![ESLint](https://img.shields.io/badge/ESLint-%234B32C3?logo=eslint&logoColor=white)
 ![Prettier](https://img.shields.io/badge/Prettier-%23F7B93E?logo=prettier&logoColor=white)
 
+
 ## 📊 레퍼런스
 이 프로젝트는 [**먹방맵**](https://www.mukbangmap.com/menuFinder)을 밴치마킹하여 제작했습니다.
 
 ## 📌 기능 소개 및 기술적 접근
-### 1️⃣ 반응형 디자인
-> **미디어 쿼리를 활용하여 각 페이지가 화면 크기의 변화에 따라 화면이 조정되도록 만들었습니다.**
 
-#### 추천 페이지
+### 1️⃣ 반응형 디자인
+> **Media Query를 활용하여 화면 크기(PC/모바일)에 따라 자동으로 레이아웃이 최적화되도록 구현했습니다.**
+
+#### 🎲 추천 페이지
 
 |웹|모바일|
 |---|---|
@@ -30,7 +32,7 @@
 
 <br>
 
-#### 목록 페이지
+#### 🗂️ 목록 페이지
 
 |웹|모바일|
 |---|---|
@@ -38,7 +40,7 @@
 
 <br>
 
-#### 상세 페이지
+#### 📖 상세 페이지
 
 |웹|모바일|
 |---|---|
@@ -46,7 +48,7 @@
 
 <br>
 
-#### 검색 페이지
+#### 🔎 검색결과 페이지
 
 |웹|모바일|
 |---|---|
@@ -56,8 +58,8 @@
 
 ### 2️⃣ UI/UX
 
-#### 검색 창
-> **Redux를 활용하여 모달을 상태로 관리하였습니다. 모바일 환경에서 돋보기 버튼을 클릭시 검색 창 모달이 나오도록 설계하였습니다.**
+#### 🔍 검색 창
+> **Redux로 모달 상태를 관리하였으며, PC 환경에서는 검색바를 상시 노출하고, 모바일 환경에서는 돋보기 버튼 클릭 시 검색 창 모달이 활성화되도록 구현했습니다.**
 
 <table>
   <tr>
@@ -72,14 +74,13 @@
 
 <br>
 
-#### 네비 하이라이트
-> **Redux를 활용하여 현재 페이지를 상태로 관리했습니다. 현재 페이지 네비 바 하이라이트 기능을 구현했습니다.**
+#### 📍 네비게이션 탭 하이라이트
+> **Redux를 통해 현재 페이지 상태를 관리하고, 해당 상태를 기반으로 네비게이션 바에서 활성화된 탭이 시각적으로 강조되도록 구현했습니다.**
 
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_NavIndicator.gif)
 
-
-
-#### 호버 효과
-> **버튼과 레시피 아이템에 호버 효과를 적용하여 UI를 개선하였습니다.**
+#### ✨ 호버 효과
+> **CSS의 `:hover` 선택자를 활용하여 버튼과 레시피 아이템에 마우스 오버 시 인터랙션 효과를 적용했습니다.**
 
 <table>
     <tr>
@@ -100,18 +101,19 @@
 
 <br>
 
-#### 스켈레톤 컴포넌트
-> 
+#### 🦴 스켈레톤 컴포넌트
+> **텍스트와 이미지용 베이스 스켈레톤 컴포넌트를 제작하여 재사용성을 높였으며, 이를 기반으로 다양한 스켈레톤 UI를 구현했습니다.**
 
 |목록|상세보기|
 |---|---|
 |![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%EC%8A%A4%EC%BC%88%EB%A0%88%ED%86%A4_%EB%AA%A9%EB%A1%9D.gif)|![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%EC%8A%A4%EC%BC%88%EB%A0%88%ED%86%A4_%EC%83%81%EC%84%B8.gif)|
 
 
-#### 간단한 추천 애니메이션 적용
-> temp
+#### 🍽️ 간단한 추천 애니메이션 적용
+> **CSS의 `@keyframes`와 `animation` 속성을 활용하여 음식 추천을 할 때 부드러운 애니메이션 효과를 구현했습니다.**
 
-![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_%EC%B6%94%EC%B2%9C.gif)
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_suggestAnim.gif)
+
 
 ### 3️⃣ 검색 기능
 
