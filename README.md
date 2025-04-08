@@ -117,7 +117,7 @@
 
 ### 3️⃣ 검색 기능
 
-#### 검색 히스토리
+#### 검색기록 저장, 삭제 기능
 > temp
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC.gif)
