@@ -118,12 +118,12 @@
 ### 3️⃣ 검색 기능
 
 #### 검색기록 저장, 삭제 기능
-> temp
+> Redux와 Redux-persist를 활용하여 검색기록을 로컬
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC.gif)
 
 #### 연관 검색어 자동 완성 및 일치하는 부분 하이라이트 기능
-> temp
+> 
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%EC%97%B0%EA%B4%80%EA%B2%80%EC%83%89.gif)
 
