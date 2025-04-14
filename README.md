@@ -19,10 +19,10 @@
 ## 📊 레퍼런스
 이 프로젝트는 [**먹방맵**](https://www.mukbangmap.com/menuFinder)을 밴치마킹하여 제작했습니다.
 
-## 📌 기능 소개 및 기술적 접근
+## 📌 기능 소개
 
 ### 1️⃣ 반응형 디자인
-> **Media Query를 활용하여 화면 크기(PC/모바일)에 따라 자동으로 레이아웃이 최적화되도록 구현했습니다.**
+> **Media Query를 활용해 PC/모바일 환경에 따라 레이아웃이 자동으로 최적화되도록 구현했습니다.**
 
 #### 🎲 추천 페이지
 
@@ -75,12 +75,12 @@
 <br>
 
 #### 📍 네비게이션 탭 하이라이트
-> **Redux를 사용해 현재 페이지 상태와 페이지의 상태를 변경하는 Reducer를 정의해 현재 페이지의 상태를 컨트롤 할 수 있게 구현하였으며, 해당 상태를 기반으로 네비게이션 바에서 활성화된 탭이 시각적으로 강조되도록 구현했습니다.**
+> **Redux를 통해 현재 페이지 상태를 관리하고, 해당 상태에 따라 하단 네비게이션 바에서 선택된 탭이 시각적으로 강조되도록 구현했습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_NavIndicator.gif)
 
 #### ✨ 호버 효과
-> **CSS의 `:hover` 선택자를 활용하여 버튼과 레시피 아이템에 마우스 오버 시 인터랙션 효과를 적용했습니다.**
+> **CSS의 `:hover` 선택자를 활용해 버튼과 레시피 아이템에 마우스 오버 시 인터랙션 효과를 적용했습니다.**
 
 <table>
     <tr>
@@ -110,40 +110,42 @@
 
 
 #### 🍽️ 간단한 추천 애니메이션 적용
-> **CSS의 `@keyframes`와 `animation` 속성을 활용하여 음식 추천을 할 때 부드러운 애니메이션 효과를 구현했습니다.**
+> **CSS의 `@keyframes`와 `animation` 속성을 활용해 음식 추천 시 자연스러운 애니메이션을 적용했습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_suggestAnim.gif)
 
 
 ### 3️⃣ 검색 기능
 
-#### 검색기록 저장, 삭제 기능
-> Redux를 사용해 검색 기록을 저장하는 상태와 Reducer에 검색기록을 추가하는 함수, 검색기록을 삭제하는 함수, 검색기록을 유지하는 기간을 확인하는 함수를 정의하여
+#### 📝 검색기록 저장, 삭제 기능
+> **Redux 상태와 Reducer를 활용해 검색 기록의 추가, 삭제, 자동 만료 기능을 구현했습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC.gif)
 
-#### 연관 검색어 자동 완성 및 일치하는 부분 하이라이트 기능
-> 
+#### 🔡 연관 검색어 자동 완성 및 일치하는 부분 하이라이트 기능
+> **korean-regexp 라이브러리를 활용해 초성 검색이 가능한 정규표현식을 구성하고, match 및 split 함수를 이용해 일치하는 부분만 하이라이트 처리하였습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%EC%97%B0%EA%B4%80%EA%B2%80%EC%83%89.gif)
 
 
 ### 4️⃣ 성능 최적화
 
-#### 인피니티 스크롤
-> temp
+#### ♾️ 인피니티 스크롤
+> **IntersectionObserver를 활용해 제작한 커스텀 훅을 사용해 로딩 스피너가 뷰포트에 진입 시 다음 레시피를 자동으로 로드하도록 구현했습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_InfiniteScroll.gif)
 
-#### 폰트 다이나믹 서브셋
-> temp
+#### 🖼️ 이미지 레이지 로딩
+> **IntersectionObserver를 활용해 제작한 커스텀 훅을 사용해 이미지가 뷰포트에 진입 시 로딩되도록 하여 초기 로딩 성능을 개선했습니다.**
+
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_ImageLazyLoading.gif)
+
+#### 🔤 폰트 다이나믹 서브셋
+> **[font-range](https://github.com/black7375/font-range) 라이브러리를 활용해 나눈 필요한 글자만 포함된 폰트를 나누어 적용하여 폰트 로딩 속도를 최적화 했습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_DynamicSubset.gif)
 
-#### 이미지 레이지 로딩
-> temp
-
-![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_ImageLazyLoading.gif)
+<br/>
 
 ## 🚀 시작하기
 
@@ -164,10 +166,11 @@ VITE_API_URL=https://aluminum-halved-bactrosaurus.glitch.me
 npm run dev
 ```
 
+<br/>
+
 ## 📌 사이트 이용안내 
 - 이 프로젝트의 서버는 Glitch 무료 플랜을 사용하여 배포되었습니다.
-- 서버가 유휴 상태(비활성화)일 경우, 첫 요청 시 최대 1분 정도 걸릴 수 있습니다.
-(서버가 "깨어나는" 동안 대기 시간이 발생할 수 있음)
+- 서버가 유휴 상태일 경우, 첫 요청 시 최대 1분 정도 걸릴 수 있습니다.
 - 이후 요청은 빠르게 응답됩니다.
 
-🔹 Tip: 미리 한 번 API를 호출해두면 서버가 활성화된 상태로 유지될 수 있습니다. 🚀
+🔹 Tip: 미리 한 번 API를 호출해두면 서버가 활성화된 상태로 유지될 수 있습니다.
