@@ -123,7 +123,7 @@
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%ED%9E%88%EC%8A%A4%ED%86%A0%EB%A6%AC.gif)
 
 #### 🔡 연관 검색어 자동 완성 및 일치하는 부분 하이라이트 기능
-> **korean-regexp 라이브러리를 활용해 초성 검색이 가능한 정규표현식을 구성하고, match 및 split 함수를 이용해 일치하는 부분만 하이라이트 처리하였습니다.**
+> **[korean-regexp](https://github.com/bluewings/korean-regexp) 라이브러리를 활용해 초성 검색이 가능한 정규표현식을 구성하고, match 및 split 함수를 이용해 일치하는 부분만 하이라이트 처리하였습니다.**
 
 ![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/3_%EA%B2%80%EC%83%89_%EC%97%B0%EA%B4%80%EA%B2%80%EC%83%89.gif)
 
