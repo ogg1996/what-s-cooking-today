@@ -122,9 +122,9 @@
 <br>
 
 #### 💾 페이지 상태 유지
-> **React Query와 `useNavigationType`을 활용해, `PUSH` 시에는 캐시를 초기화하고 `POP` 시에는 상태를 유지하여 이전 화면을 복원하도록 구현했습니다.**
+> **React Query와 useNavigationType을 활용해, `PUSH` 시에는 캐시를 초기화하고 `POP` 시에는 상태를 유지하여 이전 화면을 복원하도록 구현했습니다.**
 
-![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_suggestAnim.gif)
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/2_KeepUpPage.gif)
 
 <br>
 
