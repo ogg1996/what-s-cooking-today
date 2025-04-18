@@ -5,6 +5,11 @@
 
 <br>
 
+## 🔗 배포 링크
+[www.whatscookingtoday.kro.kr](https://www.whatscookingtoday.kro.kr)
+
+<br>
+
 ## 🛠 사용 기술
 ### 📌 **Frontend**
 ![React](https://img.shields.io/badge/React-18-blue?logo=react)
