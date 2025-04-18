@@ -9,10 +9,18 @@ const SuggestButton = styled.button`
   border: none;
   border-radius: 8px;
   cursor: pointer;
+
+  &:hover {
+    background-color: #d68b44;
+  }
 `;
 
 const ActiveSuggestButton = styled(SuggestButton)`
   background-color: #c4c4c4;
+
+  &:hover {
+    background-color: #c4c4c4;
+  }
 `;
 
 export default function SuggestBtn({ isRecommend, handleClick }) {

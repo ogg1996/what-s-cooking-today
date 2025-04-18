@@ -106,6 +106,10 @@ const CancelButton = styled.button`
   width: 48px;
   color: #fefbf8;
   border-radius: 4px;
+
+  &:hover {
+    background-color: #d68b44;
+  }
 `;
 
 export default function SearchModal() {

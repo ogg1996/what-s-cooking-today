@@ -22,6 +22,10 @@ const StyledSuggestItem = styled.div`
 
   & > p {
     color: #685443;
+
+    & > strong {
+      color: #d68b44;
+    }
   }
 
   & > a {
