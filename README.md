@@ -6,7 +6,7 @@
 <br>
 
 ## 🔗 배포 링크
-> [**www.whatscookingtoday.kro.kr**](https://whatscookingtoday.kro.kr/)
+> https://whatscookingtoday.netlify.app
 
 <br>
 
