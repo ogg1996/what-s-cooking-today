@@ -1,5 +1,5 @@
 import styled, { keyframes } from 'styled-components';
-import { useEffect } from 'react';
+import { useEffect, useState } from 'react';
 import { Route, Routes } from 'react-router-dom';
 import { useSelector } from 'react-redux';
 
@@ -12,6 +12,8 @@ import Header from '@components/layout/header/Header';
 import BottomNav from '@components/layout/BottomNav';
 import Modal from '@components/layout/modal/Modal';
 import scrollToTop from '@utils/scrollToTop';
+import axiosApiInstance from '@api/axiosApiInstance';
+import LoadingSpiner from '@components/common/LoadingSpiner';
 
 const StyledApp = styled.div`
   display: flex;
@@ -25,6 +27,22 @@ const StyledApp = styled.div`
   @media (max-width: 1000px) {
     padding-bottom: 82px;
   }
+`;
+
+const StyledLoading = styled.div`
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+
+  gap: 12px;
+
+  width: 100%;
+  min-height: 100vh;
+`;
+
+const StyledLoadingDiv = styled.div`
+  font-weight: bold;
 `;
 
 const topButtonHoverAnim = keyframes`
@@ -88,6 +106,21 @@ export default function App() {
   const modalState = useSelector(state => state.modalState.modal);
   const pageState = useSelector(state => state.pageState.page);
 
+  const [ready, setReady] = useState(false);
+
+  useEffect(() => {
+    async function isWakeUpServer() {
+      setReady(false);
+      const res = await axiosApiInstance.get('/is-wake-up');
+
+      setTimeout(() => {
+        setReady(res.data.success);
+      }, 1000);
+    }
+
+    isWakeUpServer();
+  }, []);
+
   useEffect(() => {
     if (modalState) {
       document.body.style.overflowY = 'hidden';
@@ -95,6 +128,14 @@ export default function App() {
       document.body.style.overflowY = 'auto';
     }
   }, [modalState]);
+
+  if (!ready)
+    return (
+      <StyledLoading>
+        <StyledLoadingDiv>서버가 깨우는 중...</StyledLoadingDiv>
+        <LoadingSpiner />
+      </StyledLoading>
+    );
 
   return (
     <>
