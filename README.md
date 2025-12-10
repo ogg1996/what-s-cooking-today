@@ -6,7 +6,7 @@
 <br>
 
 ## 🔗 배포 링크
-[www.whatscookingtoday.kro.kr](https://www.whatscookingtoday.kro.kr)
+> [**www.whatscookingtoday.kro.kr**](https://whatscookingtoday.kro.kr/)
 
 <br>
 
