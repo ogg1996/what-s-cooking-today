@@ -132,7 +132,7 @@ export default function App() {
   if (!ready)
     return (
       <StyledLoading>
-        <StyledLoadingDiv>서버가 깨우는 중...</StyledLoadingDiv>
+        <StyledLoadingDiv>서버 깨우는 중...</StyledLoadingDiv>
         <LoadingSpiner />
       </StyledLoading>
     );
