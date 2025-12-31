@@ -119,6 +119,13 @@
 
 <br>
 
+#### ♾️ 인피니티 스크롤
+> **IntersectionObserver를 활용해 제작한 커스텀 훅을 사용해 로딩 스피너가 뷰포트에 진입 시 다음 레시피를 자동으로 로드하도록 구현했습니다.**
+
+![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_InfiniteScroll.gif)
+
+<br>
+
 #### 🍽️ 간단한 추천 애니메이션 적용
 > **CSS의 `@keyframes`와 `animation` 속성을 활용해 음식 추천 시 자연스러운 애니메이션을 적용했습니다.**
 
@@ -150,13 +157,6 @@
 <br>
 
 ### 4️⃣ 성능 최적화
-
-#### ♾️ 인피니티 스크롤
-> **IntersectionObserver를 활용해 제작한 커스텀 훅을 사용해 로딩 스피너가 뷰포트에 진입 시 다음 레시피를 자동으로 로드하도록 구현했습니다.**
-
-![](https://github.com/ogg1996/readmeResource/blob/main/whats-cooking-today/4_InfiniteScroll.gif)
-
-<br>
 
 #### 🖼️ 이미지 레이지 로딩
 > **IntersectionObserver를 활용해 제작한 커스텀 훅을 사용해 이미지가 뷰포트에 진입 시 로딩되도록 하여 초기 로딩 성능을 개선했습니다.**
