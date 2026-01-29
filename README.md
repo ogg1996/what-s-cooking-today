@@ -11,18 +11,20 @@
 <br>
 
 ## 🛠 사용 기술
-### 📌 **Frontend**
-![React](https://img.shields.io/badge/React-18-blue?logo=react)
-![Redux Toolkit](https://img.shields.io/badge/Redux%20Toolkit-%232764D3?logo=redux&logoColor=white)
-![React Query](https://img.shields.io/badge/React%20Query-%23FF4154?logo=reactquery&logoColor=white)
-![React Router](https://img.shields.io/badge/React%20Router-%23CA4245?logo=reactrouter&logoColor=white)
-![Styled-components](https://img.shields.io/badge/Styled--Components-%23DB7093?logo=styled-components&logoColor=white)
-![Axios](https://img.shields.io/badge/Axios-%23007EC6?logo=axios&logoColor=white)
-
+### 📌 프론트엔드
+- React
+- React Router
+### 🎨 스타일링
+- Styled-Components
+### 🔄 상태 관리
+- Redux Toolkit
+### 🌐 네트워킹
+- Axios
+- React Query
 ### 🏗 **Build & Development**
-![Vite](https://img.shields.io/badge/Vite-%23646CFF?logo=vite&logoColor=white)
-![ESLint](https://img.shields.io/badge/ESLint-%234B32C3?logo=eslint&logoColor=white)
-![Prettier](https://img.shields.io/badge/Prettier-%23F7B93E?logo=prettier&logoColor=white)
+- Vite
+- ESLint
+- Prettier
 
 <br/>
 
